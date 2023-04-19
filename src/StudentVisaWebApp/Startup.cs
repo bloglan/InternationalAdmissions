@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using StudentVisaWebApp.Data;
+using StudentVisaWebApp.Domains.Identity;
 using StudentVisaWebApp.Services;
 
 namespace StudentVisaWebApp;
@@ -18,11 +19,12 @@ static class Startup
             options.UseSqlServer(connectionString));
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-        builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+        builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
         {
             options.SignIn.RequireConfirmedEmail = false;
 
         })
+            .AddUserManager<UserManager<ApplicationUser>>()
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
