@@ -12,7 +12,7 @@ static class Startup
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
     {
         // Add services to the container.
-        
+
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(connectionString));
@@ -28,7 +28,19 @@ static class Startup
 
         builder.Services.AddScoped<IEmailSender, NopEmailSender>();
 
-        builder.Services.AddRazorPages();
+        builder.Services.AddRazorPages(options =>
+        {
+            options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+            options.Conventions.AuthorizeFolder("/Admin", "RequireAdministratorsRole");
+        });
+
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("RequireAdministratorsRole", policy =>
+            {
+                policy.RequireRole("Administrators");
+            });
+        });
 
         return builder.Build();
     }

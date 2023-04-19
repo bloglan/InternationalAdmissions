@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentVisaWebApp", "StudentVisaWebApp\StudentVisaWebApp.csproj", "{841D91A4-C1C2-4F88-9C9F-E254DC59A484}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentVisaWebAppTests", "StudentVisaWebAppTests\StudentVisaWebAppTests.csproj", "{865D0922-DB5B-4D09-98A1-538389048EB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentVisaWebAppTests", "StudentVisaWebAppTests\StudentVisaWebAppTests.csproj", "{865D0922-DB5B-4D09-98A1-538389048EB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

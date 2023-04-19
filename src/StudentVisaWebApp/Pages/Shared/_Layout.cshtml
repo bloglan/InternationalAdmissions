@@ -41,6 +41,10 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - @configuration["Copyright"] - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            @if(this.User.IsInRole("Administrators"))
+            {
+                <a asp-page="/Admin/Index">System Management</a>
+            }
         </div>
     </footer>
 
