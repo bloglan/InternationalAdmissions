@@ -7,7 +7,7 @@ public class PersonPassport
 {
     public int Id { get; set; }
 
-    public virtual PersonInfo Owner { get; set; }
+    public virtual PersonInfo? Owner { get; set; }
 
     public virtual PassportInfo Passport { get; set; }
 

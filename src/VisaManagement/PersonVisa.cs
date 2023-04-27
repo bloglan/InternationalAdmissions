@@ -7,7 +7,7 @@ public class PersonVisa
 {
     public int Id { get; set; }
 
-    public virtual PersonInfo Owner { get; set; }
+    public virtual PersonInfo? Owner { get; set; }
 
     public virtual VisaInfo Visa { get; set; }
 
