@@ -7,6 +7,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentVisaWebApp", "Studen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentVisaWebAppTests", "StudentVisaWebAppTests\StudentVisaWebAppTests.csproj", "{865D0922-DB5B-4D09-98A1-538389048EB6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{BC6B1B8A-563A-4BD8-9F13-DEED51E23B24}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domains", "Domains", "{BDADD324-112C-4FA2-85E9-BA9FB3064526}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrstructures", "Infrstructures", "{044CF144-3A58-41A4-91D8-C3C2C5C3C6E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentVisaEF", "StudentVisaEF\StudentVisaEF.csproj", "{45FB5A1C-0E21-4AD1-9521-C349ED2B8D27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentVisaIdentity", "StudentVisaIdentity\StudentVisaIdentity.csproj", "{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +31,23 @@ Global
 		{865D0922-DB5B-4D09-98A1-538389048EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{865D0922-DB5B-4D09-98A1-538389048EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{865D0922-DB5B-4D09-98A1-538389048EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45FB5A1C-0E21-4AD1-9521-C349ED2B8D27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45FB5A1C-0E21-4AD1-9521-C349ED2B8D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45FB5A1C-0E21-4AD1-9521-C349ED2B8D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45FB5A1C-0E21-4AD1-9521-C349ED2B8D27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{841D91A4-C1C2-4F88-9C9F-E254DC59A484} = {BC6B1B8A-563A-4BD8-9F13-DEED51E23B24}
+		{865D0922-DB5B-4D09-98A1-538389048EB6} = {BC6B1B8A-563A-4BD8-9F13-DEED51E23B24}
+		{45FB5A1C-0E21-4AD1-9521-C349ED2B8D27} = {044CF144-3A58-41A4-91D8-C3C2C5C3C6E1}
+		{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36} = {BDADD324-112C-4FA2-85E9-BA9FB3064526}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2DC71B0-AE89-4A42-8E8D-4B19BEC7A6B7}

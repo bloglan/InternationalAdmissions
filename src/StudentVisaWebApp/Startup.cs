@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using StudentVisaWebApp.Data;
-using StudentVisaWebApp.Domains.Identity;
+using StudentVisaEF;
+using StudentVisaIdentity;
 using StudentVisaWebApp.Services;
 
 namespace StudentVisaWebApp;
@@ -14,9 +14,13 @@ static class Startup
     {
         // Add services to the container.
 
-        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-        builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(connectionString));
+        builder.Services.AddDbContext<ApplicationIdentityDbContext>(options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
+            {
+                s.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
+            });
+        });
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -25,7 +29,9 @@ static class Startup
 
         })
             .AddUserManager<UserManager<ApplicationUser>>()
-            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddUserStore<ApplicationUserStore>()
+            .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
+            .AddClaimsPrincipalFactory<ApplicationUserClaimsFactory>()
             .AddDefaultTokenProviders();
 
         builder.Services.AddScoped<IEmailSender, NopEmailSender>();

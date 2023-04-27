@@ -21,4 +21,14 @@
 	<ItemGroup>
 		<InternalsVisibleTo Include="StudentVisaWebAppTests" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Domains\Identity\" />
+	  <Folder Include="Migrations\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\StudentVisaEF\StudentVisaEF.csproj" />
+	  <ProjectReference Include="..\StudentVisaIdentity\StudentVisaIdentity.csproj" />
+	</ItemGroup>
 </Project>

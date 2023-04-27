@@ -1,38 +1,36 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
+﻿#nullable disable
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using StudentVisaIdentity;
 
-namespace StudentVisaWebApp.Areas.Identity.Pages.Account
+namespace StudentVisaWebApp.Areas.Identity.Pages.Account;
+
+public class LogoutModel : PageModel
 {
-    public class LogoutModel : PageModel
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly ILogger<LogoutModel> _logger;
+
+    public LogoutModel(SignInManager<ApplicationUser> signInManager, ILogger<LogoutModel> logger)
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ILogger<LogoutModel> _logger;
+        this._signInManager = signInManager;
+        this._logger = logger;
+    }
 
-        public LogoutModel(SignInManager<ApplicationUser> signInManager, ILogger<LogoutModel> logger)
+    public async Task<IActionResult> OnPost(string returnUrl = null)
+    {
+        await this._signInManager.SignOutAsync();
+        this._logger.LogInformation("User logged out.");
+        if (returnUrl != null)
         {
-            this._signInManager = signInManager;
-            this._logger = logger;
+            return this.LocalRedirect(returnUrl);
         }
-
-        public async Task<IActionResult> OnPost(string returnUrl = null)
+        else
         {
-            await this._signInManager.SignOutAsync();
-            this._logger.LogInformation("User logged out.");
-            if (returnUrl != null)
-            {
-                return this.LocalRedirect(returnUrl);
-            }
-            else
-            {
-                // This needs to be a redirect so that the browser performs a new
-                // request and the identity for the user gets updated.
-                return this.RedirectToPage();
-            }
+            // This needs to be a redirect so that the browser performs a new
+            // request and the identity for the user gets updated.
+            return this.RedirectToPage();
         }
     }
 }

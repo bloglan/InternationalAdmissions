@@ -1,7 +1,4 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using StudentVisaWebApp;
-using StudentVisaWebApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
