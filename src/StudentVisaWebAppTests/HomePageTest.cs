@@ -2,7 +2,7 @@ namespace StudentVisaWebAppTests;
 
 public class HomePageTest : IClassFixture<StudentVisaWebAppFactory>
 {
-    readonly StudentVisaWebAppFactory factory;
+    private readonly StudentVisaWebAppFactory factory;
 
     public HomePageTest(StudentVisaWebAppFactory factory)
     {

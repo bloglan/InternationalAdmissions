@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VisaManagement;
+﻿namespace VisaManagement;
 public class PassportManager
 {
-    readonly IPersonPassportStore personPassportStore;
+    private readonly IPersonPassportStore personPassportStore;
 
     public PassportManager(IPersonPassportStore store)
     {

@@ -7,7 +7,7 @@ using StudentVisaWebApp.Services;
 
 namespace StudentVisaWebApp;
 
-static class Startup
+internal static class Startup
 {
 
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
