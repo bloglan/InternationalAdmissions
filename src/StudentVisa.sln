@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentVisaEF", "StudentVis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentVisaIdentity", "StudentVisaIdentity\StudentVisaIdentity.csproj", "{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisaManagement", "VisaManagement\VisaManagement.csproj", "{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{865D0922-DB5B-4D09-98A1-538389048EB6} = {BC6B1B8A-563A-4BD8-9F13-DEED51E23B24}
 		{45FB5A1C-0E21-4AD1-9521-C349ED2B8D27} = {044CF144-3A58-41A4-91D8-C3C2C5C3C6E1}
 		{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36} = {BDADD324-112C-4FA2-85E9-BA9FB3064526}
+		{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA} = {BDADD324-112C-4FA2-85E9-BA9FB3064526}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2DC71B0-AE89-4A42-8E8D-4B19BEC7A6B7}

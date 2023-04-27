@@ -25,6 +25,7 @@
 	<ItemGroup>
 	  <Folder Include="Domains\Identity\" />
 	  <Folder Include="Migrations\" />
+	  <Folder Include="Pages\Manager\" />
 	</ItemGroup>
 
 	<ItemGroup>
