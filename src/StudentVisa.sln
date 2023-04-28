@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentVisaEF", "StudentVis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentVisaIdentity", "StudentVisaIdentity\StudentVisaIdentity.csproj", "{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisaManagement", "VisaManagement\VisaManagement.csproj", "{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisaManagement", "VisaManagement\VisaManagement.csproj", "{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

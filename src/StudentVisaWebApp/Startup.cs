@@ -26,19 +26,26 @@ internal static class Startup
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
         {
             options.SignIn.RequireConfirmedEmail = false;
-
+            
         })
             .AddUserManager<UserManager<ApplicationUser>>()
             .AddUserStore<ApplicationUserStore>()
             .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
             .AddClaimsPrincipalFactory<ApplicationUserClaimsFactory>()
             .AddDefaultTokenProviders();
+        builder.Services.ConfigureApplicationCookie(options =>
+        {
+            options.LoginPath = "/Identity/Account/Login";
+            options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+        });
 
         builder.Services.AddScoped<IEmailSender, NopEmailSender>();
 
         builder.Services.AddRazorPages(options =>
         {
             options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+            options.Conventions.AuthorizeAreaFolder("Manage", "/", "RequireManagerRole");
+            options.Conventions.AuthorizeAreaFolder("Student", "/");
             options.Conventions.AuthorizeFolder("/Admin", "RequireAdministratorsRole");
         });
 
@@ -47,6 +54,10 @@ internal static class Startup
             options.AddPolicy("RequireAdministratorsRole", policy =>
             {
                 policy.RequireRole("Administrators");
+            });
+            options.AddPolicy("RequireManagerRole", policy =>
+            {
+                policy.RequireRole("Manager");
             });
         });
 
