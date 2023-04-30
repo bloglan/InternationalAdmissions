@@ -15,13 +15,57 @@ public class ApplicationIdentityDbContext : IdentityDbContext<ApplicationUser, I
     {
         base.OnModelCreating(builder);
         //Rename table name.
-        builder.Entity<ApplicationUser>().ToTable("ApplicationUser");
-        builder.Entity<IdentityUserLogin<string>>().ToTable("UserExternalLogin");
-        builder.Entity<IdentityUserToken<string>>().ToTable("UserToken");
-        builder.Entity<IdentityUserRole<string>>().ToTable("UserInRole");
-        builder.Entity<IdentityUserClaim<string>>().ToTable("UserClaim");
+        builder.Entity<ApplicationUser>(b =>
+        {
+            b.ToTable("ApplicationUser");
+            b.Property(p => p.Id).HasMaxLength(50).IsUnicode(false);
+            b.Property(p => p.PasswordHash).HasMaxLength(100).IsUnicode(false);
+            b.Property(p => p.SecurityStamp).HasMaxLength(50).IsUnicode(false);
+            b.Property(p => p.ConcurrencyStamp).HasMaxLength(50).IsUnicode(false);
+            b.Property(p => p.PhoneNumber).HasMaxLength(20).IsUnicode(false);
 
-        builder.Entity<IdentityRole>().ToTable("Role");
-        builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaim");
+        });
+        builder.Entity<IdentityUserLogin<string>>(b =>
+        {
+            b.ToTable("UserExternalLogin");
+            b.Property(p => p.LoginProvider).HasMaxLength(50).IsUnicode(false);
+            b.Property(p => p.ProviderKey).HasMaxLength(256).IsUnicode(false);
+            b.Property(p => p.ProviderDisplayName).HasMaxLength(50);
+            b.Property(p => p.UserId).HasMaxLength(50).IsUnicode(false);
+        });
+        builder.Entity<IdentityUserToken<string>>(b =>
+        {
+            b.ToTable("UserToken");
+            b.Property(p => p.UserId).HasMaxLength(50).IsUnicode(false);
+            b.Property(p => p.LoginProvider).HasMaxLength(50).IsUnicode(false);
+            b.Property(p => p.Name).HasMaxLength(50);
+            b.Property(p => p.Value).HasMaxLength(256).IsUnicode(false);
+
+        });
+        builder.Entity<IdentityUserRole<string>>(b =>
+        {
+            b.ToTable("UserInRole");
+            b.Property(p => p.UserId).HasMaxLength(50).IsUnicode(false);
+            b.Property(p => p.RoleId).HasMaxLength(50).IsUnicode(false);
+        });
+        builder.Entity<IdentityUserClaim<string>>(b =>
+        {
+            b.ToTable("UserClaim");
+            b.Property(p => p.ClaimType).HasMaxLength(256).IsUnicode(false);
+            b.Property(p => p.ClaimValue).HasMaxLength(50);
+        });
+
+        builder.Entity<IdentityRole>(b =>
+        {
+            b.ToTable("Role");
+            b.Property(p => p.Id).HasMaxLength(50).IsUnicode(false);
+            b.Property(p => p.ConcurrencyStamp).HasMaxLength(50).IsUnicode(false);
+        });
+        builder.Entity<IdentityRoleClaim<string>>(b =>
+        {
+            b.ToTable("RoleClaim");
+            b.Property(p => p.ClaimType).HasMaxLength(256).IsUnicode(false);
+            b.Property(p => p.ClaimValue).HasMaxLength(50);
+        });
     }
 }

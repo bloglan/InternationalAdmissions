@@ -17,6 +17,11 @@ public class VisaManager
     }
 
     /// <summary>
+    /// Gets VISAs.
+    /// </summary>
+    public IQueryable<PersonVisa> Visas => this.personVisaStore.PersonVisas;
+
+    /// <summary>
     /// Create VISA.
     /// </summary>
     /// <param name="visa"></param>

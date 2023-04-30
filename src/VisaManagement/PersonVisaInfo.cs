@@ -1,18 +1,25 @@
-﻿namespace VisaManagement;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace VisaManagement;
 
 /// <summary>
 /// VISA info.
 /// </summary>
+[Owned]
 public class PersonVisaInfo
 {
     /// <summary>
     /// VISA number.
     /// </summary>
+    [MaxLength(32), Unicode(false)]
     public string VisaNumber { get; set; } = default!;
 
     /// <summary>
     /// Category.
     /// </summary>
+    [MaxLength(10), Unicode(false)]
     public string Category { get; set; } = default!;
 
     /// <summary>
@@ -38,11 +45,13 @@ public class PersonVisaInfo
     /// <summary>
     /// Issued at.
     /// </summary>
+    [MaxLength(50)]
     public string IssuedAt { get; set; } = default!;
 
     /// <summary>
     /// Full name.
     /// </summary>
+    [MaxLength(40)]
     public string FullName { get; set; } = default!;
 
     /// <summary>
@@ -53,10 +62,12 @@ public class PersonVisaInfo
     /// <summary>
     /// Passport number.
     /// </summary>
+    [Column(TypeName = "char(9)")]
     public string PassportNumber { get; set; } = default!;
 
     /// <summary>
     /// Remarks.
     /// </summary>
+    [MaxLength(50)]
     public string? Remarks { get; set; }
 }

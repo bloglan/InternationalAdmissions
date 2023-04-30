@@ -17,6 +17,11 @@ public class PassportManager
     }
 
     /// <summary>
+    /// Gets passports.
+    /// </summary>
+    public IQueryable<PersonPassport> Passports => this.personPassportStore.Passports;
+
+    /// <summary>
     /// Create passport.
     /// </summary>
     /// <param name="passport"></param>

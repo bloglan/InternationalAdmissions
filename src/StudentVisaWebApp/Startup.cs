@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using StudentVisaEF.Identity;
+using StudentVisaEF.VisaManagement;
 using StudentVisaIdentity;
 using StudentVisaWebApp.Services;
+using VisaManagement;
 
 namespace StudentVisaWebApp;
 
@@ -15,6 +17,13 @@ internal static class Startup
         // Add services to the container.
 
         builder.Services.AddDbContext<ApplicationIdentityDbContext>(options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
+            {
+                s.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
+            });
+        });
+        builder.Services.AddDbContext<StudentVisaDbContext>(options =>
         {
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
             {
@@ -60,6 +69,13 @@ internal static class Startup
                 policy.RequireRole("Manager");
             });
         });
+
+        //Work load
+        builder.Services.AddScoped<PassportManager>()
+            .AddScoped<IPersonPassportStore, PersonPassportStore>();
+
+        builder.Services.AddScoped<VisaManager>()
+            .AddScoped<IPersonVisaStore, PersonVisaStore>();
 
         return builder.Build();
     }
