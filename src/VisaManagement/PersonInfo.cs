@@ -2,10 +2,19 @@
 
 namespace VisaManagement;
 
+/// <summary>
+/// Person info.
+/// </summary>
 [Owned]
 public class PersonInfo
 {
-    public string Id { get; set; }
+    /// <summary>
+    /// Id.
+    /// </summary>
+    public string Id { get; set; } = default!;
 
-    public string Name { get; set; }
+    /// <summary>
+    /// Name.
+    /// </summary>
+    public string Name { get; set; } = default!;
 }

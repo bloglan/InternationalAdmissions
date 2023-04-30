@@ -2,18 +2,39 @@
 
 namespace VisaManagement;
 
+/// <summary>
+/// Passport
+/// </summary>
 [Table("PersonPassport")]
 public class PersonPassport
 {
+    /// <summary>
+    /// Id.
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Owner.
+    /// </summary>
     public virtual PersonInfo? Owner { get; set; }
 
-    public virtual PassportInfo Passport { get; set; }
+    /// <summary>
+    /// Passport info.
+    /// </summary>
+    public virtual PersonPassportInfo Passport { get; set; } = default!;
 
-    public virtual PersonInfo Manager { get; set; }
+    /// <summary>
+    /// Manager.
+    /// </summary>
+    public virtual PersonInfo Manager { get; set; } = default!;
 
+    /// <summary>
+    /// Create time.
+    /// </summary>
     public DateTime WhenCreated { get; set; } = DateTime.UtcNow;
 
+    /// <summary>
+    /// Update time.
+    /// </summary>
     public DateTime WhenChanged { get; set; } = DateTime.UtcNow;
 }
