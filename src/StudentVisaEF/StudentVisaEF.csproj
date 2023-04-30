@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StudentVisaIdentity\StudentVisaIdentity.csproj" />
+    <ProjectReference Include="..\VisaManagement\VisaManagement.csproj" />
   </ItemGroup>
 
 </Project>

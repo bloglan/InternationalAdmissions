@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using StudentVisaIdentity;
 
-namespace StudentVisaEF;
+namespace StudentVisaEF.Identity;
 
 public class ApplicationIdentityDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
 {

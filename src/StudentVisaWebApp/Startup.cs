@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using StudentVisaEF;
+using StudentVisaEF.Identity;
 using StudentVisaIdentity;
 using StudentVisaWebApp.Services;
 
@@ -26,7 +26,7 @@ internal static class Startup
         builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
         {
             options.SignIn.RequireConfirmedEmail = false;
-            
+
         })
             .AddUserManager<UserManager<ApplicationUser>>()
             .AddUserStore<ApplicationUserStore>()
