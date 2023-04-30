@@ -29,8 +29,11 @@ public class PassportManager
     /// <exception cref="NotImplementedException"></exception>
     public async Task<OperationResult> CreateAsync(PersonPassport passport)
     {
+        var now = DateTime.UtcNow;
+        passport.WhenCreated = now;
+        passport.WhenChanged = now;
         await this.personPassportStore.CreateAsync(passport);
-        throw new NotImplementedException();
+        return OperationResult.Success;
     }
 
     /// <summary>
@@ -43,7 +46,7 @@ public class PassportManager
     {
         passport.WhenChanged = DateTime.UtcNow;
         await this.personPassportStore.UpdateAsync(passport);
-        throw new NotImplementedException();
+        return OperationResult.Success;
     }
 
     /// <summary>
@@ -55,6 +58,6 @@ public class PassportManager
     public async Task<OperationResult> DeleteAsync(PersonPassport passport)
     {
         await this.personPassportStore.DeleteAsync(passport);
-        throw new NotImplementedException();
+        return OperationResult.Success;
     }
 }

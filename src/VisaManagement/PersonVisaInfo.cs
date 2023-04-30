@@ -30,6 +30,7 @@ public class PersonVisaInfo
     /// <summary>
     /// Enter before.
     /// </summary>
+    [Column(TypeName = "date")]
     public DateTime EnterBefore { get; set; }
 
     /// <summary>
@@ -40,6 +41,7 @@ public class PersonVisaInfo
     /// <summary>
     /// Issue date.
     /// </summary>
+    [Column(TypeName = "date")]
     public DateTime IssueDate { get; set; }
 
     /// <summary>
@@ -57,6 +59,7 @@ public class PersonVisaInfo
     /// <summary>
     /// Birth date.
     /// </summary>
+    [Column(TypeName = "date")]
     public DateTime BirthDate { get; set; }
 
     /// <summary>

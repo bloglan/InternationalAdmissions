@@ -55,6 +55,7 @@ public class PersonPassportInfo
     /// <summary>
     /// Date of birth.
     /// </summary>
+    [Column(TypeName = "date")]
     public DateTime DateOfBirth { get; set; }
 
     /// <summary>
@@ -66,11 +67,13 @@ public class PersonPassportInfo
     /// <summary>
     /// Date of issue.
     /// </summary>
+    [Column(TypeName = "date")]
     public DateTime DateOfIssue { get; set; }
 
     /// <summary>
     /// Date of expiration.
     /// </summary>
+    [Column(TypeName = "date")]
     public DateTime DateOfExpiration { get; set; }
 
     /// <summary>

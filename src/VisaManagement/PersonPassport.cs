@@ -31,10 +31,10 @@ public class PersonPassport
     /// <summary>
     /// Create time.
     /// </summary>
-    public DateTime WhenCreated { get; set; } = DateTime.UtcNow;
+    public DateTime WhenCreated { get; set; }
 
     /// <summary>
     /// Update time.
     /// </summary>
-    public DateTime WhenChanged { get; set; } = DateTime.UtcNow;
+    public DateTime WhenChanged { get; set; }
 }

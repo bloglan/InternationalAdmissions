@@ -26,7 +26,7 @@
             &copy; 2023 - @configuration["Copyright"] - <a asp-area="" asp-page="/Privacy">Privacy</a>
             @if (this.User.IsInRole("Administrators"))
             {
-                <a asp-page="/Admin/Index">System Management</a>
+                <a asp-page="/Index" asp-area="Admin">System Management</a>
             }
         </div>
     </footer>

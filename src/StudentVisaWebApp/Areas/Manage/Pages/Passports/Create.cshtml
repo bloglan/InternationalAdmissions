@@ -1,0 +1,75 @@
+﻿@page
+@model StudentVisaWebApp.Areas.Manage.Pages.Passports.CreateModel
+@{
+}
+<h1>Create Passport</h1>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.PassportNumber" class="form-control" aria-required="true" />
+        <label asp-for="Input.PassportNumber" class="form-label"></label>
+        <span asp-validation-for="Input.PassportNumber" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Type" class="form-control" aria-required="true" />
+        <label asp-for="Input.Type" class="form-label"></label>
+        <span asp-validation-for="Input.Type" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.CountryCode" class="form-control" aria-required="true" />
+        <label asp-for="Input.CountryCode" class="form-label"></label>
+        <span asp-validation-for="Input.CountryCode" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Surname" class="form-control" autocomplete="surname" aria-required="true" />
+        <label asp-for="Input.Surname" class="form-label"></label>
+        <span asp-validation-for="Input.Surname" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.GivenName" class="form-control" autocomplete="givenname" aria-required="true" />
+        <label asp-for="Input.GivenName" class="form-label"></label>
+        <span asp-validation-for="Input.GivenName" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Sex" class="form-control" aria-required="true" />
+        <label asp-for="Input.Sex" class="form-label"></label>
+        <span asp-validation-for="Input.Sex" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Nationality" class="form-control" aria-required="true" />
+        <label asp-for="Input.Nationality" class="form-label"></label>
+        <span asp-validation-for="Input.Nationality" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.DateOfBirth" class="form-control" aria-required="true" />
+        <label asp-for="Input.DateOfBirth" class="form-label"></label>
+        <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.PlaceOfBirth" class="form-control" aria-required="true" />
+        <label asp-for="Input.PlaceOfBirth" class="form-label"></label>
+        <span asp-validation-for="Input.PlaceOfBirth" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.DateOfIssue" class="form-control" aria-required="true" />
+        <label asp-for="Input.DateOfIssue" class="form-label"></label>
+        <span asp-validation-for="Input.DateOfIssue" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.DateOfExpiration" class="form-control" aria-required="true" />
+        <label asp-for="Input.DateOfExpiration" class="form-label"></label>
+        <span asp-validation-for="Input.DateOfExpiration" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Authority" class="form-control" aria-required="true" />
+        <label asp-for="Input.Authority" class="form-label"></label>
+        <span asp-validation-for="Input.Authority" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.AssignToUserId" class="form-control" aria-required="false" />
+        <label asp-for="Input.AssignToUserId" class="form-label"></label>
+        <span asp-validation-for="Input.AssignToUserId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>

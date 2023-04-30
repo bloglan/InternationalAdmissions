@@ -1,0 +1,35 @@
+﻿@page
+@model StudentVisaWebApp.Areas.Manage.Pages.Passports.IndexModel
+@{
+}
+<h1>Passports</h1>
+
+<form method="get">
+    <input type="text" name="q" placeholder="Passport Number, Surname or Given Name, etc." />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Number</td>
+            <td>Surname</td>
+            <td>Given Name</td>
+            <td>Country</td>
+            <td>Expires At</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var passport in this.Model.Passports)
+        {
+            <tr>
+                <td>@passport.Passport.PassportNumber</td>
+                <td>@passport.Passport.Surname</td>
+                <td>@passport.Passport.GivenName</td>
+                <td>@passport.Passport.CountryCode</td>
+                <td>@passport.Passport.DateOfExpiration</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="Create" class="btn btn-primary">Create Passport</a>
