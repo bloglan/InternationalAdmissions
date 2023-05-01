@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRZCodeParser", "MRZCodePar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRZCodeParser.Tests", "MRZCodeParser.Tests\MRZCodeParser.Tests.csproj", "{7B76B611-D2A7-4747-891F-55119F5AC4C4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{13CBAD3E-9AA7-440C-A964-888D569456B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForeignStudentsPlatform", "ForeignStudentsPlatform\ForeignStudentsPlatform.csproj", "{1956475D-64B2-4773-A9B2-BE9E6C0FEBA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,10 @@ Global
 		{7B76B611-D2A7-4747-891F-55119F5AC4C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B76B611-D2A7-4747-891F-55119F5AC4C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B76B611-D2A7-4747-891F-55119F5AC4C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1956475D-64B2-4773-A9B2-BE9E6C0FEBA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1956475D-64B2-4773-A9B2-BE9E6C0FEBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1956475D-64B2-4773-A9B2-BE9E6C0FEBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1956475D-64B2-4773-A9B2-BE9E6C0FEBA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +77,7 @@ Global
 		{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA} = {BDADD324-112C-4FA2-85E9-BA9FB3064526}
 		{743DCE6C-4215-4602-9967-20DB300EDACA} = {BDADD324-112C-4FA2-85E9-BA9FB3064526}
 		{7B76B611-D2A7-4747-891F-55119F5AC4C4} = {BDADD324-112C-4FA2-85E9-BA9FB3064526}
+		{1956475D-64B2-4773-A9B2-BE9E6C0FEBA0} = {13CBAD3E-9AA7-440C-A964-888D569456B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2DC71B0-AE89-4A42-8E8D-4B19BEC7A6B7}

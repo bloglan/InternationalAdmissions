@@ -71,6 +71,11 @@ public class VisaManager
         return this.personVisaStore.PersonVisas.Where(p => p.Visa.PassportNumber == passportNumber);
     }
 
+    /// <summary>
+    /// Find Person visa by Id.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public ValueTask<PersonVisa?> FindByIdAsync(int id)
     {
         return this.personVisaStore.FindByIdAsync(id);

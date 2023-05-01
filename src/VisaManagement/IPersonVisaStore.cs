@@ -30,5 +30,11 @@ public interface IPersonVisaStore
     /// <param name="personVisa"></param>
     /// <returns></returns>
     Task DeleteAsync(PersonVisa personVisa);
+
+    /// <summary>
+    /// Find Person Visa info by Id.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     ValueTask<PersonVisa?> FindByIdAsync(int id);
 }
