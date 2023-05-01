@@ -30,4 +30,11 @@ public interface IPersonPassportStore
     /// <param name="passport"></param>
     /// <returns></returns>
     Task DeleteAsync(PersonPassport passport);
+
+    /// <summary>
+    /// Find passport by Id.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    ValueTask<PersonPassport?> FindByIdAsync(int id);
 }

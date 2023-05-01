@@ -24,6 +24,11 @@ public class PersonPassportStore : IPersonPassportStore
         await this.dbContext.SaveChangesAsync();
     }
 
+    public ValueTask<PersonPassport?> FindByIdAsync(int id)
+    {
+        return this.dbContext.Passports.FindAsync(id);
+    }
+
     public async Task UpdateAsync(PersonPassport passport)
     {
         this.dbContext.Entry(passport).State = EntityState.Modified;

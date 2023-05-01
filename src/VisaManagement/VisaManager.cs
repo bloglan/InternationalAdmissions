@@ -29,8 +29,11 @@ public class VisaManager
     /// <exception cref="NotImplementedException"></exception>
     public async Task<OperationResult> CreateAsync(PersonVisa visa)
     {
+        var utcNow = DateTime.UtcNow;
+        visa.WhenCreated = utcNow;
+        visa.WhenChanged = utcNow;
         await this.personVisaStore.CreateAsync(visa);
-        throw new NotImplementedException();
+        return OperationResult.Success;
     }
 
     /// <summary>
@@ -43,7 +46,7 @@ public class VisaManager
     {
         visa.WhenChanged = DateTime.UtcNow;
         await this.personVisaStore.UpdateAsync(visa);
-        throw new NotImplementedException();
+        return OperationResult.Success;
     }
 
     /// <summary>
@@ -55,6 +58,21 @@ public class VisaManager
     public async Task<OperationResult> DeleteAsync(PersonVisa visa)
     {
         await this.personVisaStore.DeleteAsync(visa);
-        throw new NotImplementedException();
+        return OperationResult.Success;
+    }
+
+    /// <summary>
+    /// Find VISA on passport.
+    /// </summary>
+    /// <param name="passportNumber"></param>
+    /// <returns></returns>
+    public IEnumerable<PersonVisa> FindByPassportNumber(string passportNumber)
+    {
+        return this.personVisaStore.PersonVisas.Where(p => p.Visa.PassportNumber == passportNumber);
+    }
+
+    public ValueTask<PersonVisa?> FindByIdAsync(int id)
+    {
+        return this.personVisaStore.FindByIdAsync(id);
     }
 }

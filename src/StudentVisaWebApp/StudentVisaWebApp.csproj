@@ -37,4 +37,12 @@
 	  <ProjectReference Include="..\StudentVisaEF\StudentVisaEF.csproj" />
 	  <ProjectReference Include="..\StudentVisaIdentity\StudentVisaIdentity.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Areas\Manage\Pages\VISAs\Create.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="Areas\Manage\Pages\VISAs\Create.cshtml" />
+	</ItemGroup>
 </Project>

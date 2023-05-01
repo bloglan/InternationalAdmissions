@@ -24,6 +24,11 @@ public class PersonVisaStore : IPersonVisaStore
         await this.dbContext.SaveChangesAsync();
     }
 
+    public ValueTask<PersonVisa?> FindByIdAsync(int id)
+    {
+        return this.dbContext.Visas.FindAsync(id);
+    }
+
     public async Task UpdateAsync(PersonVisa personVisa)
     {
         this.dbContext.Entry(personVisa).State = EntityState.Modified;

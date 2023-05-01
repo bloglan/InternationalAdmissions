@@ -60,4 +60,24 @@ public class PassportManager
         await this.personPassportStore.DeleteAsync(passport);
         return OperationResult.Success;
     }
+
+    /// <summary>
+    /// Find Person passport by Id.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public ValueTask<PersonPassport?> FindByIdAsync(int id)
+    {
+        return this.personPassportStore.FindByIdAsync(id);
+    }
+
+    /// <summary>
+    /// Find Person passport by passport number.
+    /// </summary>
+    /// <param name="passport"></param>
+    /// <returns></returns>
+    public PersonPassport? FindByPassportNumber(string passport)
+    {
+        return this.personPassportStore.Passports.FirstOrDefault(p => p.Passport.PassportNumber == passport);
+    }
 }

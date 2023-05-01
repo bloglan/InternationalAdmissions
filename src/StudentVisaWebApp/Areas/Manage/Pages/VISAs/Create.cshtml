@@ -1,0 +1,70 @@
+﻿@page
+@model StudentVisaWebApp.Areas.Manage.Pages.VISAs.CreateModel
+@{
+}
+<h1>Create</h1>
+
+<form method="post">
+    <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.VisaNumber" class="form-control" aria-required="true" />
+        <label asp-for="Input.VisaNumber" class="form-label"></label>
+        <span asp-validation-for="Input.VisaNumber" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Category" class="form-control" aria-required="true" />
+        <label asp-for="Input.Category" class="form-label"></label>
+        <span asp-validation-for="Input.Category" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Entries" class="form-control" aria-required="true" />
+        <label asp-for="Input.Entries" class="form-label"></label>
+        <span asp-validation-for="Input.Entries" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.EnterBefore" class="form-control" autocomplete="surname" aria-required="true" />
+        <label asp-for="Input.EnterBefore" class="form-label"></label>
+        <span asp-validation-for="Input.EnterBefore" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.DurationOfEachStay" class="form-control" autocomplete="givenname" aria-required="true" />
+        <label asp-for="Input.DurationOfEachStay" class="form-label"></label>
+        <span asp-validation-for="Input.DurationOfEachStay" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.IssueDate" class="form-control" aria-required="true" />
+        <label asp-for="Input.IssueDate" class="form-label"></label>
+        <span asp-validation-for="Input.IssueDate" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.IssuedAt" class="form-control" aria-required="true" />
+        <label asp-for="Input.IssuedAt" class="form-label"></label>
+        <span asp-validation-for="Input.IssuedAt" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.FullName" class="form-control" aria-required="true" />
+        <label asp-for="Input.FullName" class="form-label"></label>
+        <span asp-validation-for="Input.FullName" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.BirthDate" class="form-control" aria-required="true" />
+        <label asp-for="Input.BirthDate" class="form-label"></label>
+        <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.PassportNumber" class="form-control" aria-required="true" />
+        <label asp-for="Input.PassportNumber" class="form-label"></label>
+        <span asp-validation-for="Input.PassportNumber" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Remarks" class="form-control" aria-required="true" />
+        <label asp-for="Input.Remarks" class="form-label"></label>
+        <span asp-validation-for="Input.Remarks" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.AssignToUserId" class="form-control" aria-required="false" />
+        <label asp-for="Input.AssignToUserId" class="form-label"></label>
+        <span asp-validation-for="Input.AssignToUserId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
