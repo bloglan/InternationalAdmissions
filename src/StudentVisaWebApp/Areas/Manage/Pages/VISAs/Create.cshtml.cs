@@ -117,7 +117,7 @@ public class CreateModel : PageModel
 
         [Display(Name = "Remarks")]
         [StringLength(50)]
-        public string Remarks { get; set; } = default!;
+        public string? Remarks { get; set; }
 
         [Display(Name = "AssignToUserId")]
         public string? AssignToUserId { get; set; }
