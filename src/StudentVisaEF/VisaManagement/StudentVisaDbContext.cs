@@ -11,6 +11,8 @@ public class StudentVisaDbContext : DbContext
 
     public DbSet<PersonVisa> Visas { get; protected set; }
 
+    public DbSet<PersonResidencePermit> PersonResidencePermits { get; protected set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
     }
