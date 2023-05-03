@@ -31,9 +31,9 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\PersonIdentityStores\PersonIdentityStores.csproj" />
-	  <ProjectReference Include="..\StudentVisaEF\StudentDocumentStores.csproj" />
-	  <ProjectReference Include="..\StudentVisaIdentity\PersonIdentity.csproj" />
-	  <ProjectReference Include="..\VisaManagement\StudentDocuments.csproj" />
+	  <ProjectReference Include="..\StudentDocumentStores\StudentDocumentStores.csproj" />
+	  <ProjectReference Include="..\PersonIdentity\PersonIdentity.csproj" />
+	  <ProjectReference Include="..\StudentDocuments\StudentDocuments.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

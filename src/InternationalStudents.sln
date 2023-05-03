@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdmissionsPortalWebApp", "StudentVisaWebApp\AdmissionsPortalWebApp.csproj", "{841D91A4-C1C2-4F88-9C9F-E254DC59A484}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdmissionsPortalWebApp", "AdmissionsPortalWebApp\AdmissionsPortalWebApp.csproj", "{841D91A4-C1C2-4F88-9C9F-E254DC59A484}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdmissionsPortalWebAppTests", "StudentVisaWebAppTests\AdmissionsPortalWebAppTests.csproj", "{865D0922-DB5B-4D09-98A1-538389048EB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdmissionsPortalWebAppTests", "AdmissionsPortalWebAppTests\AdmissionsPortalWebAppTests.csproj", "{865D0922-DB5B-4D09-98A1-538389048EB6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{BC6B1B8A-563A-4BD8-9F13-DEED51E23B24}"
 EndProject
@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domains", "Domains", "{BDAD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrstructures", "Infrstructures", "{044CF144-3A58-41A4-91D8-C3C2C5C3C6E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentDocumentStores", "StudentVisaEF\StudentDocumentStores.csproj", "{45FB5A1C-0E21-4AD1-9521-C349ED2B8D27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentDocumentStores", "StudentDocumentStores\StudentDocumentStores.csproj", "{45FB5A1C-0E21-4AD1-9521-C349ED2B8D27}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonIdentity", "StudentVisaIdentity\PersonIdentity.csproj", "{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonIdentity", "PersonIdentity\PersonIdentity.csproj", "{55FBC1A8-24B9-4B1C-BF61-1A7856BE5C36}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentDocuments", "VisaManagement\StudentDocuments.csproj", "{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentDocuments", "StudentDocuments\StudentDocuments.csproj", "{75A3E9AC-5DF3-4A16-BFE6-E2820B6296FA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRZCodeParser", "MRZCodeParser\MRZCodeParser.csproj", "{743DCE6C-4215-4602-9967-20DB300EDACA}"
 EndProject
@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MRZCodeParser.Tests", "MRZC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{13CBAD3E-9AA7-440C-A964-888D569456B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdmissionsPlatform", "ForeignStudentsPlatform\AdmissionsPlatform.csproj", "{1956475D-64B2-4773-A9B2-BE9E6C0FEBA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdmissionsPlatform", "AdmissionsPlatform\AdmissionsPlatform.csproj", "{1956475D-64B2-4773-A9B2-BE9E6C0FEBA0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonIdentityStores", "PersonIdentityStores\PersonIdentityStores.csproj", "{C4F01F40-CEEC-4214-B33D-A65915B37739}"
 EndProject

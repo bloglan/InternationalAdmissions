@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VisaManagement\StudentDocuments.csproj" />
+    <ProjectReference Include="..\StudentDocuments\StudentDocuments.csproj" />
   </ItemGroup>
 
 </Project>
