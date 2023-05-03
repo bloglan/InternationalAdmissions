@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VisaManagement;
 
-namespace StudentVisaEF.VisaManagement;
+namespace StudentDocumentStores;
 public class PersonResidencePermitStore : IPersonResidencePermitStore
 {
     readonly StudentVisaDbContext db;

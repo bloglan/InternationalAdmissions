@@ -30,12 +30,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Migrations\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\StudentVisaEF\StudentVisaEF.csproj" />
-	  <ProjectReference Include="..\StudentVisaIdentity\StudentVisaIdentity.csproj" />
+	  <ProjectReference Include="..\PersonIdentityStores\PersonIdentityStores.csproj" />
+	  <ProjectReference Include="..\StudentVisaEF\StudentDocumentStores.csproj" />
+	  <ProjectReference Include="..\StudentVisaIdentity\PersonIdentity.csproj" />
+	  <ProjectReference Include="..\VisaManagement\StudentDocuments.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

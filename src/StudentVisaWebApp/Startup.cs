@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using StudentVisaEF.Identity;
-using StudentVisaEF.VisaManagement;
+using PersonIdentityStores;
+using StudentDocumentStores;
 using StudentVisaIdentity;
 using StudentVisaWebApp.Services;
 using VisaManagement;

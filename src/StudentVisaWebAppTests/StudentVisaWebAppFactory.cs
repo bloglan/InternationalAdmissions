@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using StudentVisaEF.Identity;
-using StudentVisaEF.VisaManagement;
+using PersonIdentityStores;
+using StudentDocumentStores;
 
 namespace StudentVisaWebAppTests;
 public class StudentVisaWebAppFactory : WebApplicationFactory<Program>

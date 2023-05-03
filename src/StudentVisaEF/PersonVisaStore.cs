@@ -1,6 +1,6 @@
 ﻿using VisaManagement;
 
-namespace StudentVisaEF.VisaManagement;
+namespace StudentDocumentStores;
 public class PersonVisaStore : IPersonVisaStore
 {
     private readonly StudentVisaDbContext dbContext;

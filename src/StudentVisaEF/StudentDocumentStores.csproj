@@ -7,12 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StudentVisaIdentity\StudentVisaIdentity.csproj" />
-    <ProjectReference Include="..\VisaManagement\VisaManagement.csproj" />
+    <ProjectReference Include="..\VisaManagement\StudentDocuments.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 ﻿using VisaManagement;
 
-namespace StudentVisaEF.VisaManagement;
+namespace StudentDocumentStores;
 public class StudentVisaDbContext : DbContext
 {
     public StudentVisaDbContext(DbContextOptions<StudentVisaDbContext> options) : base(options)

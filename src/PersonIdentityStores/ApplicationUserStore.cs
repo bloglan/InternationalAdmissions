@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using StudentVisaIdentity;
 
-namespace StudentVisaEF.Identity;
+namespace PersonIdentityStores;
 
 public class ApplicationUserStore : UserStore<ApplicationUser, IdentityRole, ApplicationIdentityDbContext>
 {
