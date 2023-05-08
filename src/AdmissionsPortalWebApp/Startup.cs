@@ -16,31 +16,30 @@ internal static class Startup
     {
         // Add services to the container.
 
-        builder.Services.AddDbContext<ApplicationIdentityDbContext>(options =>
+        builder.Services.AddDbContext<PersonIdentityDbContext>(options =>
         {
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
             {
                 s.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
             });
         });
-        builder.Services.AddDbContext<StudentVisaDbContext>(options =>
+        builder.Services.AddDbContext<StudentDocumentDbContext>(options =>
         {
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
             {
                 s.MigrationsAssembly(typeof(Startup).Assembly.GetName().Name);
             });
         });
-        builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-        builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+        builder.Services.AddIdentity<Person, IdentityRole>(options =>
         {
             options.SignIn.RequireConfirmedEmail = false;
 
         })
-            .AddUserManager<UserManager<ApplicationUser>>()
-            .AddUserStore<ApplicationUserStore>()
-            .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
-            .AddClaimsPrincipalFactory<ApplicationUserClaimsFactory>()
+            .AddUserManager<UserManager<Person>>()
+            .AddUserStore<PersonStore>()
+            .AddEntityFrameworkStores<PersonIdentityDbContext>()
+            .AddClaimsPrincipalFactory<PersonClaimsFactory>()
             .AddDefaultTokenProviders();
         builder.Services.ConfigureApplicationCookie(options =>
         {
@@ -85,7 +84,6 @@ internal static class Startup
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
-            app.UseMigrationsEndPoint();
         }
         else
         {

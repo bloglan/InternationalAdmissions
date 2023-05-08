@@ -3,9 +3,9 @@
 namespace StudentDocumentStores;
 public class PersonVisaStore : IPersonVisaStore
 {
-    private readonly StudentVisaDbContext dbContext;
+    private readonly StudentDocumentDbContext dbContext;
 
-    public PersonVisaStore(StudentVisaDbContext dbContext)
+    public PersonVisaStore(StudentDocumentDbContext dbContext)
     {
         this.dbContext = dbContext;
     }

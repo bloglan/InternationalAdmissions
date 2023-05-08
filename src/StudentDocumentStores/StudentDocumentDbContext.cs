@@ -1,9 +1,9 @@
 ﻿using VisaManagement;
 
 namespace StudentDocumentStores;
-public class StudentVisaDbContext : DbContext
+public class StudentDocumentDbContext : DbContext
 {
-    public StudentVisaDbContext(DbContextOptions<StudentVisaDbContext> options) : base(options)
+    public StudentDocumentDbContext(DbContextOptions<StudentDocumentDbContext> options) : base(options)
     {
     }
 

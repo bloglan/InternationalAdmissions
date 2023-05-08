@@ -9,7 +9,7 @@ namespace MRZCodeParser.Tests
         public void CodeFieldsTest()
         {
             var target = MrzCode.Parse(MrzSamples.TD1);
-            
+
             Assert.Equal(DocumentType.I.ToString(), target[FieldType.DocumentType]);
             Assert.Equal("UTO", target[FieldType.CountryCode]);
             Assert.Equal("D23145890", target[FieldType.DocumentNumber]);
@@ -31,7 +31,7 @@ namespace MRZCodeParser.Tests
         {
             var target = MrzCode.Parse(MrzSamples.TD1);
 
-            var expected = new []
+            var expected = new[]
             {
                 FieldType.DocumentType,
                 FieldType.CountryCode,
@@ -50,7 +50,7 @@ namespace MRZCodeParser.Tests
             };
 
             var actual = target.FieldTypes.ToList();
-            
+
             Assert.Equal(expected.Length, actual.Count());
             Assert.Equal(expected, actual);
         }

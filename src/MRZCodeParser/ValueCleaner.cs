@@ -11,7 +11,7 @@ namespace MRZCodeParser
 
         internal string Clean()
         {
-            return value.TrimEnd('<')
+            return this.value.TrimEnd('<')
                 .Replace("<<", ", ")
                 .Replace("<", " ");
         }

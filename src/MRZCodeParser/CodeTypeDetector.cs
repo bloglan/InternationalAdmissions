@@ -14,14 +14,14 @@ namespace MRZCodeParser
 
         internal CodeType DetectType()
         {
-            CodeType type = lines.Count() == 3 && lines.First().Length == 30
+            CodeType type = this.lines.Count() == 3 && this.lines.First().Length == 30
                 ? CodeType.TD1
-                : lines.First().Length == 44 && lines.Count() == 2
-                    ? lines.First()[0] == 'P'
+                : this.lines.First().Length == 44 && this.lines.Count() == 2
+                    ? this.lines.First()[0] == 'P'
                         ? CodeType.TD3
                         : CodeType.MRVA
-                    : lines.First().Length == 36 && lines.Count() == 2
-                        ? lines.First()[0] == 'V'
+                    : this.lines.First().Length == 36 && this.lines.Count() == 2
+                        ? this.lines.First()[0] == 'V'
                             ? CodeType.MRVB
                             : CodeType.TD2
                         : CodeType.UNKNOWN;

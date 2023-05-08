@@ -7,8 +7,8 @@ namespace MRZCodeParser
 
         public Field(FieldType type, string value)
         {
-            Type = type;
-            Value = value;
+            this.Type = type;
+            this.Value = value;
         }
     }
 }

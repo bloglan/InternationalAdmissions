@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VisaManagement;
 
@@ -13,15 +8,33 @@ namespace VisaManagement;
 [Table("PersonResidencePermit")]
 public class PersonResidencePermit
 {
+    /// <summary>
+    /// Key
+    /// </summary>
     public int Id { get; set; }
 
+    /// <summary>
+    /// Owner.
+    /// </summary>
     public PersonInfo? Owner { get; set; }
 
-    public PersonInfo Manager { get; set; }
+    /// <summary>
+    /// Manager.
+    /// </summary>
+    public PersonInfo Manager { get; set; } = default!;
 
-    public ResidencePermitInfo ResidencePermit { get; set; }
+    /// <summary>
+    /// Residence permit.
+    /// </summary>
+    public ResidencePermitInfo ResidencePermit { get; set; } = default!;
 
+    /// <summary>
+    /// Create time.
+    /// </summary>
     public DateTime WhenCreated { get; set; }
 
+    /// <summary>
+    /// Update time.
+    /// </summary>
     public DateTime WhenChanged { get; set; }
 }

@@ -13,8 +13,8 @@ namespace MRZCodeParser.CodeTypes
 
         public override IEnumerable<MrzLine> Lines => new MrzLine[]
         {
-            new MRVBFirstLine(RawLines.First()),
-            new MRVBSecondLine(RawLines.Last())
+            new MRVBFirstLine(this.RawLines.First()),
+            new MRVBSecondLine(this.RawLines.Last())
         };
 
         protected override FieldType ChangeBackwardFieldTypeToCurrent(FieldType type)

@@ -7,7 +7,7 @@ namespace StudentVisaIdentity;
 /// <summary>
 /// 
 /// </summary>
-public class ApplicationUserClaimsFactory : UserClaimsPrincipalFactory<ApplicationUser, IdentityRole>
+public class PersonClaimsFactory : UserClaimsPrincipalFactory<Person, IdentityRole>
 {
     /// <summary>
     /// 
@@ -15,7 +15,7 @@ public class ApplicationUserClaimsFactory : UserClaimsPrincipalFactory<Applicati
     /// <param name="userManager"></param>
     /// <param name="roleManager"></param>
     /// <param name="options"></param>
-    public ApplicationUserClaimsFactory(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IOptions<IdentityOptions> options) : base(userManager, roleManager, options)
+    public PersonClaimsFactory(UserManager<Person> userManager, RoleManager<IdentityRole> roleManager, IOptions<IdentityOptions> options) : base(userManager, roleManager, options)
     {
     }
 
@@ -24,7 +24,7 @@ public class ApplicationUserClaimsFactory : UserClaimsPrincipalFactory<Applicati
     /// </summary>
     /// <param name="user"></param>
     /// <returns></returns>
-    protected override async Task<ClaimsIdentity> GenerateClaimsAsync(ApplicationUser user)
+    protected override async Task<ClaimsIdentity> GenerateClaimsAsync(Person user)
     {
         var identity = await base.GenerateClaimsAsync(user);
         //remove name claim

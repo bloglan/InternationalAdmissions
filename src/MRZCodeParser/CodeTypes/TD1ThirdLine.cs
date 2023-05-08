@@ -10,6 +10,6 @@ namespace MRZCodeParser.CodeTypes
 
         protected override string Pattern => "([A-Z0-9<]{30})";
 
-        internal override IEnumerable<FieldType> FieldTypes => new[] {FieldType.Names};
+        internal override IEnumerable<FieldType> FieldTypes => new[] { FieldType.Names };
     }
 }

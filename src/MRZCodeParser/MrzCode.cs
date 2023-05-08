@@ -1,7 +1,7 @@
+using MRZCodeParser.CodeTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MRZCodeParser.CodeTypes;
 
 namespace MRZCodeParser
 {
@@ -13,18 +13,18 @@ namespace MRZCodeParser
 
         public abstract IEnumerable<MrzLine> Lines { get; }
 
-        public IEnumerable<FieldType> FieldTypes => Lines.SelectMany(x => x.FieldTypes);
+        public IEnumerable<FieldType> FieldTypes => this.Lines.SelectMany(x => x.FieldTypes);
 
         public string this[FieldType type]
         {
             get
             {
-                var fields = Fields;
-                var targetType = ChangeBackwardFieldTypeToCurrent(type);
+                var fields = this.Fields;
+                var targetType = this.ChangeBackwardFieldTypeToCurrent(type);
 
                 if (fields.Fields.All(x => x.Type != targetType))
                 {
-                    throw new MrzCodeException($"Code {Type} does not contain field {type}");
+                    throw new MrzCodeException($"Code {this.Type} does not contain field {type}");
                 }
 
                 return fields[targetType].Value;
@@ -39,7 +39,7 @@ namespace MRZCodeParser
             get
             {
                 var fields = new List<Field>();
-                foreach (var line in Lines)
+                foreach (var line in this.Lines)
                 {
                     fields.AddRange(line.Fields.Fields);
                 }
@@ -50,12 +50,12 @@ namespace MRZCodeParser
 
         protected MrzCode(IEnumerable<string> lines)
         {
-            RawLines = lines;
+            this.RawLines = lines;
         }
 
         public override string ToString()
         {
-            return string.Join(Environment.NewLine, Lines.Select(x => x.Value));
+            return string.Join(Environment.NewLine, this.Lines.Select(x => x.Value));
         }
 
         public static MrzCode Parse(string code)

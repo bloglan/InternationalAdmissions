@@ -13,9 +13,9 @@ namespace MRZCodeParser.CodeTypes
 
         public override IEnumerable<MrzLine> Lines => new MrzLine[]
         {
-            new TD1FirstLine(RawLines.First()),
-            new TD1SecondLine(RawLines.ElementAt(1)),
-            new TD1ThirdLine(RawLines.Last())
+            new TD1FirstLine(this.RawLines.First()),
+            new TD1SecondLine(this.RawLines.ElementAt(1)),
+            new TD1ThirdLine(this.RawLines.Last())
         };
     }
 }

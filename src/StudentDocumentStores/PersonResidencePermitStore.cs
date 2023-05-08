@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VisaManagement;
+﻿using VisaManagement;
 
 namespace StudentDocumentStores;
 public class PersonResidencePermitStore : IPersonResidencePermitStore
 {
-    readonly StudentVisaDbContext db;
+    private readonly StudentDocumentDbContext db;
 
-    public PersonResidencePermitStore(StudentVisaDbContext db)
+    public PersonResidencePermitStore(StudentDocumentDbContext db)
     {
         this.db = db;
     }

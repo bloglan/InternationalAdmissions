@@ -9,13 +9,13 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account;
 
 public class LoginWithRecoveryCodeModel : PageModel
 {
-    private readonly SignInManager<ApplicationUser> _signInManager;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<Person> _signInManager;
+    private readonly UserManager<Person> _userManager;
     private readonly ILogger<LoginWithRecoveryCodeModel> _logger;
 
     public LoginWithRecoveryCodeModel(
-        SignInManager<ApplicationUser> signInManager,
-        UserManager<ApplicationUser> userManager,
+        SignInManager<Person> signInManager,
+        UserManager<Person> userManager,
         ILogger<LoginWithRecoveryCodeModel> logger)
     {
         this._signInManager = signInManager;

@@ -16,13 +16,13 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class EmailModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<Person> _userManager;
+    private readonly SignInManager<Person> _signInManager;
     private readonly IEmailSender _emailSender;
 
     public EmailModel(
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
+        UserManager<Person> userManager,
+        SignInManager<Person> signInManager,
         IEmailSender emailSender)
     {
         this._userManager = userManager;
@@ -48,7 +48,7 @@ public class EmailModel : PageModel
         public string NewEmail { get; set; }
     }
 
-    private async Task LoadAsync(ApplicationUser user)
+    private async Task LoadAsync(Person user)
     {
         var email = await this._userManager.GetEmailAsync(user);
         this.Email = email;

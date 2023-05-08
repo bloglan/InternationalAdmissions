@@ -9,17 +9,17 @@ namespace MRZCodeParser.Tests
         public void FirstLineFieldsTest()
         {
             var target = MrzCode.Parse(MrzSamples.TD2).Lines.First();
-            
+
             Assert.Equal(DocumentType.I.ToString(), target.Fields[FieldType.DocumentType].Value);
             Assert.Equal("UTO", target.Fields[FieldType.CountryCode].Value);
             Assert.Equal("ERIKSSON, ANNA MARIA", target.Fields[FieldType.PrimaryIdentifier].Value);
         }
-        
+
         [Fact]
         public void SecondLineFieldsTest()
         {
             var target = MrzCode.Parse(MrzSamples.TD2).Lines.Last();
-            
+
             Assert.Equal("D23145890", target.Fields[FieldType.DocumentNumber].Value);
             Assert.Equal("7", target.Fields[FieldType.DocumentNumberCheckDigit].Value);
             Assert.Equal("UTO", target.Fields[FieldType.Nationality].Value);

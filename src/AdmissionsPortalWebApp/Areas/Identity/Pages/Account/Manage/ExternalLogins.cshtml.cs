@@ -12,14 +12,14 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class ExternalLoginsModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
-    private readonly IUserStore<ApplicationUser> _userStore;
+    private readonly UserManager<Person> _userManager;
+    private readonly SignInManager<Person> _signInManager;
+    private readonly IUserStore<Person> _userStore;
 
     public ExternalLoginsModel(
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
-        IUserStore<ApplicationUser> userStore)
+        UserManager<Person> userManager,
+        SignInManager<Person> signInManager,
+        IUserStore<Person> userStore)
     {
         this._userManager = userManager;
         this._signInManager = signInManager;
@@ -49,7 +49,7 @@ public class ExternalLoginsModel : PageModel
             .ToList();
 
         string passwordHash = null;
-        if (this._userStore is IUserPasswordStore<ApplicationUser> userPasswordStore)
+        if (this._userStore is IUserPasswordStore<Person> userPasswordStore)
         {
             passwordHash = await userPasswordStore.GetPasswordHashAsync(user, this.HttpContext.RequestAborted);
         }

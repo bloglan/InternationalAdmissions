@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using MRZCodeParser.CodeTypes;
+using System.Collections.Generic;
 using Xunit;
 
 namespace MRZCodeParser.Tests

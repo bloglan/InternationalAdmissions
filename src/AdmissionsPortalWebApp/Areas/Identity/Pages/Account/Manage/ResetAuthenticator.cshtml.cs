@@ -11,13 +11,13 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class ResetAuthenticatorModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<Person> _userManager;
+    private readonly SignInManager<Person> _signInManager;
     private readonly ILogger<ResetAuthenticatorModel> _logger;
 
     public ResetAuthenticatorModel(
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager,
+        UserManager<Person> userManager,
+        SignInManager<Person> signInManager,
         ILogger<ResetAuthenticatorModel> logger)
     {
         this._userManager = userManager;

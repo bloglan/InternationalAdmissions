@@ -12,9 +12,9 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account;
 
 public class ResetPasswordModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Person> _userManager;
 
-    public ResetPasswordModel(UserManager<ApplicationUser> userManager)
+    public ResetPasswordModel(UserManager<Person> userManager)
     {
         this._userManager = userManager;
     }

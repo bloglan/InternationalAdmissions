@@ -14,10 +14,10 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account;
 [AllowAnonymous]
 public class RegisterConfirmationModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Person> _userManager;
     private readonly IEmailSender _sender;
 
-    public RegisterConfirmationModel(UserManager<ApplicationUser> userManager, IEmailSender sender)
+    public RegisterConfirmationModel(UserManager<Person> userManager, IEmailSender sender)
     {
         this._userManager = userManager;
         this._sender = sender;

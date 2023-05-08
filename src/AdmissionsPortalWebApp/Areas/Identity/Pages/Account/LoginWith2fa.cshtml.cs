@@ -10,13 +10,13 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account;
 
 public class LoginWith2faModel : PageModel
 {
-    private readonly SignInManager<ApplicationUser> _signInManager;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<Person> _signInManager;
+    private readonly UserManager<Person> _userManager;
     private readonly ILogger<LoginWith2faModel> _logger;
 
     public LoginWith2faModel(
-        SignInManager<ApplicationUser> signInManager,
-        UserManager<ApplicationUser> userManager,
+        SignInManager<Person> signInManager,
+        UserManager<Person> userManager,
         ILogger<LoginWith2faModel> logger)
     {
         this._signInManager = signInManager;

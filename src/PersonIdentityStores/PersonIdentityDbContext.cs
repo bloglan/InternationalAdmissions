@@ -4,9 +4,9 @@ using StudentVisaIdentity;
 
 namespace PersonIdentityStores;
 
-public class ApplicationIdentityDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
+public class PersonIdentityDbContext : IdentityDbContext<Person, IdentityRole, string>
 {
-    public ApplicationIdentityDbContext(DbContextOptions<ApplicationIdentityDbContext> options)
+    public PersonIdentityDbContext(DbContextOptions<PersonIdentityDbContext> options)
         : base(options)
     {
     }
@@ -15,9 +15,9 @@ public class ApplicationIdentityDbContext : IdentityDbContext<ApplicationUser, I
     {
         base.OnModelCreating(builder);
         //Rename table name.
-        builder.Entity<ApplicationUser>(b =>
+        builder.Entity<Person>(b =>
         {
-            b.ToTable("ApplicationUser");
+            b.ToTable("Person");
             b.Property(p => p.Id).HasMaxLength(50).IsUnicode(false);
             b.Property(p => p.PasswordHash).HasMaxLength(100).IsUnicode(false);
             b.Property(p => p.SecurityStamp).HasMaxLength(50).IsUnicode(false);

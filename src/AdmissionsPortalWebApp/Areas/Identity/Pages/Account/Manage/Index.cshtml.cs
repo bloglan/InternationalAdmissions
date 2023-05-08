@@ -12,12 +12,12 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class IndexModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<Person> _userManager;
+    private readonly SignInManager<Person> _signInManager;
 
     public IndexModel(
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager)
+        UserManager<Person> userManager,
+        SignInManager<Person> signInManager)
     {
         this._userManager = userManager;
         this._signInManager = signInManager;
@@ -38,7 +38,7 @@ public class IndexModel : PageModel
         public string PhoneNumber { get; set; }
     }
 
-    private async Task LoadAsync(ApplicationUser user)
+    private async Task LoadAsync(Person user)
     {
         var userName = await this._userManager.GetUserNameAsync(user);
         var phoneNumber = await this._userManager.GetPhoneNumberAsync(user);

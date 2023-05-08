@@ -9,12 +9,12 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class TwoFactorAuthenticationModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
-    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<Person> _userManager;
+    private readonly SignInManager<Person> _signInManager;
     private readonly ILogger<TwoFactorAuthenticationModel> _logger;
 
     public TwoFactorAuthenticationModel(
-        UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ILogger<TwoFactorAuthenticationModel> logger)
+        UserManager<Person> userManager, SignInManager<Person> signInManager, ILogger<TwoFactorAuthenticationModel> logger)
     {
         this._userManager = userManager;
         this._signInManager = signInManager;

@@ -16,10 +16,10 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account;
 [AllowAnonymous]
 public class ResendEmailConfirmationModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Person> _userManager;
     private readonly IEmailSender _emailSender;
 
-    public ResendEmailConfirmationModel(UserManager<ApplicationUser> userManager, IEmailSender emailSender)
+    public ResendEmailConfirmationModel(UserManager<Person> userManager, IEmailSender emailSender)
     {
         this._userManager = userManager;
         this._emailSender = emailSender;

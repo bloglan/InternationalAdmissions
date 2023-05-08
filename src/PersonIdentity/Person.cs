@@ -8,12 +8,12 @@ namespace StudentVisaIdentity;
 /// <summary>
 /// User info for this Web Application.
 /// </summary>
-public class ApplicationUser : IdentityUser<string>
+public class Person : IdentityUser<string>
 {
     /// <summary>
     /// 
     /// </summary>
-    public ApplicationUser()
+    public Person()
     {
         this.Id = Guid.NewGuid().ToString().ToLower();
     }

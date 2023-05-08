@@ -13,9 +13,9 @@ namespace StudentVisaWebApp.Areas.Identity.Pages.Account;
 
 public class ConfirmEmailModel : PageModel
 {
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<Person> _userManager;
 
-    public ConfirmEmailModel(UserManager<ApplicationUser> userManager)
+    public ConfirmEmailModel(UserManager<Person> userManager)
     {
         this._userManager = userManager;
     }
