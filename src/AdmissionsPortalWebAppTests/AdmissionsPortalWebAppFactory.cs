@@ -7,21 +7,21 @@ using PersonIdentityStores;
 using StudentDocumentStores;
 
 namespace StudentVisaWebAppTests;
-public class StudentVisaWebAppFactory : WebApplicationFactory<Program>
+public class AdmissionsPortalWebAppFactory : WebApplicationFactory<Program>
 {
     protected override TestServer CreateServer(IWebHostBuilder builder)
     {
         TestServer server = base.CreateServer(builder);
         //Ensure and init database
         using var scope = server.Services.CreateScope();
-        using var identityDb = scope.ServiceProvider.GetRequiredService<PersonIdentityDbContext>();
-        using var db = scope.ServiceProvider.GetRequiredService<StudentDocumentDbContext>();
+        using var personIdentityDbContext = scope.ServiceProvider.GetRequiredService<PersonIdentityDbContext>();
+        using var studentDocumentDbContext = scope.ServiceProvider.GetRequiredService<StudentDocumentDbContext>();
 
-        identityDb.Database.EnsureDeleted();
-        db.Database.EnsureDeleted();
+        personIdentityDbContext.Database.EnsureDeleted();
+        studentDocumentDbContext.Database.EnsureDeleted();
 
-        identityDb.Database.Migrate();
-        db.Database.Migrate();
+        personIdentityDbContext.Database.Migrate();
+        studentDocumentDbContext.Database.Migrate();
         //apply init data
 
         scope.Dispose();

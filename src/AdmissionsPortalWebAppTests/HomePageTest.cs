@@ -1,10 +1,10 @@
 namespace StudentVisaWebAppTests;
 
-public class HomePageTest : IClassFixture<StudentVisaWebAppFactory>
+public class HomePageTest : IClassFixture<AdmissionsPortalWebAppFactory>
 {
-    private readonly StudentVisaWebAppFactory factory;
+    private readonly AdmissionsPortalWebAppFactory factory;
 
-    public HomePageTest(StudentVisaWebAppFactory factory)
+    public HomePageTest(AdmissionsPortalWebAppFactory factory)
     {
         this.factory = factory;
     }
