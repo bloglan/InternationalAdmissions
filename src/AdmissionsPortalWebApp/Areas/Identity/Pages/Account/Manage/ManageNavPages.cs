@@ -2,7 +2,6 @@
 
 #nullable disable
 
-using AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;

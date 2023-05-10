@@ -2,7 +2,6 @@
 
 #nullable disable
 
-using AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
