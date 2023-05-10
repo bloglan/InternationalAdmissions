@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using StudentDocuments;
 using System.ComponentModel.DataAnnotations;
-using VisaManagement;
 
-namespace StudentVisaWebApp.Areas.Manage.Pages.Passports;
+namespace AdmissionsPortalWebApp.Areas.Manage.Pages.Passports;
 
 public class CreateModel : PageModel
 {

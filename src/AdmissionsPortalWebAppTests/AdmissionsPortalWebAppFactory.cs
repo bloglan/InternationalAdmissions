@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PersonIdentityStores;
 using StudentDocumentStores;
 
-namespace StudentVisaWebAppTests;
+namespace AdmissionsPortalWebAppTests;
 public class AdmissionsPortalWebAppFactory : WebApplicationFactory<Program>
 {
     protected override TestServer CreateServer(IWebHostBuilder builder)

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace VisaManagement;
+namespace StudentDocuments;
 
 /// <summary>
 /// VISA info.

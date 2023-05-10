@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using VisaManagement;
+using StudentDocuments;
 
-namespace StudentVisaWebApp.Areas.Manage.Pages.Passports;
+namespace AdmissionsPortalWebApp.Areas.Manage.Pages.Passports;
 
 public class DetailModel : PageModel
 {

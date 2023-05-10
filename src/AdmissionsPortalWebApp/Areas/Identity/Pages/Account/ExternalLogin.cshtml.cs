@@ -2,19 +2,20 @@
 
 #nullable disable
 
+using AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using StudentVisaIdentity;
+using PersonIdentity;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Encodings.Web;
 
-namespace StudentVisaWebApp.Areas.Identity.Pages.Account;
+namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
 [AllowAnonymous]
 public class ExternalLoginModel : PageModel

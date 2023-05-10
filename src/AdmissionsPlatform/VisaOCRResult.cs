@@ -1,4 +1,4 @@
-﻿namespace ForeignStudentsPlatform;
+﻿namespace AdmissionsPlatform;
 
 public class VisaOCRResult
 {

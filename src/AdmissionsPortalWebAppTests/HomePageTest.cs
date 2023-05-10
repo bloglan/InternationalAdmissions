@@ -1,4 +1,4 @@
-namespace StudentVisaWebAppTests;
+namespace AdmissionsPortalWebAppTests;
 
 public class HomePageTest : IClassFixture<AdmissionsPortalWebAppFactory>
 {

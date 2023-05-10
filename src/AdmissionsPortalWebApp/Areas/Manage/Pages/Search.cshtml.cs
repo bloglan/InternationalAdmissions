@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace StudentVisaWebApp.Areas.Manage.Pages;
+namespace AdmissionsPortalWebApp.Areas.Manage.Pages;
 
 public class SearchModel : PageModel
 {

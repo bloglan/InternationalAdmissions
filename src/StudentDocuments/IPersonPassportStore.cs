@@ -1,4 +1,4 @@
-﻿namespace VisaManagement;
+﻿namespace StudentDocuments;
 
 /// <summary>
 /// Support Person passport info persistance.

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using StudentVisaIdentity;
+using PersonIdentity;
 
 namespace PersonIdentityStores;
 

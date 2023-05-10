@@ -2,9 +2,10 @@
 
 #nullable disable
 
+using AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace StudentVisaWebApp.Areas.Identity.Pages.Account;
+namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
 public class AccessDeniedModel : PageModel
 {

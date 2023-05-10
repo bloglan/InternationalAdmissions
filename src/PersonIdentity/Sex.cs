@@ -1,4 +1,4 @@
-﻿namespace StudentVisaIdentity;
+﻿namespace PersonIdentity;
 
 /// <summary>
 /// Sex

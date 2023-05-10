@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace StudentVisaWebApp.Areas.Identity.Pages.Account.Manage;
+namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class UserInfoModel : PageModel
 {

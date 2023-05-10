@@ -1,11 +1,12 @@
 ﻿#nullable disable
 
+using AdmissionsPortalWebApp.Areas.Identity.Pages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 
-namespace StudentVisaWebApp.Areas.Identity.Pages;
+namespace AdmissionsPortalWebApp.Areas.Identity.Pages;
 
 [AllowAnonymous]
 [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
 
-namespace StudentVisaIdentity;
+namespace PersonIdentity;
 
 /// <summary>
 /// 

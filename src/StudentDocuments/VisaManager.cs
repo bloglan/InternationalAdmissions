@@ -1,4 +1,4 @@
-﻿namespace VisaManagement;
+﻿namespace StudentDocuments;
 
 /// <summary>
 /// VISA manager.

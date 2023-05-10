@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace StudentVisaWebApp.Pages;
+namespace AdmissionsPortalWebApp.Pages;
 
 public class PrivacyModel : PageModel
 {

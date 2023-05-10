@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace VisaManagement;
+namespace StudentDocuments;
 
 /// <summary>
 /// 居留许可

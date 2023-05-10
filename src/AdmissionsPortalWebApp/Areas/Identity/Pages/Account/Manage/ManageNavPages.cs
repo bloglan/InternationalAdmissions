@@ -2,9 +2,10 @@
 
 #nullable disable
 
+using AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace StudentVisaWebApp.Areas.Identity.Pages.Account.Manage;
+namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public static class ManageNavPages
 {
@@ -43,7 +44,7 @@ public static class ManageNavPages
     public static string PageNavClass(ViewContext viewContext, string page)
     {
         var activePage = viewContext.ViewData["ActivePage"] as string
-            ?? System.IO.Path.GetFileNameWithoutExtension(viewContext.ActionDescriptor.DisplayName);
+            ?? Path.GetFileNameWithoutExtension(viewContext.ActionDescriptor.DisplayName);
         return string.Equals(activePage, page, StringComparison.OrdinalIgnoreCase) ? "active" : null;
     }
 }

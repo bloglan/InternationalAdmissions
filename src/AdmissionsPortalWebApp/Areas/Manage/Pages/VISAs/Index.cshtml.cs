@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using VisaManagement;
+using StudentDocuments;
 
-namespace StudentVisaWebApp.Areas.Manage.Pages.VISAs;
+namespace AdmissionsPortalWebApp.Areas.Manage.Pages.VISAs;
 
 public class IndexModel : PageModel
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace StudentVisaWebApp.Components;
+namespace AdmissionsPortalWebApp.Components;
 
 public class VisaStatistics : ViewComponent
 {

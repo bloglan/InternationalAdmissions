@@ -2,12 +2,13 @@
 
 #nullable disable
 
+using AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using StudentVisaIdentity;
+using PersonIdentity;
 
-namespace StudentVisaWebApp.Areas.Identity.Pages.Account.Manage;
+namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class ResetAuthenticatorModel : PageModel
 {

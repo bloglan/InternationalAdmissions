@@ -2,13 +2,14 @@
 
 #nullable disable
 
+using AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using StudentVisaIdentity;
+using PersonIdentity;
 using System.Text.Json;
 
-namespace StudentVisaWebApp.Areas.Identity.Pages.Account.Manage;
+namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class DownloadPersonalDataModel : PageModel
 {

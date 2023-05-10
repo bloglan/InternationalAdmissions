@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace VisaManagement;
+namespace StudentDocuments;
 
 /// <summary>
 /// Extensions for ClaimsPrincipal.

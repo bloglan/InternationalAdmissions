@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace StudentVisaWebApp.Areas.Student.Pages;
+namespace AdmissionsPortalWebApp.Areas.Student.Pages;
 
 public class IndexModel : PageModel
 {

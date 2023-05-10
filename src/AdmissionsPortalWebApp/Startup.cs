@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AdmissionsPortalWebApp.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using PersonIdentity;
 using PersonIdentityStores;
+using StudentDocuments;
 using StudentDocumentStores;
-using StudentVisaIdentity;
-using StudentVisaWebApp.Services;
-using VisaManagement;
 
-namespace StudentVisaWebApp;
+namespace AdmissionsPortalWebApp;
 
 internal static class Startup
 {

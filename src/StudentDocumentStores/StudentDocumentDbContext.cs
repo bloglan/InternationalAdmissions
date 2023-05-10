@@ -1,4 +1,4 @@
-﻿using VisaManagement;
+﻿using StudentDocuments;
 
 namespace StudentDocumentStores;
 public class StudentDocumentDbContext : DbContext

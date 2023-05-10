@@ -1,4 +1,4 @@
-using StudentVisaWebApp;
+using AdmissionsPortalWebApp;
 
 var builder = WebApplication.CreateBuilder(args);
 

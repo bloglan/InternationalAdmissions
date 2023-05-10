@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.UI.Services;
 
-namespace StudentVisaWebApp.Services;
+namespace AdmissionsPortalWebApp.Services;
 
 public class NopEmailSender : IEmailSender
 {

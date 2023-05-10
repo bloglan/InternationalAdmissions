@@ -1,4 +1,4 @@
-﻿namespace VisaManagement;
+﻿namespace StudentDocuments;
 
 /// <summary>
 /// Residence permit manager.
