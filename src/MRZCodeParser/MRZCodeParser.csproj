@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.1;netcoreapp3.1</TargetFrameworks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>0.3.0</PackageVersion>
+        <Authors>snifter</Authors>
+        <AssemblyVersion>0.2.0</AssemblyVersion>
+        <Title>MRZCodeParser</Title>
+        <PackageProjectUrl>https://github.com/snifter/MRZCode.NET</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/snifter/MRZCode.NET/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/snifter/MRZCode.NET.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Description>MRZ parser for .NET</Description>
+    </PropertyGroup>
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>MRZCodeParser.Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+</Project>

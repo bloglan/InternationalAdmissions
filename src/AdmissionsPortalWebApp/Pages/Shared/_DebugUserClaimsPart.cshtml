@@ -1,0 +1,26 @@
+﻿
+<h1>Debug User Claims</h1>
+@if(this.User.Identity!.IsAuthenticated)
+{
+    <table class="table table-sm table-strip">
+        <thead>
+            <tr>
+                <td>Type</td>
+                <td>Value</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var claim in this.User.Claims)
+            {
+                <tr>
+                    <td>@claim.Type</td>
+                    <td>@claim.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>User not logged in.</p>
+}
