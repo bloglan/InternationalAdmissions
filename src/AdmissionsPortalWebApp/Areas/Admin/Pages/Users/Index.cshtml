@@ -1,7 +1,6 @@
 ﻿@page
-@using Microsoft.AspNetCore.Identity;
 @inject UserManager<Person> userManager
-@model             IndexModel
+@model IndexModel
 @{
 }
 <h1>Users</h1>
@@ -14,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var user in this.userManager.Users)
+        @foreach (var user in this.userManager.Users)
         {
             <tr>
                 <td>@user.Name</td>

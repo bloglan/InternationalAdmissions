@@ -27,7 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{13
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdmissionsPlatform", "AdmissionsPlatform\AdmissionsPlatform.csproj", "{1956475D-64B2-4773-A9B2-BE9E6C0FEBA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonIdentityStores", "PersonIdentityStores\PersonIdentityStores.csproj", "{C4F01F40-CEEC-4214-B33D-A65915B37739}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonIdentityStores", "PersonIdentityStores\PersonIdentityStores.csproj", "{C4F01F40-CEEC-4214-B33D-A65915B37739}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

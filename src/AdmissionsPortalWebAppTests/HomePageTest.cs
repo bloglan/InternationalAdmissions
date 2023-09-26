@@ -1,6 +1,7 @@
 namespace AdmissionsPortalWebAppTests;
 
-public class HomePageTest : IClassFixture<AdmissionsPortalWebAppFactory>
+[Collection(nameof(CollectionDef))]
+public class HomePageTest
 {
     private readonly AdmissionsPortalWebAppFactory factory;
 

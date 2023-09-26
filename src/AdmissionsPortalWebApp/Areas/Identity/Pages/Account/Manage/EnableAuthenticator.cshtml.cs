@@ -5,6 +5,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Options;
 using PersonIdentity;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -18,17 +19,20 @@ public class EnableAuthenticatorModel : PageModel
     private readonly UserManager<Person> _userManager;
     private readonly ILogger<EnableAuthenticatorModel> _logger;
     private readonly UrlEncoder _urlEncoder;
+    ProductInfo productInfo;
 
     private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
 
     public EnableAuthenticatorModel(
         UserManager<Person> userManager,
         ILogger<EnableAuthenticatorModel> logger,
-        UrlEncoder urlEncoder)
+        UrlEncoder urlEncoder,
+        IOptions<ProductInfo> productInfo)
     {
         this._userManager = userManager;
         this._logger = logger;
         this._urlEncoder = urlEncoder;
+        this.productInfo = productInfo.Value;
     }
 
     public string SharedKey { get; set; }
@@ -149,7 +153,7 @@ public class EnableAuthenticatorModel : PageModel
         return string.Format(
             CultureInfo.InvariantCulture,
             AuthenticatorUriFormat,
-            this._urlEncoder.Encode("Microsoft.AspNetCore.Identity.UI"),
+            this._urlEncoder.Encode(this.productInfo.Title),
             this._urlEncoder.Encode(email),
             unformattedKey);
     }
