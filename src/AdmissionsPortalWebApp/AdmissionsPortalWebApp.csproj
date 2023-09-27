@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>aspnet-StudentVisaWebApp-4a658bd2-80ce-4286-a47a-dd035980c4a1</UserSecretsId>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.11" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="StudentVisaWebAppTests" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\PersonIdentityStores\PersonIdentityStores.csproj" />
+	  <ProjectReference Include="..\StudentDocumentStores\StudentDocumentStores.csproj" />
+	  <ProjectReference Include="..\PersonIdentity\PersonIdentity.csproj" />
+	  <ProjectReference Include="..\StudentDocuments\StudentDocuments.csproj" />
+	</ItemGroup>
+</Project>

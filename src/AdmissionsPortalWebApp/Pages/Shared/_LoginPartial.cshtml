@@ -1,0 +1,28 @@
+﻿@inject SignInManager<Person> SignInManager
+@inject UserManager<Person> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">@localizer["Hello"] @User.Identity?.Name!</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">@localizer["Manage Account"]</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="nav-link btn btn-link text-dark">@localizer["Logout"]</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">@localizer["Register"]</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@localizer["Login"]</a>
+        </li>
+    }
+</ul>

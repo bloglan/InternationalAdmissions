@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+@inject RoleManager<IdentityRole> roleManager
+@{
+    var roles = this.roleManager.Roles;
+}
+<h1>Roles</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var role in roles)
+        {
+            <tr>
+                <td><a>@role.Name</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
