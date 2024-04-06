@@ -3,12 +3,12 @@ using Xunit;
 
 namespace MRZCodeParser.Tests
 {
-    public class TD2MrzCodeLinesTest
+    public class Td2MrzCodeLinesTest
     {
         [Fact]
         public void FirstLineFieldsTest()
         {
-            var target = MrzCode.Parse(MrzSamples.TD2).Lines.First();
+            var target = MrzCode.Parse(MrzSamples.Td2).Lines.First();
 
             Assert.Equal(DocumentType.I.ToString(), target.Fields[FieldType.DocumentType].Value);
             Assert.Equal("UTO", target.Fields[FieldType.CountryCode].Value);
@@ -18,7 +18,7 @@ namespace MRZCodeParser.Tests
         [Fact]
         public void SecondLineFieldsTest()
         {
-            var target = MrzCode.Parse(MrzSamples.TD2).Lines.Last();
+            var target = MrzCode.Parse(MrzSamples.Td2).Lines.Last();
 
             Assert.Equal("D23145890", target.Fields[FieldType.DocumentNumber].Value);
             Assert.Equal("7", target.Fields[FieldType.DocumentNumberCheckDigit].Value);

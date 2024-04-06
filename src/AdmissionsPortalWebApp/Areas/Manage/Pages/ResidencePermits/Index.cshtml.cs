@@ -3,19 +3,12 @@ using StudentDocuments;
 
 namespace AdmissionsPortalWebApp.Areas.Manage.Pages.ResidencePermits;
 
-public class IndexModel : PageModel
+public class IndexModel(ResidencePermitManager permitManager) : PageModel
 {
-    private readonly ResidencePermitManager permitManager;
-
-    public IndexModel(ResidencePermitManager permitManager)
-    {
-        this.permitManager = permitManager;
-    }
-
     public IEnumerable<PersonResidencePermit> Data { get; set; } = default!;
 
     public void OnGet()
     {
-        this.Data = this.permitManager.Permits.ManagedBy(this.User).OrderByDescending(p => p.WhenCreated);
+        Data = permitManager.Permits.ManagedBy(User).OrderByDescending(p => p.WhenCreated);
     }
 }

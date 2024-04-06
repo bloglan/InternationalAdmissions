@@ -3,20 +3,13 @@ using StudentDocuments;
 
 namespace AdmissionsPortalWebApp.Areas.Manage.Pages.VISAs;
 
-public class IndexModel : PageModel
+public class IndexModel(VisaManager visaManager) : PageModel
 {
-    private readonly VisaManager visaManager;
-
-    public IndexModel(VisaManager visaManager)
-    {
-        this.visaManager = visaManager;
-    }
-
     public IEnumerable<PersonVisa> Visas { get; set; } = default!;
 
     public void OnGet(string? q)
     {
-        var visas = this.visaManager.Visas.ManagedBy(this.User);
+        var visas = visaManager.Visas.ManagedBy(User);
         if (!string.IsNullOrEmpty(q))
         {
             visas = visas.Where(p => p.Visa.VisaNumber == q
@@ -24,6 +17,6 @@ public class IndexModel : PageModel
             || p.Visa.PassportNumber == q);
         }
 
-        this.Visas = visas.OrderByDescending(p => p.WhenCreated);
+        Visas = visas.OrderByDescending(p => p.WhenCreated);
     }
 }

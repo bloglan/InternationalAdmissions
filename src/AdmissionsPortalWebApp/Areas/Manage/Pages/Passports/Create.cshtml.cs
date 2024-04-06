@@ -5,15 +5,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdmissionsPortalWebApp.Areas.Manage.Pages.Passports;
 
-public class CreateModel : PageModel
+public class CreateModel(PassportManager passportManager) : PageModel
 {
-    private readonly PassportManager passportManager;
-
-    public CreateModel(PassportManager passportManager)
-    {
-        this.passportManager = passportManager;
-    }
-
     [BindProperty]
     public InputModel Input { get; set; } = default!;
 
@@ -23,45 +16,45 @@ public class CreateModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        if (!this.ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            return this.Page();
+            return Page();
         }
 
         PersonPassport passport = new()
         {
             Passport = new()
             {
-                Type = this.Input.Type,
-                CountryCode = this.Input.CountryCode,
-                PassportNumber = this.Input.PassportNumber,
-                Surname = this.Input.Surname,
-                GivenName = this.Input.GivenName,
-                Sex = this.Input.Sex,
-                Nationality = this.Input.Nationality,
-                DateOfBirth = this.Input.DateOfBirth,
-                PlaceOfBirth = this.Input.PlaceOfBirth,
-                DateOfIssue = this.Input.DateOfIssue,
-                DateOfExpiration = this.Input.DateOfExpiration,
-                Authority = this.Input.Authority,
+                Type = Input.Type,
+                CountryCode = Input.CountryCode,
+                PassportNumber = Input.PassportNumber,
+                Surname = Input.Surname,
+                GivenName = Input.GivenName,
+                Sex = Input.Sex,
+                Nationality = Input.Nationality,
+                DateOfBirth = Input.DateOfBirth,
+                PlaceOfBirth = Input.PlaceOfBirth,
+                DateOfIssue = Input.DateOfIssue,
+                DateOfExpiration = Input.DateOfExpiration,
+                Authority = Input.Authority,
             },
             Manager = new()
             {
-                Id = this.User.UserId()!,
-                Name = this.User.Identity!.Name!,
+                Id = User.UserId()!,
+                Name = User.Identity!.Name!,
             },
         };
-        var result = await this.passportManager.CreateAsync(passport);
+        var result = await passportManager.CreateAsync(passport);
         if (result.IsSuccess)
         {
-            return this.RedirectToPage("Index");
+            return RedirectToPage("Index");
         }
 
         foreach (var error in result.Errors)
         {
-            this.ModelState.AddModelError("", error);
+            ModelState.AddModelError("", error);
         }
-        return this.Page();
+        return Page();
     }
 
     public class InputModel

@@ -4,13 +4,8 @@ using PersonIdentity;
 
 namespace PersonIdentityStores;
 
-public class PersonIdentityDbContext : IdentityDbContext<Person, IdentityRole, string>
+public class PersonIdentityDbContext(DbContextOptions<PersonIdentityDbContext> options) : IdentityDbContext<Person, IdentityRole, string>(options)
 {
-    public PersonIdentityDbContext(DbContextOptions<PersonIdentityDbContext> options)
-        : base(options)
-    {
-    }
-
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

@@ -16,7 +16,7 @@ namespace AdmissionsPortalWebApp.Pages
                                     CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
                                     new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) });
 
-            return this.Redirect(returnUrl);
+            return Redirect(returnUrl);
         }
     }
 }

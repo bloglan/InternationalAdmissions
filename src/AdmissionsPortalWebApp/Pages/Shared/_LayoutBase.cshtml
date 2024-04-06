@@ -1,20 +1,20 @@
-﻿@inject IOptions<ProductInfo> product
+﻿@inject IOptions<ProductInfo> Product
 <!DOCTYPE html>
 <html lang="@System.Globalization.CultureInfo.CurrentUICulture.Name">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - @product.Value.Title</title>
+    <title>@ViewData["Title"] - @Product.Value.Title</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     @*<link rel="stylesheet" href="~/StudentVisaWebApp.styles.css" asp-append-version="true" />*@
-    @RenderSection("Heads", false)
+    @await RenderSectionAsync("Heads", false)
 </head>
 <body>
     <header>
-        @RenderSection("header")
-        
+        @await RenderSectionAsync("header")
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -42,8 +42,8 @@
                 <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                     <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
                 </a>
-                <span class="mb-3 mb-md-0 text-muted">© 2023 @product.Value.Copyright</span>
-                - <a asp-area="" asp-page="/Privacy">@localizer["Privacy"]</a>
+                <span class="mb-3 mb-md-0 text-muted">© 2023 @Product.Value.Copyright</span>
+                - <a asp-area="" asp-page="/Privacy">@Localizer["Privacy"]</a>
                 -
                 @if (this.User.IsInRole("Administrators"))
                 {

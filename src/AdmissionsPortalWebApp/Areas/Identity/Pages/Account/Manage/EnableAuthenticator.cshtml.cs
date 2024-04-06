@@ -14,26 +14,15 @@ using System.Text.Encodings.Web;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
-public class EnableAuthenticatorModel : PageModel
+public class EnableAuthenticatorModel(
+    UserManager<Person> userManager,
+    ILogger<EnableAuthenticatorModel> logger,
+    UrlEncoder urlEncoder,
+    IOptions<ProductInfo> productInfo) : PageModel
 {
-    private readonly UserManager<Person> _userManager;
-    private readonly ILogger<EnableAuthenticatorModel> _logger;
-    private readonly UrlEncoder _urlEncoder;
-    ProductInfo productInfo;
+    ProductInfo _productInfo = productInfo.Value;
 
     private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
-
-    public EnableAuthenticatorModel(
-        UserManager<Person> userManager,
-        ILogger<EnableAuthenticatorModel> logger,
-        UrlEncoder urlEncoder,
-        IOptions<ProductInfo> productInfo)
-    {
-        this._userManager = userManager;
-        this._logger = logger;
-        this._urlEncoder = urlEncoder;
-        this.productInfo = productInfo.Value;
-    }
 
     public string SharedKey { get; set; }
 
@@ -59,76 +48,76 @@ public class EnableAuthenticatorModel : PageModel
 
     public async Task<IActionResult> OnGetAsync()
     {
-        var user = await this._userManager.GetUserAsync(this.User);
+        var user = await userManager.GetUserAsync(User);
         if (user == null)
         {
-            return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+            return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
         }
 
-        await this.LoadSharedKeyAndQrCodeUriAsync(user);
+        await LoadSharedKeyAndQrCodeUriAsync(user);
 
-        return this.Page();
+        return Page();
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        var user = await this._userManager.GetUserAsync(this.User);
+        var user = await userManager.GetUserAsync(User);
         if (user == null)
         {
-            return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+            return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
         }
 
-        if (!this.ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            await this.LoadSharedKeyAndQrCodeUriAsync(user);
-            return this.Page();
+            await LoadSharedKeyAndQrCodeUriAsync(user);
+            return Page();
         }
 
         // Strip spaces and hyphens
-        var verificationCode = this.Input.Code.Replace(" ", string.Empty).Replace("-", string.Empty);
+        var verificationCode = Input.Code.Replace(" ", string.Empty).Replace("-", string.Empty);
 
-        var is2faTokenValid = await this._userManager.VerifyTwoFactorTokenAsync(
-            user, this._userManager.Options.Tokens.AuthenticatorTokenProvider, verificationCode);
+        var is2FaTokenValid = await userManager.VerifyTwoFactorTokenAsync(
+            user, userManager.Options.Tokens.AuthenticatorTokenProvider, verificationCode);
 
-        if (!is2faTokenValid)
+        if (!is2FaTokenValid)
         {
-            this.ModelState.AddModelError("Input.Code", "Verification code is invalid.");
-            await this.LoadSharedKeyAndQrCodeUriAsync(user);
-            return this.Page();
+            ModelState.AddModelError("Input.Code", "Verification code is invalid.");
+            await LoadSharedKeyAndQrCodeUriAsync(user);
+            return Page();
         }
 
-        await this._userManager.SetTwoFactorEnabledAsync(user, true);
-        var userId = await this._userManager.GetUserIdAsync(user);
-        this._logger.LogInformation("User with ID '{UserId}' has enabled 2FA with an authenticator app.", userId);
+        await userManager.SetTwoFactorEnabledAsync(user, true);
+        var userId = await userManager.GetUserIdAsync(user);
+        logger.LogInformation("User with ID '{UserId}' has enabled 2FA with an authenticator app.", userId);
 
-        this.StatusMessage = "Your authenticator app has been verified.";
+        StatusMessage = "Your authenticator app has been verified.";
 
-        if (await this._userManager.CountRecoveryCodesAsync(user) == 0)
+        if (await userManager.CountRecoveryCodesAsync(user) == 0)
         {
-            var recoveryCodes = await this._userManager.GenerateNewTwoFactorRecoveryCodesAsync(user, 10);
-            this.RecoveryCodes = recoveryCodes.ToArray();
-            return this.RedirectToPage("./ShowRecoveryCodes");
+            var recoveryCodes = await userManager.GenerateNewTwoFactorRecoveryCodesAsync(user, 10);
+            RecoveryCodes = recoveryCodes.ToArray();
+            return RedirectToPage("./ShowRecoveryCodes");
         }
         else
         {
-            return this.RedirectToPage("./TwoFactorAuthentication");
+            return RedirectToPage("./TwoFactorAuthentication");
         }
     }
 
     private async Task LoadSharedKeyAndQrCodeUriAsync(Person user)
     {
         // Load the authenticator key & QR code URI to display on the form
-        var unformattedKey = await this._userManager.GetAuthenticatorKeyAsync(user);
+        var unformattedKey = await userManager.GetAuthenticatorKeyAsync(user);
         if (string.IsNullOrEmpty(unformattedKey))
         {
-            await this._userManager.ResetAuthenticatorKeyAsync(user);
-            unformattedKey = await this._userManager.GetAuthenticatorKeyAsync(user);
+            await userManager.ResetAuthenticatorKeyAsync(user);
+            unformattedKey = await userManager.GetAuthenticatorKeyAsync(user);
         }
 
-        this.SharedKey = this.FormatKey(unformattedKey);
+        SharedKey = FormatKey(unformattedKey);
 
-        var email = await this._userManager.GetEmailAsync(user);
-        this.AuthenticatorUri = this.GenerateQrCodeUri(email, unformattedKey);
+        var email = await userManager.GetEmailAsync(user);
+        AuthenticatorUri = GenerateQrCodeUri(email, unformattedKey);
     }
 
     private string FormatKey(string unformattedKey)
@@ -153,8 +142,8 @@ public class EnableAuthenticatorModel : PageModel
         return string.Format(
             CultureInfo.InvariantCulture,
             AuthenticatorUriFormat,
-            this._urlEncoder.Encode(this.productInfo.Title),
-            this._urlEncoder.Encode(email),
+            urlEncoder.Encode(_productInfo.Title),
+            urlEncoder.Encode(email),
             unformattedKey);
     }
 }

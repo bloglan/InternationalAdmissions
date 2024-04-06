@@ -31,12 +31,12 @@ public class RegisterModel : PageModel
         ILogger<RegisterModel> logger,
         IEmailSender emailSender)
     {
-        this._userManager = userManager;
-        this._userStore = userStore;
-        this._emailStore = this.GetEmailStore();
-        this._signInManager = signInManager;
-        this._logger = logger;
-        this._emailSender = emailSender;
+        _userManager = userManager;
+        _userStore = userStore;
+        _emailStore = GetEmailStore();
+        _signInManager = signInManager;
+        _logger = logger;
+        _emailSender = emailSender;
     }
 
     [BindProperty]
@@ -79,59 +79,59 @@ public class RegisterModel : PageModel
 
     public async Task OnGetAsync(string returnUrl = null)
     {
-        this.ReturnUrl = returnUrl;
-        this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        ReturnUrl = returnUrl;
+        ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
     }
 
     public async Task<IActionResult> OnPostAsync(string returnUrl = null)
     {
-        returnUrl ??= this.Url.Content("~/");
-        this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        if (this.ModelState.IsValid)
+        returnUrl ??= Url.Content("~/");
+        ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        if (ModelState.IsValid)
         {
-            var user = this.CreateUser();
+            var user = CreateUser();
 
-            await this._userStore.SetUserNameAsync(user, this.Input.Email, CancellationToken.None);
-            await this._emailStore.SetEmailAsync(user, this.Input.Email, CancellationToken.None);
-            user.Name = this.Input.Name;
-            user.Sex = this.Input.Sex;
-            user.BirthDate = this.Input.BirthDate;
-            var result = await this._userManager.CreateAsync(user, this.Input.Password);
+            await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+            await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+            user.Name = Input.Name;
+            user.Sex = Input.Sex;
+            user.BirthDate = Input.BirthDate;
+            var result = await _userManager.CreateAsync(user, Input.Password);
 
             if (result.Succeeded)
             {
-                this._logger.LogInformation("User created a new account with password.");
+                _logger.LogInformation("User created a new account with password.");
 
-                var userId = await this._userManager.GetUserIdAsync(user);
-                var code = await this._userManager.GenerateEmailConfirmationTokenAsync(user);
+                var userId = await _userManager.GetUserIdAsync(user);
+                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                var callbackUrl = this.Url.Page(
+                var callbackUrl = Url.Page(
                     "/Account/ConfirmEmail",
                     pageHandler: null,
                     values: new { area = "Identity", userId, code, returnUrl },
-                    protocol: this.Request.Scheme);
+                    protocol: Request.Scheme);
 
-                await this._emailSender.SendEmailAsync(this.Input.Email, "Confirm your email",
+                await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                     $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                if (this._userManager.Options.SignIn.RequireConfirmedAccount)
+                if (_userManager.Options.SignIn.RequireConfirmedAccount)
                 {
-                    return this.RedirectToPage("RegisterConfirmation", new { email = this.Input.Email, returnUrl });
+                    return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl });
                 }
                 else
                 {
-                    await this._signInManager.SignInAsync(user, isPersistent: false);
-                    return this.LocalRedirect(returnUrl);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
                 }
             }
             foreach (var error in result.Errors)
             {
-                this.ModelState.AddModelError(string.Empty, error.Description);
+                ModelState.AddModelError(string.Empty, error.Description);
             }
         }
 
         // If we got this far, something failed, redisplay form
-        return this.Page();
+        return Page();
     }
 
     private Person CreateUser()
@@ -150,10 +150,10 @@ public class RegisterModel : PageModel
 
     private IUserEmailStore<Person> GetEmailStore()
     {
-        if (!this._userManager.SupportsUserEmail)
+        if (!_userManager.SupportsUserEmail)
         {
             throw new NotSupportedException("The default UI requires a user store with email support.");
         }
-        return (IUserEmailStore<Person>)this._userStore;
+        return (IUserEmailStore<Person>)_userStore;
     }
 }

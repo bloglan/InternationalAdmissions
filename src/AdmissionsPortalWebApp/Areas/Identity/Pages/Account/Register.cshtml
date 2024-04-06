@@ -35,8 +35,8 @@
             <div class="form-floating mb-3">
                 <select asp-for="Input.Sex" class="form-select">
                     <option></option>
-                    <option value="Male">@localizer["Male"]</option>
-                    <option value="Female">@localizer["Female"]</option>
+                    <option value="Male">@Localizer["Male"]</option>
+                    <option value="Female">@Localizer["Female"]</option>
                 </select>
                 <label asp-for="Input.Sex"></label>
                 <span asp-validation-for="Input.Sex" class="text-danger"></span>
@@ -46,7 +46,7 @@
                 <label asp-for="Input.BirthDate"></label>
                 <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">@localizer["Register"]</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">@Localizer["Register"]</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">

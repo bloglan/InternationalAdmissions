@@ -1,5 +1,3 @@
 ﻿namespace AdmissionsPortalWebApp;
 
-public class SharedResource
-{
-}
+public class SharedResource;

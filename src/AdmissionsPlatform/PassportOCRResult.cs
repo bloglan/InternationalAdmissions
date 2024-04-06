@@ -1,5 +1,3 @@
 ﻿namespace AdmissionsPlatform;
 
-public class PassportOCRResult
-{
-}
+public class PassportOcrResult;

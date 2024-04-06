@@ -3,20 +3,13 @@ using StudentDocuments;
 
 namespace AdmissionsPortalWebApp.Areas.Manage.Pages.Passports;
 
-public class IndexModel : PageModel
+public class IndexModel(PassportManager passportManager) : PageModel
 {
-    private readonly PassportManager passportManager;
-
-    public IndexModel(PassportManager passportManager)
-    {
-        this.passportManager = passportManager;
-    }
-
     public IEnumerable<PersonPassport> Passports { get; set; } = default!;
 
     public void OnGet(string? q)
     {
-        var passports = this.passportManager.Passports.ManagedBy(this.User);
+        var passports = passportManager.Passports.ManagedBy(User);
         if (!string.IsNullOrEmpty(q))
         {
             passports = passports.Where(p => p.Passport.PassportNumber == q
@@ -24,6 +17,6 @@ public class IndexModel : PageModel
             || p.Passport.GivenName.Contains(q));
         }
 
-        this.Passports = passports.OrderByDescending(p => p.WhenCreated);
+        Passports = passports.OrderByDescending(p => p.WhenCreated);
     }
 }

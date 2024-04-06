@@ -1,7 +1,7 @@
 ﻿namespace StudentDocuments;
 
 /// <summary>
-/// Support Person passport info persistance.
+/// Support Person passport info persistence.
 /// </summary>
 public interface IPersonPassportStore
 {

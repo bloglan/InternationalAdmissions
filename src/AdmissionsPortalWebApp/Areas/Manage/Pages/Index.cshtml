@@ -1,6 +1,6 @@
 ﻿@page
-@inject PassportManager passportManager
-@inject VisaManager visaManager
+@inject PassportManager PassportManager
+@inject VisaManager VisaManager
 @model             IndexModel
 @{
 }
@@ -9,13 +9,13 @@
     <div class="card">
         <div class="card-body">
             <p>Passports</p>
-            <p>@passportManager.Passports.Count()</p>
+            <p>@PassportManager.Passports.Count()</p>
         </div>
     </div>
     <div class="card">
         <div class="card-body">
             <p>VISAs</p>
-            <p>@visaManager.Visas.Count()</p>
+            <p>@VisaManager.Visas.Count()</p>
         </div>
     </div>
 </div>

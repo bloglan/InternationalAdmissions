@@ -2,16 +2,16 @@ namespace MRZCodeParser
 {
     internal class ValueCleaner
     {
-        private readonly string value;
+        private readonly string _value;
 
         internal ValueCleaner(string value)
         {
-            this.value = value;
+            this._value = value;
         }
 
         internal string Clean()
         {
-            return this.value.TrimEnd('<')
+            return _value.TrimEnd('<')
                 .Replace("<<", ", ")
                 .Replace("<", " ");
         }

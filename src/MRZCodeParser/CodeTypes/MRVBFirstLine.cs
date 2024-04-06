@@ -2,19 +2,19 @@ using System.Collections.Generic;
 
 namespace MRZCodeParser.CodeTypes
 {
-    internal class MRVBFirstLine : MrzLine
+    internal class MrvbFirstLine : MrzLine
     {
-        internal MRVBFirstLine(string value) : base(value)
+        internal MrvbFirstLine(string value) : base(value)
         {
         }
 
         protected override string Pattern => "(V[A-Z0-9<]{1})([A-Z]{3})([A-Z0-9<]{31})";
 
-        internal override IEnumerable<FieldType> FieldTypes => new[]
-        {
+        internal override IEnumerable<FieldType> FieldTypes =>
+        [
             FieldType.DocumentType,
             FieldType.CountryCode,
             FieldType.PrimaryIdentifier,
-        };
+        ];
     }
 }

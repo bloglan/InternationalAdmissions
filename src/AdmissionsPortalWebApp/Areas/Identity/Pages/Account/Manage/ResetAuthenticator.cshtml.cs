@@ -9,52 +9,41 @@ using PersonIdentity;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
-public class ResetAuthenticatorModel : PageModel
+public class ResetAuthenticatorModel(
+    UserManager<Person> userManager,
+    SignInManager<Person> signInManager,
+    ILogger<ResetAuthenticatorModel> logger) : PageModel
 {
-    private readonly UserManager<Person> _userManager;
-    private readonly SignInManager<Person> _signInManager;
-    private readonly ILogger<ResetAuthenticatorModel> _logger;
-
-    public ResetAuthenticatorModel(
-        UserManager<Person> userManager,
-        SignInManager<Person> signInManager,
-        ILogger<ResetAuthenticatorModel> logger)
-    {
-        this._userManager = userManager;
-        this._signInManager = signInManager;
-        this._logger = logger;
-    }
-
     [TempData]
     public string StatusMessage { get; set; }
 
     public async Task<IActionResult> OnGet()
     {
-        var user = await this._userManager.GetUserAsync(this.User);
+        var user = await userManager.GetUserAsync(User);
         if (user == null)
         {
-            return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+            return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
         }
 
-        return this.Page();
+        return Page();
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        var user = await this._userManager.GetUserAsync(this.User);
+        var user = await userManager.GetUserAsync(User);
         if (user == null)
         {
-            return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+            return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
         }
 
-        await this._userManager.SetTwoFactorEnabledAsync(user, false);
-        await this._userManager.ResetAuthenticatorKeyAsync(user);
-        var userId = await this._userManager.GetUserIdAsync(user);
-        this._logger.LogInformation("User with ID '{UserId}' has reset their authentication app key.", user.Id);
+        await userManager.SetTwoFactorEnabledAsync(user, false);
+        await userManager.ResetAuthenticatorKeyAsync(user);
+        var userId = await userManager.GetUserIdAsync(user);
+        logger.LogInformation("User with ID '{UserId}' has reset their authentication app key.", user.Id);
 
-        await this._signInManager.RefreshSignInAsync(user);
-        this.StatusMessage = "Your authenticator app key has been reset, you will need to configure your authenticator app using the new key.";
+        await signInManager.RefreshSignInAsync(user);
+        StatusMessage = "Your authenticator app key has been reset, you will need to configure your authenticator app using the new key.";
 
-        return this.RedirectToPage("./EnableAuthenticator");
+        return RedirectToPage("./EnableAuthenticator");
     }
 }

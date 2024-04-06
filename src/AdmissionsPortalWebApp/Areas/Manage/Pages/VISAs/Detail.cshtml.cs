@@ -4,28 +4,19 @@ using StudentDocuments;
 
 namespace AdmissionsPortalWebApp.Areas.Manage.Pages.VISAs;
 
-public class DetailModel : PageModel
+public class DetailModel(VisaManager visaManager, PassportManager passportManager) : PageModel
 {
-    private readonly VisaManager visaManager;
-    private readonly PassportManager passportManager;
-
-    public DetailModel(VisaManager visaManager, PassportManager passportManager)
-    {
-        this.visaManager = visaManager;
-        this.passportManager = passportManager;
-    }
-
     public PersonVisa Data { get; set; } = default!;
     public PersonPassport? Passport { get; set; }
 
     public async Task<IActionResult> OnGetAsync(int id)
     {
-        var data = await this.visaManager.FindByIdAsync(id);
+        var data = await visaManager.FindByIdAsync(id);
         if (data == null)
-            return this.NotFound();
+            return NotFound();
 
-        this.Data = data;
-        this.Passport = this.passportManager.FindByPassportNumber(this.Data.Visa.PassportNumber);
-        return this.Page();
+        Data = data;
+        Passport = passportManager.FindByPassportNumber(Data.Visa.PassportNumber);
+        return Page();
     }
 }

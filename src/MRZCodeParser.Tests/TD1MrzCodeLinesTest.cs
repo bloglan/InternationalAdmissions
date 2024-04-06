@@ -3,12 +3,12 @@ using Xunit;
 
 namespace MRZCodeParser.Tests
 {
-    public class TD1MrzCodeLinesTest
+    public class Td1MrzCodeLinesTest
     {
         [Fact]
         public void FirstLineFieldsTest()
         {
-            var target = MrzCode.Parse(MrzSamples.TD1).Lines.First();
+            var target = MrzCode.Parse(MrzSamples.Td1).Lines.First();
 
             Assert.Equal(DocumentType.I.ToString(), target.Fields[FieldType.DocumentType].Value);
             Assert.Equal("UTO", target.Fields[FieldType.CountryCode].Value);
@@ -20,7 +20,7 @@ namespace MRZCodeParser.Tests
         [Fact]
         public void SecondLineFieldsTest()
         {
-            var target = MrzCode.Parse(MrzSamples.TD1).Lines.ElementAt(1);
+            var target = MrzCode.Parse(MrzSamples.Td1).Lines.ElementAt(1);
 
             Assert.Equal("740812", target.Fields[FieldType.BirthDate].Value);
             Assert.Equal("2", target.Fields[FieldType.BirthDateCheckDigit].Value);
@@ -35,7 +35,7 @@ namespace MRZCodeParser.Tests
         [Fact]
         public void ThirdLineFieldsTest()
         {
-            var target = MrzCode.Parse(MrzSamples.TD1).Lines.Last();
+            var target = MrzCode.Parse(MrzSamples.Td1).Lines.Last();
 
             Assert.Equal("ERIKSSON, ANNA MARIA", target.Fields[FieldType.Names].Value);
         }

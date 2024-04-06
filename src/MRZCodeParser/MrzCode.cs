@@ -5,26 +5,26 @@ using System.Linq;
 
 namespace MRZCodeParser
 {
-    public abstract class MrzCode
+    public abstract class MrzCode(IEnumerable<string> lines)
     {
-        protected IEnumerable<string> RawLines { get; }
+        protected IEnumerable<string> RawLines { get; } = lines;
 
         public abstract CodeType Type { get; }
 
         public abstract IEnumerable<MrzLine> Lines { get; }
 
-        public IEnumerable<FieldType> FieldTypes => this.Lines.SelectMany(x => x.FieldTypes);
+        public IEnumerable<FieldType> FieldTypes => Lines.SelectMany(x => x.FieldTypes);
 
         public string this[FieldType type]
         {
             get
             {
-                var fields = this.Fields;
-                var targetType = this.ChangeBackwardFieldTypeToCurrent(type);
+                var fields = Fields;
+                var targetType = ChangeBackwardFieldTypeToCurrent(type);
 
                 if (fields.Fields.All(x => x.Type != targetType))
                 {
-                    throw new MrzCodeException($"Code {this.Type} does not contain field {type}");
+                    throw new MrzCodeException($"Code {Type} does not contain field {type}");
                 }
 
                 return fields[targetType].Value;
@@ -39,7 +39,7 @@ namespace MRZCodeParser
             get
             {
                 var fields = new List<Field>();
-                foreach (var line in this.Lines)
+                foreach (var line in Lines)
                 {
                     fields.AddRange(line.Fields.Fields);
                 }
@@ -48,14 +48,9 @@ namespace MRZCodeParser
             }
         }
 
-        protected MrzCode(IEnumerable<string> lines)
-        {
-            this.RawLines = lines;
-        }
-
         public override string ToString()
         {
-            return string.Join(Environment.NewLine, this.Lines.Select(x => x.Value));
+            return string.Join(Environment.NewLine, Lines.Select(x => x.Value));
         }
 
         public static MrzCode Parse(string code)
@@ -67,11 +62,11 @@ namespace MRZCodeParser
 
             return type switch
             {
-                CodeType.TD1 => new TD1MrzCode(lines),
-                CodeType.TD2 => new TD2MrzCode(lines),
-                CodeType.TD3 => new TD3MrzCode(lines),
-                CodeType.MRVA => new MRVAMrzCode(lines),
-                CodeType.MRVB => new MRVBMrzCode(lines),
+                CodeType.Td1 => new Td1MrzCode(lines),
+                CodeType.Td2 => new Td2MrzCode(lines),
+                CodeType.Td3 => new Td3MrzCode(lines),
+                CodeType.Mrva => new MrvaMrzCode(lines),
+                CodeType.Mrvb => new MrvbMrzCode(lines),
                 _ => new UnknownMrzCode(lines)
             };
         }

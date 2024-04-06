@@ -15,7 +15,7 @@ public class Person : IdentityUser<string>
     /// </summary>
     public Person()
     {
-        this.Id = Guid.NewGuid().ToString().ToLower();
+        Id = Guid.NewGuid().ToString().ToLower();
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ public class Person : IdentityUser<string>
     public string Name { get; set; } = default!;
 
     /// <summary>
-    /// Nick name.
+    /// Nickname.
     /// </summary>
     [MaxLength(50)]
     public string? NickName { get; set; }
@@ -61,7 +61,7 @@ public class Person : IdentityUser<string>
     public Sex? Sex { get; set; }
 
     /// <summary>
-    /// Birth date.
+    /// Birthdate.
     /// </summary>
     public DateTime? BirthDate { get; set; }
 

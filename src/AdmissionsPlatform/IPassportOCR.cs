@@ -1,5 +1,5 @@
 ﻿namespace AdmissionsPlatform;
-public interface IPassportOCR
+public interface IPassportOcr
 {
-    PassportOCRResult Recognize(byte[] passportImage);
+    PassportOcrResult Recognize(byte[] passportImage);
 }

@@ -1,5 +1,5 @@
 ﻿namespace AdmissionsPlatform;
-internal interface IVisaOCR
+internal interface IVisaOcr
 {
-    VisaOCRResult Recognize(byte[] visaImage);
+    VisaOcrResult Recognize(byte[] visaImage);
 }

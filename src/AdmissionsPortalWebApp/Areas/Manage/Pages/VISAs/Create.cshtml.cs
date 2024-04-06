@@ -5,17 +5,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdmissionsPortalWebApp.Areas.Manage.Pages.VISAs;
 
-public class CreateModel : PageModel
+public class CreateModel(VisaManager visaManager, PassportManager passportManager) : PageModel
 {
-    private readonly VisaManager visaManager;
-    private readonly PassportManager passportManager;
-
-    public CreateModel(VisaManager visaManager, PassportManager passportManager)
-    {
-        this.visaManager = visaManager;
-        this.passportManager = passportManager;
-    }
-
     [BindProperty]
     public InputModel Input { get; set; } = default!;
 
@@ -23,10 +14,10 @@ public class CreateModel : PageModel
     {
         if (passport != null)
         {
-            var personPassport = this.passportManager.FindByPassportNumber(passport);
+            var personPassport = passportManager.FindByPassportNumber(passport);
             if (personPassport != null)
             {
-                this.Input = new InputModel()
+                Input = new InputModel()
                 {
                     PassportNumber = personPassport.Passport.PassportNumber,
                     BirthDate = personPassport.Passport.DateOfBirth,
@@ -38,41 +29,41 @@ public class CreateModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        if (!this.ModelState.IsValid)
-            return this.Page();
+        if (!ModelState.IsValid)
+            return Page();
 
         PersonVisa visa = new()
         {
             Visa = new()
             {
-                VisaNumber = this.Input.VisaNumber,
-                Category = this.Input.Category,
-                Entries = this.Input.Entries,
-                EnterBefore = this.Input.EnterBefore,
-                DurationOfEachStay = this.Input.DurationOfEachStay,
-                IssueDate = this.Input.IssueDate,
-                IssuedAt = this.Input.IssuedAt,
-                FullName = this.Input.FullName,
-                BirthDate = this.Input.BirthDate,
-                PassportNumber = this.Input.PassportNumber,
-                Remarks = this.Input.Remarks,
+                VisaNumber = Input.VisaNumber,
+                Category = Input.Category,
+                Entries = Input.Entries,
+                EnterBefore = Input.EnterBefore,
+                DurationOfEachStay = Input.DurationOfEachStay,
+                IssueDate = Input.IssueDate,
+                IssuedAt = Input.IssuedAt,
+                FullName = Input.FullName,
+                BirthDate = Input.BirthDate,
+                PassportNumber = Input.PassportNumber,
+                Remarks = Input.Remarks,
             },
             Manager = new()
             {
-                Id = this.User.UserId()!,
-                Name = this.User.Identity!.Name!,
+                Id = User.UserId()!,
+                Name = User.Identity!.Name!,
             },
         };
 
-        var result = await this.visaManager.CreateAsync(visa);
+        var result = await visaManager.CreateAsync(visa);
         if (result.IsSuccess)
-            return this.RedirectToPage("Detail", new { id = visa.Id });
+            return RedirectToPage("Detail", new { id = visa.Id });
 
         foreach (var err in result.Errors)
         {
-            this.ModelState.AddModelError("", err);
+            ModelState.AddModelError("", err);
         }
-        return this.Page();
+        return Page();
     }
 
     public class InputModel
@@ -90,14 +81,14 @@ public class CreateModel : PageModel
 
         [Display(Name = "Enter Before")]
         [DataType(DataType.Date)]
-        public DateTime EnterBefore { get; set; } = new DateTime(DateTime.UtcNow.Year, 12, 31);
+        public DateTime EnterBefore { get; set; } = new(DateTime.UtcNow.Year, 12, 31);
 
         [Display(Name = "Duration Of Each Stay")]
         public int DurationOfEachStay { get; set; } = 30;
 
         [Display(Name = "Issue Date")]
         [DataType(DataType.Date)]
-        public DateTime IssueDate { get; set; } = new DateTime(DateTime.UtcNow.Year, 1, 1);
+        public DateTime IssueDate { get; set; } = new(DateTime.UtcNow.Year, 1, 1);
 
         [Display(Name = "Issued At")]
         [StringLength(50)]
@@ -109,7 +100,7 @@ public class CreateModel : PageModel
 
         [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
-        public DateTime BirthDate { get; set; } = new DateTime(2000, 1, 1);
+        public DateTime BirthDate { get; set; } = new(2000, 1, 1);
 
         [Display(Name = "Passport Number")]
         [StringLength(9, MinimumLength = 9)]

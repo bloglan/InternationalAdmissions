@@ -1,7 +1,7 @@
 ﻿namespace StudentDocuments;
 
 /// <summary>
-/// Support VISA persistance.
+/// Support VISA persistence.
 /// </summary>
 public interface IPersonVisaStore
 {

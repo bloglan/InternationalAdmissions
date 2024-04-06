@@ -172,7 +172,7 @@ app.Run();
 namespace AdmissionsPortalWebApp
 {
     /// <summary>
-    /// Definations for Testing.
+    /// Definitions for Testing.
     /// </summary>
-    public partial class Program { }
+    public partial class Program;
 }

@@ -1,5 +1,5 @@
 ﻿@page
-@inject UserManager<Person> userManager
+@inject UserManager<Person> UserManager
 @model IndexModel
 @{
 }
@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var user in this.userManager.Users)
+        @foreach (var user in this.UserManager.Users)
         {
             <tr>
                 <td>@user.Name</td>

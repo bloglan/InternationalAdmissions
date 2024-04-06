@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdmissionsPortalWebAppTests;
+﻿namespace AdmissionsPortalWebAppTests;
 
 [CollectionDefinition(nameof(CollectionDef))]
 public class CollectionDef
-    : ICollectionFixture<AdmissionsPortalWebAppFactory>
-{
-}
+    : ICollectionFixture<AdmissionsPortalWebAppFactory>;
