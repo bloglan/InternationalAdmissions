@@ -157,6 +157,7 @@ if (app.Configuration["database-action"] != null)
 
 
 // Configure the HTTP request pipeline.
+app.UseSerilogRequestLogging();
 if (app.Environment.IsDevelopment())
 {
 }
