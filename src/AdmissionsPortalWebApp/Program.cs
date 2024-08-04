@@ -9,8 +9,20 @@ using PersonIdentityStores;
 using StudentDocuments;
 using StudentDocumentStores;
 using System.Globalization;
+using Serilog;
+using Serilog.Events;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog((context, configuration) =>
+{
+    configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .Enrich.FromLogContext()
+        .WriteTo.Console(
+            outputTemplate:
+            "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
+        .WriteTo.EventLog(".NET Runtime", restrictedToMinimumLevel: LogEventLevel.Information);
+});
 
 //≤˙∆∑≈‰÷√
 builder.Services.Configure<ProductInfo>(builder.Configuration.GetSection("ProductInfo"));
