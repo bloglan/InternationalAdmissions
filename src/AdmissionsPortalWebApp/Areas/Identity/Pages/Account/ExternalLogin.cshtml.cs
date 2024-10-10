@@ -63,7 +63,7 @@ public class ExternalLoginModel : PageModel
     public IActionResult OnPost(string provider, string returnUrl = null)
     {
         // Request a redirect to the external login provider.
-        var redirectUrl = Url.Page("./ExternalLogin", pageHandler: "Callback", values: new { returnUrl });
+        string redirectUrl = Url.Page("./ExternalLogin", pageHandler: "Callback", values: new { returnUrl });
         var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
         return new ChallengeResult(provider, properties);
     }
@@ -136,10 +136,10 @@ public class ExternalLoginModel : PageModel
                 {
                     _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
 
-                    var userId = await _userManager.GetUserIdAsync(user);
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    string userId = await _userManager.GetUserIdAsync(user);
+                    string code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
+                    string callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
                         values: new { area = "Identity", userId, code },

@@ -12,7 +12,7 @@ using System.Text;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
 [AllowAnonymous]
-public class RegisterConfirmationModel(UserManager<Person> userManager, IEmailSender sender) : PageModel
+public class RegisterConfirmationModel(UserManager<Person> userManager) : PageModel
 {
     public string Email { get; set; }
 
@@ -39,8 +39,8 @@ public class RegisterConfirmationModel(UserManager<Person> userManager, IEmailSe
         DisplayConfirmAccountLink = true;
         if (DisplayConfirmAccountLink)
         {
-            var userId = await userManager.GetUserIdAsync(user);
-            var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
+            string userId = await userManager.GetUserIdAsync(user);
+            string code = await userManager.GenerateEmailConfirmationTokenAsync(user);
             code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
             EmailConfirmationUrl = Url.Page(
                 "/Account/ConfirmEmail",

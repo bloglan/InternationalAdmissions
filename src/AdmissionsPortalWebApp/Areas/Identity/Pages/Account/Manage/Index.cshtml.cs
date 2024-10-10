@@ -31,8 +31,8 @@ public class IndexModel(
 
     private async Task LoadAsync(Person user)
     {
-        var userName = await userManager.GetUserNameAsync(user);
-        var phoneNumber = await userManager.GetPhoneNumberAsync(user);
+        string userName = await userManager.GetUserNameAsync(user);
+        string phoneNumber = await userManager.GetPhoneNumberAsync(user);
 
         Username = userName;
 
@@ -68,7 +68,7 @@ public class IndexModel(
             return Page();
         }
 
-        var phoneNumber = await userManager.GetPhoneNumberAsync(user);
+        string phoneNumber = await userManager.GetPhoneNumberAsync(user);
         if (Input.PhoneNumber != phoneNumber)
         {
             var setPhoneResult = await userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);

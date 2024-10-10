@@ -23,7 +23,7 @@ namespace MRZCodeParser
                 }
 
                 var fields = new List<Field>();
-                for (var i = 0; i < FieldTypes.Count(); i++)
+                for (int i = 0; i < FieldTypes.Count(); i++)
                 {
                     fields.Add(new Field(
                         FieldTypes.ElementAt(i),

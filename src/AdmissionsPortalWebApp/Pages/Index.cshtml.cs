@@ -2,7 +2,7 @@
 
 namespace AdmissionsPortalWebApp.Pages;
 
-public class IndexModel(ILogger<IndexModel> logger) : PageModel
+public class IndexModel() : PageModel
 {
     public void OnGet()
     {

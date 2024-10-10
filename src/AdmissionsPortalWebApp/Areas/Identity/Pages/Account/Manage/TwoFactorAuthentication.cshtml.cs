@@ -8,7 +8,7 @@ using PersonIdentity;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class TwoFactorAuthenticationModel(
-    UserManager<Person> userManager, SignInManager<Person> signInManager, ILogger<TwoFactorAuthenticationModel> logger) : PageModel
+    UserManager<Person> userManager, SignInManager<Person> signInManager) : PageModel
 {
     public bool HasAuthenticator { get; set; }
 

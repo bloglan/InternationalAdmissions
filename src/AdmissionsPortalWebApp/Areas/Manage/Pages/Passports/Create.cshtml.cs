@@ -50,7 +50,7 @@ public class CreateModel(PassportManager passportManager) : PageModel
             return RedirectToPage("Index");
         }
 
-        foreach (var error in result.Errors)
+        foreach (string error in result.Errors)
         {
             ModelState.AddModelError("", error);
         }

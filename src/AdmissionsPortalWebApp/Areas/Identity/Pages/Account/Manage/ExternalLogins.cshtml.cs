@@ -86,7 +86,7 @@ public class ExternalLoginsModel(
             return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
         }
 
-        var userId = await userManager.GetUserIdAsync(user);
+        string userId = await userManager.GetUserIdAsync(user);
         var info = await signInManager.GetExternalLoginInfoAsync(userId) ?? throw new InvalidOperationException("Unexpected error occurred loading external login info.");
         var result = await userManager.AddLoginAsync(user, info);
         if (!result.Succeeded)

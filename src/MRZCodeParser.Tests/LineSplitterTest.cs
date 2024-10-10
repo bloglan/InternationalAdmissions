@@ -17,7 +17,7 @@ namespace MRZCodeParser.Tests
         public void LineCount(string input, int expected)
         {
             var target = new LineSplitter(input);
-            var actual = target.Split().Count();
+            int actual = target.Split().Count();
             Assert.Equal(expected, actual);
         }
     }

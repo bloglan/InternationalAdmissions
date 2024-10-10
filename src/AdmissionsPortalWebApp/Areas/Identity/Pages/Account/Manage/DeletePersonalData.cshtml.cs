@@ -58,7 +58,7 @@ public class DeletePersonalDataModel(
         }
 
         var result = await userManager.DeleteAsync(user);
-        var userId = await userManager.GetUserIdAsync(user);
+        string userId = await userManager.GetUserIdAsync(user);
         if (!result.Succeeded)
         {
             throw new InvalidOperationException("Unexpected error occurred deleting user.");

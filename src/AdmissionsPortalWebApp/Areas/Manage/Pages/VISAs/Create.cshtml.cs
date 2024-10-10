@@ -59,7 +59,7 @@ public class CreateModel(VisaManager visaManager, PassportManager passportManage
         if (result.IsSuccess)
             return RedirectToPage("Detail", new { id = visa.Id });
 
-        foreach (var err in result.Errors)
+        foreach (string err in result.Errors)
         {
             ModelState.AddModelError("", err);
         }

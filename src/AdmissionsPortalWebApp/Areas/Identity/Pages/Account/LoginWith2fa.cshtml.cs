@@ -52,11 +52,11 @@ public class LoginWith2FaModel(
         returnUrl ??= Url.Content("~/");
 
         var user = await signInManager.GetTwoFactorAuthenticationUserAsync() ?? throw new InvalidOperationException("Unable to load two-factor authentication user.");
-        var authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
+        string authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
 
         var result = await signInManager.TwoFactorAuthenticatorSignInAsync(authenticatorCode, rememberMe, Input.RememberMachine);
 
-        var userId = await userManager.GetUserIdAsync(user);
+        string userId = await userManager.GetUserIdAsync(user);
 
         if (result.Succeeded)
         {

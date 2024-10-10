@@ -44,10 +44,10 @@ public class ResendEmailConfirmationModel(UserManager<Person> userManager, IEmai
             return Page();
         }
 
-        var userId = await userManager.GetUserIdAsync(user);
-        var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
+        string userId = await userManager.GetUserIdAsync(user);
+        string code = await userManager.GenerateEmailConfirmationTokenAsync(user);
         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-        var callbackUrl = Url.Page(
+        string callbackUrl = Url.Page(
             "/Account/ConfirmEmail",
             pageHandler: null,
             values: new { userId, code },

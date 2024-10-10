@@ -10,7 +10,7 @@ public class OperationResult
     /// </summary>
     internal OperationResult()
     {
-        Errors = new List<string>();
+        Errors = [];
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public class OperationResult
     }
 
     /// <summary>
-    /// Gets an OperationResult instance thant point to success.
+    /// Gets an OperationResult instance that point to success.
     /// </summary>
     public static readonly OperationResult Success;
 

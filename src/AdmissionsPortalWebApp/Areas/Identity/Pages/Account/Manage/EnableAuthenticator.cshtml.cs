@@ -20,7 +20,7 @@ public class EnableAuthenticatorModel(
     UrlEncoder urlEncoder,
     IOptions<ProductInfo> productInfo) : PageModel
 {
-    ProductInfo _productInfo = productInfo.Value;
+    private readonly ProductInfo _productInfo = productInfo.Value;
 
     private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
 
@@ -74,9 +74,9 @@ public class EnableAuthenticatorModel(
         }
 
         // Strip spaces and hyphens
-        var verificationCode = Input.Code.Replace(" ", string.Empty).Replace("-", string.Empty);
+        string verificationCode = Input.Code.Replace(" ", string.Empty).Replace("-", string.Empty);
 
-        var is2FaTokenValid = await userManager.VerifyTwoFactorTokenAsync(
+        bool is2FaTokenValid = await userManager.VerifyTwoFactorTokenAsync(
             user, userManager.Options.Tokens.AuthenticatorTokenProvider, verificationCode);
 
         if (!is2FaTokenValid)
@@ -87,7 +87,7 @@ public class EnableAuthenticatorModel(
         }
 
         await userManager.SetTwoFactorEnabledAsync(user, true);
-        var userId = await userManager.GetUserIdAsync(user);
+        string userId = await userManager.GetUserIdAsync(user);
         logger.LogInformation("User with ID '{UserId}' has enabled 2FA with an authenticator app.", userId);
 
         StatusMessage = "Your authenticator app has been verified.";
@@ -107,7 +107,7 @@ public class EnableAuthenticatorModel(
     private async Task LoadSharedKeyAndQrCodeUriAsync(Person user)
     {
         // Load the authenticator key & QR code URI to display on the form
-        var unformattedKey = await userManager.GetAuthenticatorKeyAsync(user);
+        string unformattedKey = await userManager.GetAuthenticatorKeyAsync(user);
         if (string.IsNullOrEmpty(unformattedKey))
         {
             await userManager.ResetAuthenticatorKeyAsync(user);
@@ -116,7 +116,7 @@ public class EnableAuthenticatorModel(
 
         SharedKey = FormatKey(unformattedKey);
 
-        var email = await userManager.GetEmailAsync(user);
+        string email = await userManager.GetEmailAsync(user);
         AuthenticatorUri = GenerateQrCodeUri(email, unformattedKey);
     }
 

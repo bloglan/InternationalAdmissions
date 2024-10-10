@@ -16,7 +16,6 @@ namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class EmailModel(
     UserManager<Person> userManager,
-    SignInManager<Person> signInManager,
     IEmailSender emailSender) : PageModel
 {
     public string Email { get; set; }
@@ -39,7 +38,7 @@ public class EmailModel(
 
     private async Task LoadAsync(Person user)
     {
-        var email = await userManager.GetEmailAsync(user);
+        string email = await userManager.GetEmailAsync(user);
         Email = email;
 
         Input = new InputModel
@@ -76,13 +75,13 @@ public class EmailModel(
             return Page();
         }
 
-        var email = await userManager.GetEmailAsync(user);
+        string email = await userManager.GetEmailAsync(user);
         if (Input.NewEmail != email)
         {
-            var userId = await userManager.GetUserIdAsync(user);
-            var code = await userManager.GenerateChangeEmailTokenAsync(user, Input.NewEmail);
+            string userId = await userManager.GetUserIdAsync(user);
+            string code = await userManager.GenerateChangeEmailTokenAsync(user, Input.NewEmail);
             code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-            var callbackUrl = Url.Page(
+            string callbackUrl = Url.Page(
                 "/Account/ConfirmEmailChange",
                 pageHandler: null,
                 values: new { area = "Identity", userId, email = Input.NewEmail, code },
@@ -114,11 +113,11 @@ public class EmailModel(
             return Page();
         }
 
-        var userId = await userManager.GetUserIdAsync(user);
-        var email = await userManager.GetEmailAsync(user);
-        var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
+        string userId = await userManager.GetUserIdAsync(user);
+        string email = await userManager.GetEmailAsync(user);
+        string code = await userManager.GenerateEmailConfirmationTokenAsync(user);
         code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-        var callbackUrl = Url.Page(
+        string callbackUrl = Url.Page(
             "/Account/ConfirmEmail",
             pageHandler: null,
             values: new { area = "Identity", userId, code },

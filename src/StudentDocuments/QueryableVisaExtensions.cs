@@ -15,7 +15,7 @@ public static class QueryableVisaExtensions
     /// <returns></returns>
     public static IQueryable<PersonVisa> OwnedBy(this IQueryable<PersonVisa> queryable, ClaimsPrincipal user)
     {
-        var userId = user.UserId();
+        string? userId = user.UserId();
         if (userId == null)
             return Array.Empty<PersonVisa>().AsQueryable();
         return queryable.Where(p => p.Owner!.Id == userId);
@@ -29,7 +29,7 @@ public static class QueryableVisaExtensions
     /// <returns></returns>
     public static IQueryable<PersonVisa> ManagedBy(this IQueryable<PersonVisa> queryable, ClaimsPrincipal user)
     {
-        var userId = user.UserId();
+        string? userId = user.UserId();
         if (userId == null)
             return Array.Empty<PersonVisa>().AsQueryable();
         return queryable.Where(p => p.Manager.Id == userId);

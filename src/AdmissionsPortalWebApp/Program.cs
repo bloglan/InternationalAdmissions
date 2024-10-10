@@ -100,11 +100,9 @@ builder.Services.AddRazorPages(options =>
     });
 
 //ÊÚÈ¨²ßÂÔ
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("RequireAdministratorsRole", policy => policy.RequireRole("Administrators"));
-    options.AddPolicy("RequireManagerRole", policy => policy.RequireRole("Manager"));
-});
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("RequireAdministratorsRole", policy => policy.RequireRole("Administrators"))
+    .AddPolicy("RequireManagerRole", policy => policy.RequireRole("Manager"));
 
 //Work load
 builder.Services.AddScoped<PassportManager>()

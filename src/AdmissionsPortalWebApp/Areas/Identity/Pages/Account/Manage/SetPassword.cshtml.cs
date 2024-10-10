@@ -42,7 +42,7 @@ public class SetPasswordModel(
             return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
         }
 
-        var hasPassword = await userManager.HasPasswordAsync(user);
+        bool hasPassword = await userManager.HasPasswordAsync(user);
 
         if (hasPassword)
         {

@@ -43,11 +43,11 @@ public class LoginWithRecoveryCodeModel(
         }
 
         var user = await signInManager.GetTwoFactorAuthenticationUserAsync() ?? throw new InvalidOperationException("Unable to load two-factor authentication user.");
-        var recoveryCode = Input.RecoveryCode.Replace(" ", string.Empty);
+        string recoveryCode = Input.RecoveryCode.Replace(" ", string.Empty);
 
         var result = await signInManager.TwoFactorRecoveryCodeSignInAsync(recoveryCode);
 
-        var userId = await userManager.GetUserIdAsync(user);
+        string userId = await userManager.GetUserIdAsync(user);
 
         if (result.Succeeded)
         {
