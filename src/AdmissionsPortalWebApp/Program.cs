@@ -15,6 +15,7 @@ using Serilog.Events;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, configuration) =>
 {
+#pragma warning disable CA1416 // 验证平台兼容性
     configuration
         .ReadFrom.Configuration(context.Configuration)
         .Enrich.FromLogContext()
@@ -22,6 +23,7 @@ builder.Host.UseSerilog((context, configuration) =>
             outputTemplate:
             "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
         .WriteTo.EventLog(".NET Runtime", restrictedToMinimumLevel: LogEventLevel.Information);
+#pragma warning restore CA1416 // 验证平台兼容性
 });
 
 //产品配置
@@ -176,10 +178,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
 
-//当带有init参数时，执行数据库初始化任务
 
-
-app.Run();
+await app.RunAsync();
 
 
 namespace AdmissionsPortalWebApp
