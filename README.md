@@ -37,6 +37,20 @@ dotnet ef database update -c StudentDocumentDbContext
 
 3. Initialize Data
 
+## 调试测试数据
+
+为便于调试和集成测试，开发和调试期间，系统将创建如下测试数据：
+
+用户
+
+|登录名|密码|名字|角色|
+|---|---|---|---|
+|admin@example.com|Pass123$|张三|Administrators|
+|mike@example.com|Pass123$|Mike|Teachers|
+|andy@example.com|Pass123$|Andy|N/A *|
+
+学生和其他注册者没有赋予角色。
+
 ## 发布/部署
 
 有关发布和部署的信息，请参阅[部署指南](docs/Deployment.md)。
