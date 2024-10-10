@@ -8,6 +8,7 @@ public class AdmissionsPortalWebAppFactory : WebApplicationFactory<Program>
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         base.ConfigureWebHost(builder);
-        builder.UseSetting("database-action", "init");
+        builder.UseEnvironment("Development");
+        builder.UseSetting("database-action", "testing");
     }
 }

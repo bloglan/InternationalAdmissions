@@ -15,15 +15,15 @@ using Serilog.Events;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, configuration) =>
 {
-#pragma warning disable CA1416 // 验证平台兼容性
     configuration
         .ReadFrom.Configuration(context.Configuration)
         .Enrich.FromLogContext()
         .WriteTo.Console(
             outputTemplate:
-            "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}")
-        .WriteTo.EventLog(".NET Runtime", restrictedToMinimumLevel: LogEventLevel.Information);
-#pragma warning restore CA1416 // 验证平台兼容性
+            "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}");
+#if WINDOWS
+    configuration.WriteTo.EventLog(".NET Runtime", restrictedToMinimumLevel: LogEventLevel.Information);
+#endif
 });
 
 //产品配置
@@ -124,34 +124,41 @@ if (app.Configuration["database-action"] != null)
     switch (app.Configuration["database-action"])
     {
         case "reset":
-            Console.Write("这个操作将删除数据库，并且不可恢复。请确认是否执行该操作？[y/n]");
-            var key = Console.ReadKey(false);
-            if (key.KeyChar == 'y')
-            {
-                identityDbContext.Database.EnsureDeleted();
-                studentDbContext.Database.EnsureDeleted();
+            identityDbContext.Database.EnsureDeleted();
+            studentDbContext.Database.EnsureDeleted();
 
-                //Apply migrations
-                identityDbContext.Database.Migrate();
-                studentDbContext.Database.Migrate();
+            //Apply migrations
+            identityDbContext.Database.Migrate();
+            studentDbContext.Database.Migrate();
 
-                //Init data
-                //todo Init Data
-            }
-            else
-            {
-                Console.WriteLine("");
-                Console.WriteLine("已取消操作！");
-            }
-            Console.WriteLine("将退出程序。");
-            return;
+            //Init data
+            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/IdentityDbContext/Init.sql"));
+            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/StudentDocumentDbContext/Init.sql"));
+            break;
         case "upgrade":
             //Apply migrations
             identityDbContext.Database.Migrate();
             studentDbContext.Database.Migrate();
             break;
+        case "testing":
+            identityDbContext.Database.EnsureDeleted();
+            studentDbContext.Database.EnsureDeleted();
+
+            //Apply migrations
+            identityDbContext.Database.Migrate();
+            studentDbContext.Database.Migrate();
+
+            //Init data
+            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/IdentityDbContext/Init.sql"));
+            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/StudentDocumentDbContext/Init.sql"));
+
+            //Testing Data
+            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/IdentityDbContext/TestingData.sql"));
+            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/StudentDocumentDbContext/TestingData.sql"));
+            break;
+
         default:
-            throw new ArgumentException("无法识别的参数。", "database-action");
+            throw new InvalidOperationException("数据库操作失败，无法识别的操作。");
     }
 }
 

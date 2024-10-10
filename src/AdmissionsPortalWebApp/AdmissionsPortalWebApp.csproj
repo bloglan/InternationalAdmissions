@@ -29,4 +29,19 @@
 	  <ProjectReference Include="..\PersonIdentity\PersonIdentity.csproj" />
 	  <ProjectReference Include="..\StudentDocuments\StudentDocuments.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Data\IdentityDbContext\Init.sql">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\StudentDocumentDbContext\Init.sql">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\StudentDocumentDbContext\TestingData.sql">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\IdentityDbContext\TestingData.sql">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 </Project>
