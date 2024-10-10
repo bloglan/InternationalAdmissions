@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Female" xml:space="preserve">
-    <value>女</value>
+    <value>Female</value>
   </data>
   <data name="Male" xml:space="preserve">
-    <value>男</value>
+    <value>Male</value>
   </data>
   <data name="Register" xml:space="preserve">
-    <value>注册</value>
+    <value>Register</value>
   </data>
   <data name="Other" xml:space="preserve">
-    <value>其他</value>
+    <value>Other</value>
   </data>
 </root>
