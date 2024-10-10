@@ -1,9 +1,9 @@
 ﻿namespace PersonIdentity;
 
 /// <summary>
-/// Sex
+/// Gender
 /// </summary>
-public enum Sex
+public enum Gender
 {
     /// <summary>
     /// Male

@@ -69,7 +69,7 @@ public class RegisterModel : PageModel
         public string Name { get; set; }
 
         [Display(Name = "Sex")]
-        public Sex? Sex { get; set; }
+        public Gender? Gender { get; set; }
 
         [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
@@ -94,7 +94,7 @@ public class RegisterModel : PageModel
             await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
             await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
             user.Name = Input.Name;
-            user.Sex = Input.Sex;
+            user.Gender = Input.Gender;
             user.BirthDate = Input.BirthDate;
             var result = await _userManager.CreateAsync(user, Input.Password);
 

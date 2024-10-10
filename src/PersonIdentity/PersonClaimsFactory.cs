@@ -24,9 +24,10 @@ public class PersonClaimsFactory(UserManager<Person> userManager, RoleManager<Id
     protected override async Task<ClaimsIdentity> GenerateClaimsAsync(Person user)
     {
         var identity = await base.GenerateClaimsAsync(user);
-        //remove name claim
+        //移除默认的Name声明。
         var anyNameClaims = identity.FindAll(ClaimTypes.Name).ToList();
         foreach (var anyNameClaim in anyNameClaims) { identity.RemoveClaim(anyNameClaim); }
+        //用 user.Name发出Name声明。
         identity.AddClaim(new Claim(Options.ClaimsIdentity.UserNameClaimType, user.Name));
         return identity;
     }

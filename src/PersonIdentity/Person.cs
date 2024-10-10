@@ -8,6 +8,7 @@ namespace PersonIdentity;
 /// <summary>
 /// User info for this Web Application.
 /// </summary>
+[Table("Person")]
 public class Person : IdentityUser<string>
 {
     /// <summary>
@@ -55,10 +56,10 @@ public class Person : IdentityUser<string>
     public string Locale { get; set; } = "zh-CN";
 
     /// <summary>
-    /// Sex.
+    /// Gender.
     /// </summary>
     [Column(TypeName = "varchar(10)")]
-    public Sex? Sex { get; set; }
+    public Gender? Gender { get; set; }
 
     /// <summary>
     /// Birthdate.

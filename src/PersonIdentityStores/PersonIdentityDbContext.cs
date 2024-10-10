@@ -12,7 +12,6 @@ public class PersonIdentityDbContext(DbContextOptions<PersonIdentityDbContext> o
         //Rename table name.
         builder.Entity<Person>(b =>
         {
-            b.ToTable("Person");
             b.Property(p => p.Id).HasMaxLength(50).IsUnicode(false);
             b.Property(p => p.PasswordHash).HasMaxLength(100).IsUnicode(false);
             b.Property(p => p.SecurityStamp).HasMaxLength(50).IsUnicode(false);
