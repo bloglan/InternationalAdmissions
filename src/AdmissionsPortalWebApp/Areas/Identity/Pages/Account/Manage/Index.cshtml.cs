@@ -11,8 +11,8 @@ using System.ComponentModel.DataAnnotations;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class IndexModel(
-    UserManager<Person> userManager,
-    SignInManager<Person> signInManager) : PageModel
+    UserManager<ApplicationUser> userManager,
+    SignInManager<ApplicationUser> signInManager) : PageModel
 {
     public string Username { get; set; }
 
@@ -29,7 +29,7 @@ public class IndexModel(
         public string PhoneNumber { get; set; }
     }
 
-    private async Task LoadAsync(Person user)
+    private async Task LoadAsync(ApplicationUser user)
     {
         string userName = await userManager.GetUserNameAsync(user);
         string phoneNumber = await userManager.GetPhoneNumberAsync(user);

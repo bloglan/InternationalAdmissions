@@ -9,12 +9,12 @@ namespace PersonIdentity;
 /// User info for this Web Application.
 /// </summary>
 [Table("Person")]
-public class Person : IdentityUser<string>
+public class ApplicationUser : IdentityUser<string>
 {
     /// <summary>
     /// 
     /// </summary>
-    public Person()
+    public ApplicationUser()
     {
         Id = Guid.NewGuid().ToString().ToLower();
     }

@@ -14,7 +14,7 @@ using System.Text.Encodings.Web;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
-public class ForgotPasswordModel(UserManager<Person> userManager, IEmailSender emailSender) : PageModel
+public class ForgotPasswordModel(UserManager<ApplicationUser> userManager, IEmailSender emailSender) : PageModel
 {
     [BindProperty]
     public InputModel Input { get; set; }

@@ -6,7 +6,7 @@ using PersonIdentity;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class PersonalDataModel(
-    UserManager<Person> userManager) : PageModel
+    UserManager<ApplicationUser> userManager) : PageModel
 {
     public async Task<IActionResult> OnGet()
     {

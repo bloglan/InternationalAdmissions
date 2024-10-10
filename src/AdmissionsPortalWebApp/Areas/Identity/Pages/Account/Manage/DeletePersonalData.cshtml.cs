@@ -11,8 +11,8 @@ using System.ComponentModel.DataAnnotations;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class DeletePersonalDataModel(
-    UserManager<Person> userManager,
-    SignInManager<Person> signInManager,
+    UserManager<ApplicationUser> userManager,
+    SignInManager<ApplicationUser> signInManager,
     ILogger<DeletePersonalDataModel> logger) : PageModel
 {
     [BindProperty]

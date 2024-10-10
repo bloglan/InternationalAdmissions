@@ -15,7 +15,7 @@ using System.Text.Encodings.Web;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class EnableAuthenticatorModel(
-    UserManager<Person> userManager,
+    UserManager<ApplicationUser> userManager,
     ILogger<EnableAuthenticatorModel> logger,
     UrlEncoder urlEncoder,
     IOptions<ProductInfo> productInfo) : PageModel
@@ -104,7 +104,7 @@ public class EnableAuthenticatorModel(
         }
     }
 
-    private async Task LoadSharedKeyAndQrCodeUriAsync(Person user)
+    private async Task LoadSharedKeyAndQrCodeUriAsync(ApplicationUser user)
     {
         // Load the authenticator key & QR code URI to display on the form
         string unformattedKey = await userManager.GetAuthenticatorKeyAsync(user);

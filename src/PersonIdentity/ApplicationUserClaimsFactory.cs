@@ -13,7 +13,7 @@ namespace PersonIdentity;
 /// <param name="userManager"></param>
 /// <param name="roleManager"></param>
 /// <param name="options"></param>
-public class PersonClaimsFactory(UserManager<Person> userManager, RoleManager<IdentityRole> roleManager, IOptions<IdentityOptions> options) : UserClaimsPrincipalFactory<Person, IdentityRole>(userManager, roleManager, options)
+public class ApplicationUserClaimsFactory(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IOptions<IdentityOptions> options) : UserClaimsPrincipalFactory<ApplicationUser, IdentityRole>(userManager, roleManager, options)
 {
 
     /// <summary>
@@ -21,7 +21,7 @@ public class PersonClaimsFactory(UserManager<Person> userManager, RoleManager<Id
     /// </summary>
     /// <param name="user"></param>
     /// <returns></returns>
-    protected override async Task<ClaimsIdentity> GenerateClaimsAsync(Person user)
+    protected override async Task<ClaimsIdentity> GenerateClaimsAsync(ApplicationUser user)
     {
         var identity = await base.GenerateClaimsAsync(user);
         //移除默认的Name声明。

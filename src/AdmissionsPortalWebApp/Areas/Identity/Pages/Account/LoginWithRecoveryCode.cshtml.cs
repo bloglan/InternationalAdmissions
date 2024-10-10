@@ -8,8 +8,8 @@ using System.ComponentModel.DataAnnotations;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
 public class LoginWithRecoveryCodeModel(
-    SignInManager<Person> signInManager,
-    UserManager<Person> userManager,
+    SignInManager<ApplicationUser> signInManager,
+    UserManager<ApplicationUser> userManager,
     ILogger<LoginWithRecoveryCodeModel> logger) : PageModel
 {
     [BindProperty]

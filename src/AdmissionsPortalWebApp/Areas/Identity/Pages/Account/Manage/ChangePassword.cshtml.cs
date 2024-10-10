@@ -11,8 +11,8 @@ using System.ComponentModel.DataAnnotations;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class ChangePasswordModel(
-    UserManager<Person> userManager,
-    SignInManager<Person> signInManager,
+    UserManager<ApplicationUser> userManager,
+    SignInManager<ApplicationUser> signInManager,
     ILogger<ChangePasswordModel> logger) : PageModel
 {
     [BindProperty]

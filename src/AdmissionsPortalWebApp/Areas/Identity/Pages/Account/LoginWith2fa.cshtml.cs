@@ -9,8 +9,8 @@ using System.ComponentModel.DataAnnotations;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
 public class LoginWith2FaModel(
-    SignInManager<Person> signInManager,
-    UserManager<Person> userManager,
+    SignInManager<ApplicationUser> signInManager,
+    UserManager<ApplicationUser> userManager,
     ILogger<LoginWith2FaModel> logger) : PageModel
 {
     [BindProperty]

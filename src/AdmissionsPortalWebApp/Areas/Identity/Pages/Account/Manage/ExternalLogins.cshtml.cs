@@ -11,9 +11,9 @@ using PersonIdentity;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class ExternalLoginsModel(
-    UserManager<Person> userManager,
-    SignInManager<Person> signInManager,
-    IUserStore<Person> userStore) : PageModel
+    UserManager<ApplicationUser> userManager,
+    SignInManager<ApplicationUser> signInManager,
+    IUserStore<ApplicationUser> userStore) : PageModel
 {
     public IList<UserLoginInfo> CurrentLogins { get; set; }
 
@@ -38,7 +38,7 @@ public class ExternalLoginsModel(
             .ToList();
 
         string passwordHash = null;
-        if (userStore is IUserPasswordStore<Person> userPasswordStore)
+        if (userStore is IUserPasswordStore<ApplicationUser> userPasswordStore)
         {
             passwordHash = await userPasswordStore.GetPasswordHashAsync(user, HttpContext.RequestAborted);
         }

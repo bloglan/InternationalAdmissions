@@ -10,7 +10,7 @@ using PersonIdentity;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class Disable2FaModel(
-    UserManager<Person> userManager,
+    UserManager<ApplicationUser> userManager,
     ILogger<Disable2FaModel> logger) : PageModel
 {
     [TempData]

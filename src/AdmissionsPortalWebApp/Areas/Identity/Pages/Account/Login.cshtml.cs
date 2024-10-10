@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
-public class LoginModel(SignInManager<Person> signInManager, ILogger<LoginModel> logger) : PageModel
+public class LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger) : PageModel
 {
     [BindProperty]
     public InputModel Input { get; set; }

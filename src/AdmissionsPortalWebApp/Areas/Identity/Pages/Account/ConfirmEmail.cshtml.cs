@@ -11,7 +11,7 @@ using System.Text;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
-public class ConfirmEmailModel(UserManager<Person> userManager) : PageModel
+public class ConfirmEmailModel(UserManager<ApplicationUser> userManager) : PageModel
 {
     [TempData]
     public string StatusMessage { get; set; }

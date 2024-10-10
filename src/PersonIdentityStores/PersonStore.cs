@@ -4,4 +4,4 @@ using PersonIdentity;
 
 namespace PersonIdentityStores;
 
-public class PersonStore(PersonIdentityDbContext context, IdentityErrorDescriber? describer = null) : UserStore<Person, IdentityRole, PersonIdentityDbContext>(context, describer);
+public class PersonStore(PersonIdentityDbContext context, IdentityErrorDescriber? describer = null) : UserStore<ApplicationUser, IdentityRole, PersonIdentityDbContext>(context, describer);

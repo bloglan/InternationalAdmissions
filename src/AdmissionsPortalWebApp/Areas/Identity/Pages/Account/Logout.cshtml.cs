@@ -7,7 +7,7 @@ using PersonIdentity;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
-public class LogoutModel(SignInManager<Person> signInManager, ILogger<LogoutModel> logger) : PageModel
+public class LogoutModel(SignInManager<ApplicationUser> signInManager, ILogger<LogoutModel> logger) : PageModel
 {
     public async Task<IActionResult> OnPost(string returnUrl = null)
     {

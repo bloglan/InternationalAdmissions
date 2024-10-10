@@ -15,7 +15,7 @@ using System.Text.Encodings.Web;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class EmailModel(
-    UserManager<Person> userManager,
+    UserManager<ApplicationUser> userManager,
     IEmailSender emailSender) : PageModel
 {
     public string Email { get; set; }
@@ -36,7 +36,7 @@ public class EmailModel(
         public string NewEmail { get; set; }
     }
 
-    private async Task LoadAsync(Person user)
+    private async Task LoadAsync(ApplicationUser user)
     {
         string email = await userManager.GetEmailAsync(user);
         Email = email;

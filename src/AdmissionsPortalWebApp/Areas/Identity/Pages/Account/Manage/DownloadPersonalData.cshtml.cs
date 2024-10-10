@@ -11,7 +11,7 @@ using System.Text.Json;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class DownloadPersonalDataModel(
-    UserManager<Person> userManager,
+    UserManager<ApplicationUser> userManager,
     ILogger<DownloadPersonalDataModel> logger) : PageModel
 {
     public IActionResult OnGet()
@@ -31,7 +31,7 @@ public class DownloadPersonalDataModel(
 
         // Only include personal data for download
         var personalData = new Dictionary<string, string>();
-        var personalDataProps = typeof(Person).GetProperties().Where(
+        var personalDataProps = typeof(ApplicationUser).GetProperties().Where(
                         prop => Attribute.IsDefined(prop, typeof(PersonalDataAttribute)));
         foreach (var p in personalDataProps)
         {

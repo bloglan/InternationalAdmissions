@@ -12,7 +12,7 @@ using System.Text;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
 [AllowAnonymous]
-public class RegisterConfirmationModel(UserManager<Person> userManager) : PageModel
+public class RegisterConfirmationModel(UserManager<ApplicationUser> userManager) : PageModel
 {
     public string Email { get; set; }
 

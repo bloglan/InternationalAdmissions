@@ -10,8 +10,8 @@ using PersonIdentity;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class ResetAuthenticatorModel(
-    UserManager<Person> userManager,
-    SignInManager<Person> signInManager,
+    UserManager<ApplicationUser> userManager,
+    SignInManager<ApplicationUser> signInManager,
     ILogger<ResetAuthenticatorModel> logger) : PageModel
 {
     [TempData]

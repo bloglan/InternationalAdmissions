@@ -10,7 +10,7 @@ using System.Text;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
-public class ResetPasswordModel(UserManager<Person> userManager) : PageModel
+public class ResetPasswordModel(UserManager<ApplicationUser> userManager) : PageModel
 {
     [BindProperty]
     public InputModel Input { get; set; }

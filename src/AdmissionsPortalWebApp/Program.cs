@@ -66,15 +66,15 @@ builder.Services.AddDbContext<StudentDocumentDbContext>(options =>
 });
 
 //用户账户和标识
-builder.Services.AddIdentity<Person, IdentityRole>(options =>
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedEmail = false;
     options.SignIn.RequireConfirmedPhoneNumber = false;
 })
-    .AddUserManager<UserManager<Person>>()
+    .AddUserManager<UserManager<ApplicationUser>>()
     .AddUserStore<PersonStore>()
     .AddEntityFrameworkStores<PersonIdentityDbContext>()
-    .AddClaimsPrincipalFactory<PersonClaimsFactory>()
+    .AddClaimsPrincipalFactory<ApplicationUserClaimsFactory>()
     .AddDefaultTokenProviders();
 
 //Cookie选项

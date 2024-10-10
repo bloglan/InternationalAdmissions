@@ -11,8 +11,8 @@ using System.ComponentModel.DataAnnotations;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class SetPasswordModel(
-    UserManager<Person> userManager,
-    SignInManager<Person> signInManager) : PageModel
+    UserManager<ApplicationUser> userManager,
+    SignInManager<ApplicationUser> signInManager) : PageModel
 {
     [BindProperty]
     public InputModel Input { get; set; }

@@ -10,7 +10,7 @@ using PersonIdentity;
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
 public class GenerateRecoveryCodesModel(
-    UserManager<Person> userManager,
+    UserManager<ApplicationUser> userManager,
     ILogger<GenerateRecoveryCodesModel> logger) : PageModel
 {
     [TempData]
