@@ -117,28 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Admissions" xml:space="preserve">
-    <value>Admissions</value>
-  </data>
-  <data name="Campus Life" xml:space="preserve">
-    <value>Campus Life</value>
-  </data>
-  <data name="Costs" xml:space="preserve">
-    <value>Costs</value>
-  </data>
-  <data name="Financial Aid" xml:space="preserve">
-    <value>Financial Aid</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="Teacher" xml:space="preserve">
-    <value>Teacher</value>
-  </data>
-  <data name="Programs" xml:space="preserve">
-    <value>Programs</value>
-  </data>
-  <data name="Student" xml:space="preserve">
-    <value>Student</value>
-  </data>
 </root>

@@ -122,6 +122,8 @@ builder.Services.AddDbContext<AdmissionDbContext>(options =>
     });
 });
 builder.Services.AddScoped<IQueryableStudentStore, QueryableStudentStore>();
+builder.Services.AddScoped<IQueryableAdmissionPlanStore, QueryableAdmissionPlanStore>();
+builder.Services.AddScoped<AdmissionPlanManager>();
 
 //Build WebApplication
 var app = builder.Build();

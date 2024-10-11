@@ -156,4 +156,25 @@
   <data name="System Management" xml:space="preserve">
     <value>System Management</value>
   </data>
+  <data name="Programs" xml:space="preserve">
+    <value>Programs</value>
+  </data>
+  <data name="Campus Life" xml:space="preserve">
+    <value>Campus Life</value>
+  </data>
+  <data name="Financial Aid" xml:space="preserve">
+    <value>Financial Aid</value>
+  </data>
+  <data name="Admissions" xml:space="preserve">
+    <value>Admissions</value>
+  </data>
+  <data name="Costs" xml:space="preserve">
+    <value>Costs</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>Student</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>Teacher</value>
+  </data>
 </root>

@@ -15,30 +15,30 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">@L["Home"]</a>
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">@SL["Home"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/Programs/Index">@L["Programs"]</a>
+                        <a class="nav-link text-dark" asp-page="/Programs/Index">@SL["Programs"]</a>
+                    </li>
+                    @* <li class="nav-item">
+                        <a class="nav-link text-dark" asp-page="/Admissions/Index">@SL["Admissions"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/Admissions/Index">@L["Admissions"]</a>
+                        <a class="nav-link text-dark" asp-page="/Costs/Index">@SL["Costs"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/Costs/Index">@L["Costs"]</a>
+                        <a class="nav-link text-dark" asp-page="/EconomicAid/Index">@SL["Financial Aid"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/EconomicAid/Index">@L["Financial Aid"]</a>
-                    </li>
+                        <a class="nav-link text-dark" asp-page="/CampusLife/Index">@SL["Campus Life"]</a>
+                    </li> *@
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/CampusLife/Index">@L["Campus Life"]</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Student" asp-page="/Index">@L["Student"]</a>
+                        <a class="nav-link text-dark" asp-area="Student" asp-page="/Index">@SL["Student"]</a>
                     </li>
                     @if(this.User.IsInRole("Teachers"))
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Teacher" asp-page="/Index">@L["Teacher"]</a>
+                            <a class="nav-link text-dark" asp-area="Teacher" asp-page="/Index">@SL["Teacher"]</a>
                         </li>
                     }
                 </ul>

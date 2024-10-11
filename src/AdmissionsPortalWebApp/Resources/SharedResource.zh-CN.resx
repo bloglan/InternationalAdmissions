@@ -156,4 +156,25 @@
   <data name="System Management" xml:space="preserve">
     <value>系统管理</value>
   </data>
+  <data name="Programs" xml:space="preserve">
+    <value>项目</value>
+  </data>
+  <data name="Campus Life" xml:space="preserve">
+    <value>校园生活</value>
+  </data>
+  <data name="Financial Aid" xml:space="preserve">
+    <value>经济援助</value>
+  </data>
+  <data name="Admissions" xml:space="preserve">
+    <value>招生</value>
+  </data>
+  <data name="Costs" xml:space="preserve">
+    <value>费用</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>学生</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>教师</value>
+  </data>
 </root>
