@@ -8,7 +8,7 @@ namespace PersonIdentity;
 /// <summary>
 /// User info for this Web Application.
 /// </summary>
-[Table("Person")]
+[Table("ApplicationUser")]
 public class ApplicationUser : IdentityUser<string>
 {
     /// <summary>

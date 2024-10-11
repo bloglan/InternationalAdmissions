@@ -12,7 +12,7 @@ using StudentDocumentStores;
 namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
 {
     [DbContext(typeof(StudentDocumentDbContext))]
-    [Migration("20230508175309_Init")]
+    [Migration("20241011015932_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -20,12 +20,12 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("VisaManagement.PersonPassport", b =>
+            modelBuilder.Entity("StudentDocuments.PersonPassport", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,7 +44,7 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                     b.ToTable("PersonPassport");
                 });
 
-            modelBuilder.Entity("VisaManagement.PersonResidencePermit", b =>
+            modelBuilder.Entity("StudentDocuments.PersonResidencePermit", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                     b.ToTable("PersonResidencePermit");
                 });
 
-            modelBuilder.Entity("VisaManagement.PersonVisa", b =>
+            modelBuilder.Entity("StudentDocuments.PersonVisa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,9 +82,9 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                     b.ToTable("PersonVisa");
                 });
 
-            modelBuilder.Entity("VisaManagement.PersonPassport", b =>
+            modelBuilder.Entity("StudentDocuments.PersonPassport", b =>
                 {
-                    b.OwnsOne("VisaManagement.PersonInfo", "Manager", b1 =>
+                    b.OwnsOne("StudentDocuments.PersonInfo", "Manager", b1 =>
                         {
                             b1.Property<int>("PersonPassportId")
                                 .HasColumnType("int");
@@ -108,7 +108,7 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                                 .HasForeignKey("PersonPassportId");
                         });
 
-                    b.OwnsOne("VisaManagement.PersonInfo", "Owner", b1 =>
+                    b.OwnsOne("StudentDocuments.PersonInfo", "Owner", b1 =>
                         {
                             b1.Property<int>("PersonPassportId")
                                 .HasColumnType("int");
@@ -132,7 +132,7 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                                 .HasForeignKey("PersonPassportId");
                         });
 
-                    b.OwnsOne("VisaManagement.PersonPassportInfo", "Passport", b1 =>
+                    b.OwnsOne("StudentDocuments.PersonPassportInfo", "Passport", b1 =>
                         {
                             b1.Property<int>("PersonPassportId")
                                 .HasColumnType("int");
@@ -210,9 +210,9 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VisaManagement.PersonResidencePermit", b =>
+            modelBuilder.Entity("StudentDocuments.PersonResidencePermit", b =>
                 {
-                    b.OwnsOne("VisaManagement.PersonInfo", "Manager", b1 =>
+                    b.OwnsOne("StudentDocuments.PersonInfo", "Manager", b1 =>
                         {
                             b1.Property<int>("PersonResidencePermitId")
                                 .HasColumnType("int");
@@ -236,7 +236,7 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                                 .HasForeignKey("PersonResidencePermitId");
                         });
 
-                    b.OwnsOne("VisaManagement.PersonInfo", "Owner", b1 =>
+                    b.OwnsOne("StudentDocuments.PersonInfo", "Owner", b1 =>
                         {
                             b1.Property<int>("PersonResidencePermitId")
                                 .HasColumnType("int");
@@ -260,7 +260,7 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                                 .HasForeignKey("PersonResidencePermitId");
                         });
 
-                    b.OwnsOne("VisaManagement.ResidencePermitInfo", "ResidencePermit", b1 =>
+                    b.OwnsOne("StudentDocuments.ResidencePermitInfo", "ResidencePermit", b1 =>
                         {
                             b1.Property<int>("PersonResidencePermitId")
                                 .HasColumnType("int");
@@ -326,9 +326,9 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("VisaManagement.PersonVisa", b =>
+            modelBuilder.Entity("StudentDocuments.PersonVisa", b =>
                 {
-                    b.OwnsOne("VisaManagement.PersonInfo", "Manager", b1 =>
+                    b.OwnsOne("StudentDocuments.PersonInfo", "Manager", b1 =>
                         {
                             b1.Property<int>("PersonVisaId")
                                 .HasColumnType("int");
@@ -352,7 +352,7 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                                 .HasForeignKey("PersonVisaId");
                         });
 
-                    b.OwnsOne("VisaManagement.PersonInfo", "Owner", b1 =>
+                    b.OwnsOne("StudentDocuments.PersonInfo", "Owner", b1 =>
                         {
                             b1.Property<int>("PersonVisaId")
                                 .HasColumnType("int");
@@ -376,7 +376,7 @@ namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
                                 .HasForeignKey("PersonVisaId");
                         });
 
-                    b.OwnsOne("VisaManagement.PersonVisaInfo", "Visa", b1 =>
+                    b.OwnsOne("StudentDocuments.PersonVisaInfo", "Visa", b1 =>
                         {
                             b1.Property<int>("PersonVisaId")
                                 .HasColumnType("int");

@@ -17,6 +17,13 @@
 
 ## 开发/调试
 
+### 数据库迁移
+
+```powershell
+dotnet ef migrations add <MigrationName> -c PersonIdentityDbContext -o Migrations/PersonIdentityDb
+dotnet ef migrations add <MigrationName> -c StudentDocumentDbContext -o Migrations/StudentDocumentDb
+```
+
 ## Installing
 
 ### Initialize Database

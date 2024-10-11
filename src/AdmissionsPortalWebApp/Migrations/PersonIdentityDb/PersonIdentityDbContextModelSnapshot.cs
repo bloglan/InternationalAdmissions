@@ -17,7 +17,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -183,7 +183,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                     b.ToTable("UserToken", (string)null);
                 });
 
-            modelBuilder.Entity("StudentVisaIdentity.Person", b =>
+            modelBuilder.Entity("PersonIdentity.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(50)
@@ -212,6 +212,9 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                     b.Property<string>("FirstName")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Gender")
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("LastName")
                         .HasMaxLength(30)
@@ -268,9 +271,6 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("Sex")
-                        .HasColumnType("varchar(10)");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -294,7 +294,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("Person", (string)null);
+                    b.ToTable("ApplicationUser", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -308,7 +308,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("StudentVisaIdentity.Person", null)
+                    b.HasOne("PersonIdentity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -317,7 +317,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("StudentVisaIdentity.Person", null)
+                    b.HasOne("PersonIdentity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -332,7 +332,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StudentVisaIdentity.Person", null)
+                    b.HasOne("PersonIdentity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -341,7 +341,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("StudentVisaIdentity.Person", null)
+                    b.HasOne("PersonIdentity.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

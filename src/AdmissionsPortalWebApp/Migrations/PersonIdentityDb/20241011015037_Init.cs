@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -11,7 +12,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Person",
+                name: "ApplicationUser",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
@@ -21,7 +22,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     NickName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Locale = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: false),
-                    Sex = table.Column<string>(type: "varchar(10)", nullable: true),
+                    Gender = table.Column<string>(type: "varchar(10)", nullable: true),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     WhenCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     WhenChanged = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -42,7 +43,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Person", x => x.Id);
+                    table.PrimaryKey("PK_ApplicationUser", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,9 +74,9 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                 {
                     table.PrimaryKey("PK_UserClaim", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserClaim_Person_UserId",
+                        name: "FK_UserClaim_ApplicationUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "Person",
+                        principalTable: "ApplicationUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -93,9 +94,9 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                 {
                     table.PrimaryKey("PK_UserExternalLogin", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
-                        name: "FK_UserExternalLogin_Person_UserId",
+                        name: "FK_UserExternalLogin_ApplicationUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "Person",
+                        principalTable: "ApplicationUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -113,9 +114,9 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                 {
                     table.PrimaryKey("PK_UserToken", x => new { x.UserId, x.LoginProvider, x.Name });
                     table.ForeignKey(
-                        name: "FK_UserToken_Person_UserId",
+                        name: "FK_UserToken_ApplicationUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "Person",
+                        principalTable: "ApplicationUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -152,9 +153,9 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                 {
                     table.PrimaryKey("PK_UserInRole", x => new { x.UserId, x.RoleId });
                     table.ForeignKey(
-                        name: "FK_UserInRole_Person_UserId",
+                        name: "FK_UserInRole_ApplicationUser_UserId",
                         column: x => x.UserId,
-                        principalTable: "Person",
+                        principalTable: "ApplicationUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -167,12 +168,12 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
-                table: "Person",
+                table: "ApplicationUser",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
-                table: "Person",
+                table: "ApplicationUser",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
@@ -227,7 +228,7 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                 name: "Role");
 
             migrationBuilder.DropTable(
-                name: "Person");
+                name: "ApplicationUser");
         }
     }
 }
