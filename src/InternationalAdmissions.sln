@@ -29,9 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdmissionsPlatform", "Admis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonIdentityStores", "PersonIdentityStores\PersonIdentityStores.csproj", "{C4F01F40-CEEC-4214-B33D-A65915B37739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admissions", "Admissions\Admissions.csproj", "{502F39ED-F5B7-4539-91BA-8678619E8096}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admissions", "Admissions\Admissions.csproj", "{502F39ED-F5B7-4539-91BA-8678619E8096}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdmissionStores", "AdmissionStores\AdmissionStores.csproj", "{8D6F4D3F-4DB5-4A91-8C88-766681E9F5E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdmissionStores", "AdmissionStores\AdmissionStores.csproj", "{8D6F4D3F-4DB5-4A91-8C88-766681E9F5E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
