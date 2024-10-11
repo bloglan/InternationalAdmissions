@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdmissionsPortalWebApp.Areas.Manage.Pages.ResidencePermits;
+namespace AdmissionsPortalWebApp.Areas.Teacher.Pages.ResidencePermits;
 
 public class DetailModel : PageModel
 {

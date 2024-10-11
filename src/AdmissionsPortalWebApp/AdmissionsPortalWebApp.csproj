@@ -28,6 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\AdmissionStores\AdmissionStores.csproj" />
 	  <ProjectReference Include="..\PersonIdentityStores\PersonIdentityStores.csproj" />
 	  <ProjectReference Include="..\StudentDocumentStores\StudentDocumentStores.csproj" />
 	  <ProjectReference Include="..\PersonIdentity\PersonIdentity.csproj" />

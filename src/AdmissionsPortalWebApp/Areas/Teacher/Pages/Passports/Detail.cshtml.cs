@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentDocuments;
 
-namespace AdmissionsPortalWebApp.Areas.Manage.Pages.Passports;
+namespace AdmissionsPortalWebApp.Areas.Teacher.Pages.Passports;
 
 public class DetailModel(PassportManager passportManager, VisaManager visaManager) : PageModel
 {

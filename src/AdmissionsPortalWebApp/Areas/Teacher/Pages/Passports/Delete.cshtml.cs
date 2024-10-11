@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdmissionsPortalWebApp.Areas.Manage.Pages.VISAs;
+namespace AdmissionsPortalWebApp.Areas.Teacher.Pages.Passports;
 
 public class DeleteModel : PageModel
 {

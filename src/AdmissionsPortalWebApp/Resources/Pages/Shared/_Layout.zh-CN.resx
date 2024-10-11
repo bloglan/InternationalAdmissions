@@ -132,8 +132,8 @@
   <data name="Home" xml:space="preserve">
     <value>首页</value>
   </data>
-  <data name="Manage" xml:space="preserve">
-    <value>管理</value>
+  <data name="Teacher" xml:space="preserve">
+    <value>教师</value>
   </data>
   <data name="Programs" xml:space="preserve">
     <value>计划</value>

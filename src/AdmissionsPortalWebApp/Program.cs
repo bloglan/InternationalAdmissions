@@ -11,6 +11,8 @@ using StudentDocumentStores;
 using System.Globalization;
 using Serilog;
 using Serilog.Events;
+using Admissions;
+using AdmissionStores;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, configuration) =>
@@ -90,7 +92,7 @@ builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
     options.Conventions.AuthorizeAreaFolder("Admin", "/", "RequireAdministratorsRole");
-    options.Conventions.AuthorizeAreaFolder("Manage", "/", "RequireManagerRole");
+    options.Conventions.AuthorizeAreaFolder("Teacher", "/", "RequireTeacherRole");
     options.Conventions.AuthorizeAreaFolder("Student", "/");
 })
     .AddViewLocalization()
@@ -102,7 +104,7 @@ builder.Services.AddRazorPages(options =>
 //授权策略
 builder.Services.AddAuthorizationBuilder()
     .AddPolicy("RequireAdministratorsRole", policy => policy.RequireRole("Administrators"))
-    .AddPolicy("RequireManagerRole", policy => policy.RequireRole("Manager"));
+    .AddPolicy("RequireTeacherRole", policy => policy.RequireRole("Teachers"));
 
 //Work load
 builder.Services.AddScoped<PassportManager>()
@@ -111,6 +113,15 @@ builder.Services.AddScoped<PassportManager>()
 builder.Services.AddScoped<VisaManager>()
     .AddScoped<IPersonVisaStore, PersonVisaStore>();
 
+//招生档案
+builder.Services.AddDbContext<AdmissionDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
+    {
+        s.MigrationsAssembly(typeof(Program).Assembly.GetName().Name);
+    });
+});
+builder.Services.AddScoped<IQueryableStudentStore, QueryableStudentStore>();
 
 //Build WebApplication
 var app = builder.Build();
@@ -120,16 +131,19 @@ if (app.Configuration["database-action"] != null)
     using var scope = app.Services.CreateScope();
     var identityDbContext = scope.ServiceProvider.GetRequiredService<PersonIdentityDbContext>();
     var studentDbContext = scope.ServiceProvider.GetRequiredService<StudentDocumentDbContext>();
+    var admissionDbContext = scope.ServiceProvider.GetRequiredService<AdmissionDbContext>();
 
     switch (app.Configuration["database-action"])
     {
         case "reset":
             identityDbContext.Database.EnsureDeleted();
             studentDbContext.Database.EnsureDeleted();
+            admissionDbContext.Database.EnsureDeleted();
 
             //Apply migrations
             identityDbContext.Database.Migrate();
             studentDbContext.Database.Migrate();
+            admissionDbContext.Database.Migrate();
 
             //Init data
             identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/IdentityDbContext/Init.sql"));
@@ -139,14 +153,17 @@ if (app.Configuration["database-action"] != null)
             //Apply migrations
             identityDbContext.Database.Migrate();
             studentDbContext.Database.Migrate();
+            admissionDbContext.Database.Migrate();
             break;
         case "testing":
             identityDbContext.Database.EnsureDeleted();
             studentDbContext.Database.EnsureDeleted();
+            admissionDbContext.Database.EnsureDeleted();
 
             //Apply migrations
             identityDbContext.Database.Migrate();
             studentDbContext.Database.Migrate();
+            admissionDbContext.Database.Migrate();
 
             //Init data
             identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/IdentityDbContext/Init.sql"));

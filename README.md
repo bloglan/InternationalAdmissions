@@ -22,6 +22,7 @@
 ```powershell
 dotnet ef migrations add <MigrationName> -c PersonIdentityDbContext -o Migrations/PersonIdentityDb
 dotnet ef migrations add <MigrationName> -c StudentDocumentDbContext -o Migrations/StudentDocumentDb
+dotnet ef migrations add <MigrationName> -c AdmissionDbContext -o Migrations/AdmissionDb
 ```
 
 ## Installing
@@ -30,20 +31,20 @@ dotnet ef migrations add <MigrationName> -c StudentDocumentDbContext -o Migratio
 
 1. Install EntityFramework Tools like below:
 
-``` powershell
-dotnet tools install dotnet-ef -g
-```
+    ```powershell
+    dotnet tools install dotnet-ef -g
+    ```
 
 2. Create or Upgrade database via Migrations
 
-Locate to application root directory (where .csproj file stored), execute commands below
+    Locate to application root directory (where .csproj file stored), execute commands below
 
-``` powershell
-dotnet ef database update -c PersonIdentityDbContext
-dotnet ef database update -c StudentDocumentDbContext
-```
+    ```powershell
+    dotnet ef database update -c PersonIdentityDbContext
+    dotnet ef database update -c StudentDocumentDbContext
+    ```
 
-> If database has exists, you can run `dotnet ef database delete` before migrations.
+    > If database has exists, you can run `dotnet ef database delete` before migrations.
 
 3. Initialize Data
 

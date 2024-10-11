@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentDocuments;
 using System.ComponentModel.DataAnnotations;
 
-namespace AdmissionsPortalWebApp.Areas.Manage.Pages.VISAs;
+namespace AdmissionsPortalWebApp.Areas.Teacher.Pages.VISAs;
 
 public class CreateModel(VisaManager visaManager, PassportManager passportManager) : PageModel
 {

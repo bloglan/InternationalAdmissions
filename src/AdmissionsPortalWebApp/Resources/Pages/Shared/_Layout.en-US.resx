@@ -132,8 +132,8 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data name="Manage" xml:space="preserve">
-    <value>Manage</value>
+  <data name="Teacher" xml:space="preserve">
+    <value>Teacher</value>
   </data>
   <data name="Programs" xml:space="preserve">
     <value>Programs</value>

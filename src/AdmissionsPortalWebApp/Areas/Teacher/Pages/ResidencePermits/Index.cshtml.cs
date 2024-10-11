@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentDocuments;
 
-namespace AdmissionsPortalWebApp.Areas.Manage.Pages.ResidencePermits;
+namespace AdmissionsPortalWebApp.Areas.Teacher.Pages.ResidencePermits;
 
 public class IndexModel(ResidencePermitManager permitManager) : PageModel
 {
