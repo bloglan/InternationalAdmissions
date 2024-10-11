@@ -15,30 +15,30 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">@Localizer["Home"]</a>
+                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">@L["Home"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/Programs/Index">@Localizer["Programs"]</a>
+                        <a class="nav-link text-dark" asp-page="/Programs/Index">@L["Programs"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/Admissions/Index">@Localizer["Admissions"]</a>
+                        <a class="nav-link text-dark" asp-page="/Admissions/Index">@L["Admissions"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/Costs/Index">@Localizer["Costs"]</a>
+                        <a class="nav-link text-dark" asp-page="/Costs/Index">@L["Costs"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/EconomicAid/Index">@Localizer["Financial Aid"]</a>
+                        <a class="nav-link text-dark" asp-page="/EconomicAid/Index">@L["Financial Aid"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-page="/CampusLife/Index">@Localizer["Campus Life"]</a>
+                        <a class="nav-link text-dark" asp-page="/CampusLife/Index">@L["Campus Life"]</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Student" asp-page="/Index">@Localizer["Student"]</a>
+                        <a class="nav-link text-dark" asp-area="Student" asp-page="/Index">@L["Student"]</a>
                     </li>
                     @if(this.User.IsInRole("Manager"))
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Manage" asp-page="/Index">@Localizer["Manage"]</a>
+                            <a class="nav-link text-dark" asp-area="Manage" asp-page="/Index">@L["Manage"]</a>
                         </li>
                     }
                 </ul>
