@@ -28,16 +28,16 @@ builder.Host.UseSerilog((context, configuration) =>
 #endif
 });
 
-//²úÆ·ÅäÖÃ
+//äº§å“é…ç½®
 builder.Services.Configure<ProductInfo>(builder.Configuration.GetSection("ProductInfo"));
 
-//³ÌĞò×ÊÔ´
+//ç¨‹åºèµ„æº
 builder.Services.AddLocalization(options =>
 {
     options.ResourcesPath = "Resources";
 });
 
-//ÇøÓòºÍ±¾µØ»¯
+//åŒºåŸŸå’Œæœ¬åœ°åŒ–
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var supportedCultures = new[]
@@ -50,24 +50,18 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedUICultures = supportedCultures;
 });
 
-//ÓÃ»§ĞÅÏ¢´æ´¢
+//ç”¨æˆ·ä¿¡æ¯å­˜å‚¨
 builder.Services.AddDbContext<PersonIdentityDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
-    {
-        s.MigrationsAssembly(typeof(Program).Assembly.GetName().Name);
-    });
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-//Ñ§Éúµµ°¸´æ´¢
+//å­¦ç”Ÿæ¡£æ¡ˆå­˜å‚¨
 builder.Services.AddDbContext<StudentDocumentDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
-    {
-        s.MigrationsAssembly(typeof(Program).Assembly.GetName().Name);
-    });
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-//ÓÃ»§ÕË»§ºÍ±êÊ¶
+//ç”¨æˆ·è´¦æˆ·å’Œæ ‡è¯†
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedEmail = false;
@@ -79,7 +73,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     .AddClaimsPrincipalFactory<ApplicationUserClaimsFactory>()
     .AddDefaultTokenProviders();
 
-//CookieÑ¡Ïî
+//Cookieé€‰é¡¹
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Identity/Account/Login";
@@ -101,7 +95,7 @@ builder.Services.AddRazorPages(options =>
         options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(SharedResource));
     });
 
-//ÊÚÈ¨²ßÂÔ
+//æˆæƒç­–ç•¥
 builder.Services.AddAuthorizationBuilder()
     .AddPolicy("RequireAdministratorsRole", policy => policy.RequireRole("Administrators"))
     .AddPolicy("RequireTeacherRole", policy => policy.RequireRole("Teachers"));
@@ -113,13 +107,10 @@ builder.Services.AddScoped<PassportManager>()
 builder.Services.AddScoped<VisaManager>()
     .AddScoped<IPersonVisaStore, PersonVisaStore>();
 
-//ÕĞÉúµµ°¸
+//æ‹›ç”Ÿæ¡£æ¡ˆ
 builder.Services.AddDbContext<AdmissionDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
-    {
-        s.MigrationsAssembly(typeof(Program).Assembly.GetName().Name);
-    });
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddScoped<IQueryableStudentStore, QueryableStudentStore>();
 builder.Services.AddScoped<IQueryableAdmissionPlanStore, QueryableAdmissionPlanStore>();
@@ -127,59 +118,6 @@ builder.Services.AddScoped<AdmissionPlanManager>();
 
 //Build WebApplication
 var app = builder.Build();
-
-if (app.Configuration["database-action"] != null)
-{
-    using var scope = app.Services.CreateScope();
-    var identityDbContext = scope.ServiceProvider.GetRequiredService<PersonIdentityDbContext>();
-    var studentDbContext = scope.ServiceProvider.GetRequiredService<StudentDocumentDbContext>();
-    var admissionDbContext = scope.ServiceProvider.GetRequiredService<AdmissionDbContext>();
-
-    switch (app.Configuration["database-action"])
-    {
-        case "reset":
-            identityDbContext.Database.EnsureDeleted();
-            studentDbContext.Database.EnsureDeleted();
-            admissionDbContext.Database.EnsureDeleted();
-
-            //Apply migrations
-            identityDbContext.Database.Migrate();
-            studentDbContext.Database.Migrate();
-            admissionDbContext.Database.Migrate();
-
-            //Init data
-            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/IdentityDbContext/Init.sql"));
-            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/StudentDocumentDbContext/Init.sql"));
-            break;
-        case "upgrade":
-            //Apply migrations
-            identityDbContext.Database.Migrate();
-            studentDbContext.Database.Migrate();
-            admissionDbContext.Database.Migrate();
-            break;
-        case "testing":
-            identityDbContext.Database.EnsureDeleted();
-            studentDbContext.Database.EnsureDeleted();
-            admissionDbContext.Database.EnsureDeleted();
-
-            //Apply migrations
-            identityDbContext.Database.Migrate();
-            studentDbContext.Database.Migrate();
-            admissionDbContext.Database.Migrate();
-
-            //Init data
-            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/IdentityDbContext/Init.sql"));
-            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/StudentDocumentDbContext/Init.sql"));
-
-            //Testing Data
-            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/IdentityDbContext/TestingData.sql"));
-            identityDbContext.Database.ExecuteSqlRaw(File.ReadAllText("Data/StudentDocumentDbContext/TestingData.sql"));
-            break;
-
-        default:
-            throw new InvalidOperationException("Êı¾İ¿â²Ù×÷Ê§°Ü£¬ÎŞ·¨Ê¶±ğµÄ²Ù×÷¡£");
-    }
-}
 
 
 // Configure the HTTP request pipeline.

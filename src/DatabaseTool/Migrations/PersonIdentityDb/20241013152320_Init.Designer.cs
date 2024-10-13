@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PersonIdentityStores;
 
 #nullable disable
 
-namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
+namespace DatabaseTool.Migrations.PersonIdentityDb
 {
     [DbContext(typeof(PersonIdentityDbContext))]
-    partial class PersonIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241013152320_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AdmissionsPortalWebApp.Migrations.AdmissionDb
+namespace DatabaseTool.Migrations.AdmissionDb
 {
     [DbContext(typeof(AdmissionDbContext))]
-    [Migration("20241011033503_Init")]
+    [Migration("20241013152432_Init")]
     partial class Init
     {
         /// <inheritdoc />

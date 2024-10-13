@@ -8,7 +8,7 @@ using StudentDocumentStores;
 
 #nullable disable
 
-namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
+namespace DatabaseTool.Migrations.StudentDocumentDb
 {
     [DbContext(typeof(StudentDocumentDbContext))]
     partial class StudentDocumentDbContextModelSnapshot : ModelSnapshot

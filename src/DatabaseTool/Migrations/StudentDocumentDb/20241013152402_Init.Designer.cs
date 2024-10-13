@@ -9,10 +9,10 @@ using StudentDocumentStores;
 
 #nullable disable
 
-namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
+namespace DatabaseTool.Migrations.StudentDocumentDb
 {
     [DbContext(typeof(StudentDocumentDbContext))]
-    [Migration("20241011015932_Init")]
+    [Migration("20241013152402_Init")]
     partial class Init
     {
         /// <inheritdoc />

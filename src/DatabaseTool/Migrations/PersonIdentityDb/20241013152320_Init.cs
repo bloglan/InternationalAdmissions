@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
+namespace DatabaseTool.Migrations.PersonIdentityDb
 {
     /// <inheritdoc />
     public partial class Init : Migration
@@ -204,6 +204,8 @@ namespace AdmissionsPortalWebApp.Migrations.PersonIdentityDb
                 name: "IX_UserInRole_RoleId",
                 table: "UserInRole",
                 column: "RoleId");
+
+            migrationBuilder.Sql(File.ReadAllText("Migrations/PersonIdentityDb/202410132327.sql"));
         }
 
         /// <inheritdoc />

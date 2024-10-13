@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace AdmissionsPortalWebApp.Migrations.StudentDocumentDb
+namespace DatabaseTool.Migrations.StudentDocumentDb
 {
     /// <inheritdoc />
     public partial class Init : Migration

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace AdmissionsPortalWebApp.Migrations.AdmissionDb
+namespace DatabaseTool.Migrations.AdmissionDb
 {
     [DbContext(typeof(AdmissionDbContext))]
     partial class AdmissionDbContextModelSnapshot : ModelSnapshot
