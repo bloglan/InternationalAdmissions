@@ -1,44 +1,39 @@
-﻿@inject IOptions<ProductInfo> Product
-<!DOCTYPE html>
-<html lang="@System.Globalization.CultureInfo.CurrentUICulture.Name">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - @Product.Value.Title</title>
+﻿@{
+    Layout = "/Views/Shared/_Html.cshtml";
+}
+@inject IOptions<ProductInfo> Product
+
+@section head{
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    @*<link rel="stylesheet" href="~/StudentVisaWebApp.styles.css" asp-append-version="true" />*@
     @await RenderSectionAsync("Heads", false)
-</head>
-<body>
-    <header>
-        @await RenderSectionAsync("header")
+}
 
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-    <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center">
-                <span class="mb-3 mb-md-0 text-muted">© 2023 @Product.Value.Copyright</span>
-                - <a asp-area="" asp-page="/Privacy">@SL["Privacy"]</a>
-                -
-                @if (User.IsInRole("Administrators"))
-                {
-                    <a asp-page="/Index" asp-area="Admin">@SL["System Management"]</a>
-                }
-            </div>
-        </footer>
-    </div>
+<header>
+    @await RenderSectionAsync("header")
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <span class="mb-3 mb-md-0 text-muted">© 2023 @Product.Value.Copyright</span>
+            - <a asp-area="" asp-page="/Privacy">@SL["Privacy"]</a>
+            -
+            @if (User.IsInRole("Administrators"))
+            {
+                <a asp-page="/Index" asp-area="Admin">@SL["System Management"]</a>
+            }
+        </div>
+    </footer>
+</div>
 
+
+@section Scripts{
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+}
