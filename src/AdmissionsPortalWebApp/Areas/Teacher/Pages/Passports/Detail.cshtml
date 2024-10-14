@@ -6,34 +6,34 @@
 
 <dl>
     <dt>Passport Number</dt>
-    <dd>@this.Model.Data.Passport.PassportNumber</dd>
+    <dd>@Model.Data.Passport.PassportNumber</dd>
     <dt>Type</dt>
-    <dd>@this.Model.Data.Passport.Type</dd>
+    <dd>@Model.Data.Passport.Type</dd>
     <dt>Country Code</dt>
-    <dd>@this.Model.Data.Passport.CountryCode</dd>
+    <dd>@Model.Data.Passport.CountryCode</dd>
     <dt>Surname</dt>
-    <dd>@this.Model.Data.Passport.Surname</dd>
+    <dd>@Model.Data.Passport.Surname</dd>
     <dt>GivenName</dt>
-    <dd>@this.Model.Data.Passport.GivenName</dd>
+    <dd>@Model.Data.Passport.GivenName</dd>
     <dt>Sex</dt>
-    <dd>@this.Model.Data.Passport.Sex</dd>
+    <dd>@Model.Data.Passport.Sex</dd>
     <dt>Nationality</dt>
-    <dd>@this.Model.Data.Passport.Nationality</dd>
+    <dd>@Model.Data.Passport.Nationality</dd>
     <dt>Date Of Birth</dt>
-    <dd>@this.Model.Data.Passport.DateOfBirth</dd>
+    <dd>@Model.Data.Passport.DateOfBirth</dd>
     <dt>Place Of Birth</dt>
-    <dd>@this.Model.Data.Passport.PlaceOfBirth</dd>
+    <dd>@Model.Data.Passport.PlaceOfBirth</dd>
     <dt>Issue Date</dt>
-    <dd>@this.Model.Data.Passport.DateOfIssue</dd>
+    <dd>@Model.Data.Passport.DateOfIssue</dd>
     <dt>Expirations</dt>
-    <dd>@this.Model.Data.Passport.DateOfExpiration</dd>
+    <dd>@Model.Data.Passport.DateOfExpiration</dd>
     <dt>Authority</dt>
-    <dd>@this.Model.Data.Passport.Authority</dd>
+    <dd>@Model.Data.Passport.Authority</dd>
 </dl>
 
 <h1>VISA in Passport</h1>
-<a asp-page="/VISAs/Create" asp-route-passport="@this.Model.Data.Passport.PassportNumber">Create VISA</a>
-@if(this.Model.Visas.Any())
+<a asp-page="/VISAs/Create" asp-route-passport="@Model.Data.Passport.PassportNumber">Create VISA</a>
+@if(Model.Visas.Any())
 {
     <table class="table">
         <thead>
@@ -44,7 +44,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var visa in this.Model.Visas)
+            @foreach (var visa in Model.Visas)
             {
                 <tr>
                     <td><a asp-page="/Visas/Detail" asp-route-id="@visa.Id">@visa.Visa.VisaNumber</a></td>
@@ -63,4 +63,4 @@ else
 <h1>Attachments</h1>
 
 
-        <a asp-page="Delete" asp-route-id="@this.Model.Data.Id" class="btn btn-danger">Delete Passport</a>
+        <a asp-page="Delete" asp-route-id="@Model.Data.Id" class="btn btn-danger">Delete Passport</a>

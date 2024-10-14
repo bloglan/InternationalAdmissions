@@ -35,7 +35,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Student" asp-page="/Index">@SL["Student"]</a>
                     </li>
-                    @if(this.User.IsInRole("Teachers"))
+                    @if(User.IsInRole("Teachers"))
                     {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Teacher" asp-page="/Index">@SL["Teacher"]</a>

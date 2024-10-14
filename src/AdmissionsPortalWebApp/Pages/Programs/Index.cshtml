@@ -1,13 +1,13 @@
 ﻿@page
 @model AdmissionsPortalWebApp.Pages.Programs.IndexModel
 @{
-    this.ViewBag.Title = SL["Programs"];
+    ViewBag.Title = SL["Programs"];
 }
 <h1>@SL["Programs"]</h1>
 <ul>
     @foreach(var plan in Model.Plans)
     {
-        <li><a asp-page="Detail" asp-route-id="@plan.Id">@plan.Name</a></li>
+        <li><a asp-page="Detail" asp-route-id="@plan.Id">@plan.Name</a><a asp-page="Detail" asp-route-id="@plan.Id" class="btn btn-primary">Learn More</a></li>
     }
 </ul>
 

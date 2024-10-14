@@ -1,4 +1,4 @@
-﻿namespace StudentDocuments;
+namespace StudentDocuments;
 
 /// <summary>
 /// Passport manager.
@@ -56,7 +56,7 @@ public class PassportManager(IPersonPassportStore store)
     }
 
     /// <summary>
-    /// Find Person passport by Id.
+    /// Find Person passport by ID.
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>

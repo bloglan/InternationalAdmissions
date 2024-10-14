@@ -1,4 +1,4 @@
-﻿
+
 
 #nullable disable
 
@@ -37,8 +37,8 @@ public class ConfirmEmailChangeModel(UserManager<ApplicationUser> userManager, S
             return Page();
         }
 
-        // In our UI email and user name are one and the same, so when we update the email
-        // we need to update the user name.
+        // In our UI email and username are one and the same, so when we update the email
+        // we need to update the username.
         var setUserNameResult = await userManager.SetUserNameAsync(user, email);
         if (!setUserNameResult.Succeeded)
         {

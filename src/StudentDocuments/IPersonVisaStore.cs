@@ -1,4 +1,4 @@
-﻿namespace StudentDocuments;
+namespace StudentDocuments;
 
 /// <summary>
 /// Support VISA persistence.
@@ -32,7 +32,7 @@ public interface IPersonVisaStore
     Task DeleteAsync(PersonVisa personVisa);
 
     /// <summary>
-    /// Find Person Visa info by Id.
+    /// Find Person Visa info by ID.
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>

@@ -6,7 +6,7 @@
 
 <form method="get">
     <div class="input-group">
-        <input type="text" class="form-control" name="q" value="@this.Request.Query["q"]" placeholder="Passport Number, Surname or Given Name, etc." />
+        <input type="text" class="form-control" name="q" value="@Request.Query["q"]" placeholder="Passport Number, Surname or Given Name, etc." />
         <button type="submit" class="btn btn-outline-secondary">Search</button>
     </div>
 </form>
@@ -22,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var passport in this.Model.Passports)
+        @foreach (var passport in Model.Passports)
         {
             <tr>
                 <td><a asp-page="Detail" asp-route-id="@passport.Id">@passport.Passport.PassportNumber</a></td>

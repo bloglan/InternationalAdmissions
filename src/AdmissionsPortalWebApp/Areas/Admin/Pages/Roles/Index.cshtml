@@ -2,7 +2,7 @@
 @model IndexModel
 @inject RoleManager<IdentityRole> RoleManager
 @{
-    var roles = this.RoleManager.Roles;
+    var roles = RoleManager.Roles;
 }
 <h1>Roles</h1>
 

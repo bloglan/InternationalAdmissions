@@ -1,4 +1,4 @@
-﻿namespace StudentDocuments;
+namespace StudentDocuments;
 
 /// <summary>
 /// VISA manager.
@@ -66,7 +66,7 @@ public class VisaManager(IPersonVisaStore store)
     }
 
     /// <summary>
-    /// Find Person visa by Id.
+    /// Find Person visa by ID.
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
