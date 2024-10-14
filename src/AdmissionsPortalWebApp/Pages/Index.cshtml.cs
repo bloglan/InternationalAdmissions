@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdmissionsPortalWebApp.Pages;
 
-public class IndexModel() : PageModel
+public class IndexModel : PageModel
 {
     public void OnGet()
     {

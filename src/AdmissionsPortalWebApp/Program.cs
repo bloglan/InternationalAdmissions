@@ -10,7 +10,6 @@ using StudentDocuments;
 using StudentDocumentStores;
 using System.Globalization;
 using Serilog;
-using Serilog.Events;
 using Admissions;
 using AdmissionStores;
 
@@ -149,5 +148,5 @@ namespace AdmissionsPortalWebApp
     /// <summary>
     /// Definitions for Testing.
     /// </summary>
-    public partial class Program;
+    public class Program;
 }
