@@ -1,12 +1,8 @@
 ﻿using StudentDocuments;
 
 namespace StudentDocumentStores;
-public class StudentDocumentDbContext : DbContext
+public class StudentDocumentDbContext(DbContextOptions<StudentDocumentDbContext> options) : DbContext(options)
 {
-    public StudentDocumentDbContext(DbContextOptions<StudentDocumentDbContext> options) : base(options)
-    {
-    }
-
     public DbSet<PersonPassport> Passports { get; protected set; }
 
     public DbSet<PersonVisa> Visas { get; protected set; }

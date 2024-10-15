@@ -1,8 +1,8 @@
 ﻿@page
 @model IndexModel
-@inject RoleManager<IdentityRole> roleManager
+@inject RoleManager<IdentityRole> RoleManager
 @{
-    var roles = this.roleManager.Roles;
+    var roles = RoleManager.Roles;
 }
 <h1>Roles</h1>
 

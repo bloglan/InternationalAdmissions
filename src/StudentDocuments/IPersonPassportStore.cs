@@ -1,7 +1,7 @@
-﻿namespace StudentDocuments;
+namespace StudentDocuments;
 
 /// <summary>
-/// Support Person passport info persistance.
+/// Support Person passport info persistence.
 /// </summary>
 public interface IPersonPassportStore
 {
@@ -32,7 +32,7 @@ public interface IPersonPassportStore
     Task DeleteAsync(PersonPassport passport);
 
     /// <summary>
-    /// Find passport by Id.
+    /// Find passport by ID.
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>

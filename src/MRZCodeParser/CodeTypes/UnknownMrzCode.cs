@@ -9,8 +9,8 @@ namespace MRZCodeParser.CodeTypes
         {
         }
 
-        public override CodeType Type => CodeType.UNKNOWN;
+        public override CodeType Type => CodeType.Unknown;
 
-        public override IEnumerable<MrzLine> Lines => this.RawLines.Select(x => new UnknownLine(x));
+        public override IEnumerable<MrzLine> Lines => RawLines.Select(x => new UnknownLine(x));
     }
 }

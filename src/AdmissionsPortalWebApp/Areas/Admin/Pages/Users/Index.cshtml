@@ -1,19 +1,25 @@
 ﻿@page
-@inject UserManager<Person> userManager
 @model IndexModel
 @{
+    ViewBag.Title = SL["Users"];
 }
 <h1>Users</h1>
+
+<form method="get">
+    <input type="text" name="q" placeholder="Search Users by name or login name." value="@ViewContext.HttpContext.Request.Query["q"]" />
+    <button type="submit">Search</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <td>Name</td>
-            <td>Login Name</td>
+            <td>User Name</td>
             <td>Register Time</td>
         </tr>
     </thead>
     <tbody>
-        @foreach (var user in this.userManager.Users)
+        @foreach (var user in Model.Users)
         {
             <tr>
                 <td>@user.Name</td>

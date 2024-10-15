@@ -5,27 +5,17 @@ using PersonIdentity;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
-public class PersonalDataModel : PageModel
+public class PersonalDataModel(
+    UserManager<ApplicationUser> userManager) : PageModel
 {
-    private readonly UserManager<Person> _userManager;
-    private readonly ILogger<PersonalDataModel> _logger;
-
-    public PersonalDataModel(
-        UserManager<Person> userManager,
-        ILogger<PersonalDataModel> logger)
-    {
-        this._userManager = userManager;
-        this._logger = logger;
-    }
-
     public async Task<IActionResult> OnGet()
     {
-        var user = await this._userManager.GetUserAsync(this.User);
+        var user = await userManager.GetUserAsync(User);
         if (user == null)
         {
-            return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+            return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
         }
 
-        return this.Page();
+        return Page();
     }
 }

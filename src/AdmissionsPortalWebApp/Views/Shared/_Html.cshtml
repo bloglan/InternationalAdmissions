@@ -1,0 +1,18 @@
+﻿@inject IOptions<ProductInfo> Product
+<!DOCTYPE html>
+<html lang="@System.Globalization.CultureInfo.CurrentUICulture.Name">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - @Product.Value.Title</title>
+    @await RenderSectionAsync("head", false)
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AdmissionsPortalWebApp.styles.css" asp-append-version="true" />
+</head>
+<body>
+    @RenderBody()
+    <partial name="_DebugPartial"/>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

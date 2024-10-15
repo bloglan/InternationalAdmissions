@@ -15,7 +15,7 @@ public static class QueryablePassportExtensions
     /// <returns></returns>
     public static IQueryable<PersonPassport> OwnedBy(this IQueryable<PersonPassport> queryable, ClaimsPrincipal user)
     {
-        var userId = user.UserId();
+        string? userId = user.UserId();
         if (userId == null)
             return Array.Empty<PersonPassport>().AsQueryable();
         return queryable.Where(p => p.Owner!.Id == userId);
@@ -29,7 +29,7 @@ public static class QueryablePassportExtensions
     /// <returns></returns>
     public static IQueryable<PersonPassport> ManagedBy(this IQueryable<PersonPassport> queryable, ClaimsPrincipal user)
     {
-        var userId = user.UserId();
+        string? userId = user.UserId();
         if (userId == null)
             return Array.Empty<PersonPassport>().AsQueryable();
         return queryable.Where(p => p.Manager.Id == userId);

@@ -1,0 +1,39 @@
+﻿@page
+@model             IndexModel
+@{
+}
+<h1>VISAs</h1>
+<a asp-page="Create" class="btn btn-primary">Create VISA</a>
+
+<form method="get">
+    <div class="input-group">
+        <input type="text" class="form-control" name="q" value="@Request.Query["q"]" placeholder="VISA Number, Passport Number, Full Name, etc." />
+        <button type="submit" class="btn btn-outline-secondary">Search</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>No.</td>
+            <td>Name</td>
+            <td>Category</td>
+            <td>Entries</td>
+            <td>Enter Before</td>
+            <td>Issue Date</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var visa in Model.Visas)
+        {
+            <tr>
+                <td><a asp-page="Detail" asp-route-id="@visa.Id">@visa.Visa.VisaNumber</a></td>
+                <td>@visa.Visa.FullName</td>
+                <td>@visa.Visa.Category</td>
+                <td>@visa.Visa.Entries</td>
+                <td>@visa.Visa.EnterBefore</td>
+                <td>@visa.Visa.IssueDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

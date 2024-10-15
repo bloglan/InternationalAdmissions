@@ -2,17 +2,17 @@ using System.Collections.Generic;
 
 namespace MRZCodeParser.CodeTypes
 {
-    internal class TD3SecondLine : MrzLine
+    internal class Td3SecondLine : MrzLine
     {
-        internal TD3SecondLine(string value) : base(value)
+        internal Td3SecondLine(string value) : base(value)
         {
         }
 
         protected override string Pattern =>
             "([A-Z0-9<]{9})([0-9]{1})([A-Z<]{3})([0-9]{6})([0-9]{1})([M|F|X|<]{1})([0-9]{6})([0-9]{1})([A-Z0-9<]{14})([0-9<]{1})([0-9]{1})";
 
-        internal override IEnumerable<FieldType> FieldTypes => new[]
-        {
+        internal override IEnumerable<FieldType> FieldTypes =>
+        [
             FieldType.DocumentNumber,
             FieldType.DocumentNumberCheckDigit,
             FieldType.Nationality,
@@ -24,6 +24,6 @@ namespace MRZCodeParser.CodeTypes
             FieldType.OptionalData,
             FieldType.OptionalDataCheckDigit,
             FieldType.OverallCheckDigit
-        };
+        ];
     }
 }

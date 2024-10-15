@@ -1,0 +1,58 @@
+﻿@page
+@model             DetailModel
+@{
+}
+<h1>Overview</h1>
+<dl>
+    <dt>Visa Number</dt>
+    <dd>@Model.Data.Visa.VisaNumber</dd>
+    <dt>Category</dt>
+    <dd>@Model.Data.Visa.Category</dd>
+    <dt>Entries</dt>
+    <dd>@Model.Data.Visa.Entries</dd>
+    <dt>Enter Before</dt>
+    <dd>@Model.Data.Visa.EnterBefore</dd>
+    <dt>Duration Of Each Stay</dt>
+    <dd>@Model.Data.Visa.DurationOfEachStay</dd>
+    <dt>Issue Date</dt>
+    <dd>@Model.Data.Visa.IssueDate</dd>
+    <dt>Issued At</dt>
+    <dd>@Model.Data.Visa.IssuedAt</dd>
+    <dt>Full Name</dt>
+    <dd>@Model.Data.Visa.FullName</dd>
+    <dt>Birth Date</dt>
+    <dd>@Model.Data.Visa.BirthDate</dd>
+    <dt>Passport Number</dt>
+    <dd>@Model.Data.Visa.PassportNumber</dd>
+    <dt>Remarks</dt>
+    <dd>@Model.Data.Visa.Remarks</dd>
+</dl>
+
+<h1>Passport Summary</h1>
+@if(Model.Passport != null)
+{
+    <dl>
+        <dt>Passport Number</dt>
+        <dd>@Model.Passport.Passport.PassportNumber</dd>
+        <dt>Type</dt>
+        <dd>@Model.Passport.Passport.Type</dd>
+        <dt>Country Code</dt>
+        <dd>@Model.Passport.Passport.CountryCode</dd>
+        <dt>Date Of Issue</dt>
+        <dd>@Model.Passport.Passport.DateOfIssue</dd>
+        <dt>Date Of Expiration</dt>
+        <dd>@Model.Passport.Passport.DateOfExpiration</dd>
+    </dl>
+    <a asp-page="/Passports/Detail" asp-route-id="@Model.Passport.Id">More detail...</a>
+}
+else
+{
+    <p class="alert alert-danger">
+        The related passport not found. <a asp-page="/Passports/Create">Create one</a>.
+    </p>
+}
+
+<h1>Attachments</h1>
+
+
+    <a asp-page="Delete" asp-route-id="@Model.Data.Id" class="btn btn-danger">Delete VISA</a>

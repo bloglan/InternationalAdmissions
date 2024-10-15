@@ -1,37 +1,30 @@
 ﻿using StudentDocuments;
 
 namespace StudentDocumentStores;
-public class PersonVisaStore : IPersonVisaStore
+public class PersonVisaStore(StudentDocumentDbContext dbContext) : IPersonVisaStore
 {
-    private readonly StudentDocumentDbContext dbContext;
-
-    public PersonVisaStore(StudentDocumentDbContext dbContext)
-    {
-        this.dbContext = dbContext;
-    }
-
-    public IQueryable<PersonVisa> PersonVisas => this.dbContext.Visas;
+    public IQueryable<PersonVisa> PersonVisas => dbContext.Visas;
 
     public async Task CreateAsync(PersonVisa personVisa)
     {
-        this.dbContext.Visas.Add(personVisa);
-        await this.dbContext.SaveChangesAsync();
+        dbContext.Visas.Add(personVisa);
+        await dbContext.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(PersonVisa personVisa)
     {
-        this.dbContext.Visas.Remove(personVisa);
-        await this.dbContext.SaveChangesAsync();
+        dbContext.Visas.Remove(personVisa);
+        await dbContext.SaveChangesAsync();
     }
 
     public ValueTask<PersonVisa?> FindByIdAsync(int id)
     {
-        return this.dbContext.Visas.FindAsync(id);
+        return dbContext.Visas.FindAsync(id);
     }
 
     public async Task UpdateAsync(PersonVisa personVisa)
     {
-        this.dbContext.Entry(personVisa).State = EntityState.Modified;
-        await this.dbContext.SaveChangesAsync();
+        dbContext.Entry(personVisa).State = EntityState.Modified;
+        await dbContext.SaveChangesAsync();
     }
 }

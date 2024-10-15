@@ -8,25 +8,25 @@ namespace MRZCodeParser
     {
         public string Value { get; }
 
-        public int Length => this.Value?.Length ?? 0;
+        public int Length => Value?.Length ?? 0;
 
         public FieldsCollection Fields
         {
             get
             {
-                var regex = new Regex(this.Pattern);
-                var match = regex.Match(this.Value);
+                var regex = new Regex(Pattern);
+                var match = regex.Match(Value);
 
                 if (!match.Success)
                 {
-                    throw new MrzCodeException($"Line: {this.Value} does not match to pattern: {this.Pattern}");
+                    throw new MrzCodeException($"Line: {Value} does not match to pattern: {Pattern}");
                 }
 
                 var fields = new List<Field>();
-                for (var i = 0; i < this.FieldTypes.Count(); i++)
+                for (int i = 0; i < FieldTypes.Count(); i++)
                 {
                     fields.Add(new Field(
-                        this.FieldTypes.ElementAt(i),
+                        FieldTypes.ElementAt(i),
                         new ValueCleaner(match.Groups[i + 1].Value).Clean()));
                 }
 
@@ -40,7 +40,7 @@ namespace MRZCodeParser
 
         internal MrzLine(string value)
         {
-            this.Value = value;
+            Value = value;
         }
     }
 }

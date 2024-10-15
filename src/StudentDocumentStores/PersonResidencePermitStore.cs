@@ -1,37 +1,30 @@
 ﻿using StudentDocuments;
 
 namespace StudentDocumentStores;
-public class PersonResidencePermitStore : IPersonResidencePermitStore
+public class PersonResidencePermitStore(StudentDocumentDbContext db) : IPersonResidencePermitStore
 {
-    private readonly StudentDocumentDbContext db;
-
-    public PersonResidencePermitStore(StudentDocumentDbContext db)
-    {
-        this.db = db;
-    }
-
-    public IQueryable<PersonResidencePermit> PersonResidencePermits => this.db.PersonResidencePermits;
+    public IQueryable<PersonResidencePermit> PersonResidencePermits => db.PersonResidencePermits;
 
     public async Task CreateAsync(PersonResidencePermit record)
     {
-        this.db.PersonResidencePermits.Add(record);
-        await this.db.SaveChangesAsync();
+        db.PersonResidencePermits.Add(record);
+        await db.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(PersonResidencePermit record)
     {
-        this.db.PersonResidencePermits.Remove(record);
-        await this.db.SaveChangesAsync();
+        db.PersonResidencePermits.Remove(record);
+        await db.SaveChangesAsync();
     }
 
     public ValueTask<PersonResidencePermit?> FindByIdAsync(int id)
     {
-        return this.db.PersonResidencePermits.FindAsync(id);
+        return db.PersonResidencePermits.FindAsync(id);
     }
 
     public async Task UpdateAsync(PersonResidencePermit record)
     {
-        this.db.Entry(record).State = EntityState.Modified;
-        await this.db.SaveChangesAsync();
+        db.Entry(record).State = EntityState.Modified;
+        await db.SaveChangesAsync();
     }
 }

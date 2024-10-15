@@ -1,28 +1,27 @@
-﻿@inject SignInManager<Person> SignInManager
-@inject UserManager<Person> UserManager
+﻿@inject SignInManager<ApplicationUser> SignInManager
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">@localizer["Hello"] @User.Identity?.Name!</a>
+            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">@L["Hello"] @User.Identity?.Name!</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">@localizer["Manage Account"]</a></li>
+                <li><a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">@L["Manage Account"]</a></li>
             </ul>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">@localizer["Logout"]</button>
+                <button type="submit" class="nav-link btn btn-link text-dark">@L["Logout"]</button>
             </form>
         </li>
     }
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">@localizer["Register"]</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">@L["Register"]</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@localizer["Login"]</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@L["Login"]</a>
         </li>
     }
 </ul>

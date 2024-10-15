@@ -6,12 +6,12 @@ namespace MRZCodeParser.Tests
     public class MrzCodeTest
     {
         [Theory]
-        [InlineData(MrzSamples.TD1, CodeType.TD1)]
-        [InlineData(MrzSamples.TD2, CodeType.TD2)]
-        [InlineData(MrzSamples.TD3, CodeType.TD3)]
-        [InlineData(MrzSamples.MRVA, CodeType.MRVA)]
-        [InlineData(MrzSamples.MRVB, CodeType.MRVB)]
-        [InlineData(MrzSamples.UNKNOWN, CodeType.UNKNOWN)]
+        [InlineData(MrzSamples.Td1, CodeType.Td1)]
+        [InlineData(MrzSamples.Td2, CodeType.Td2)]
+        [InlineData(MrzSamples.Td3, CodeType.Td3)]
+        [InlineData(MrzSamples.Mrva, CodeType.Mrva)]
+        [InlineData(MrzSamples.Mrvb, CodeType.Mrvb)]
+        [InlineData(MrzSamples.Unknown, CodeType.Unknown)]
         public void CodeTypeDetection(string input, CodeType expected)
         {
             var target = MrzCode.Parse(input);
@@ -19,11 +19,11 @@ namespace MRZCodeParser.Tests
         }
 
         [Theory]
-        [InlineData(MrzSamples.TD1, 3)]
-        [InlineData(MrzSamples.TD2, 2)]
-        [InlineData(MrzSamples.TD3, 2)]
-        [InlineData(MrzSamples.MRVA, 2)]
-        [InlineData(MrzSamples.MRVB, 2)]
+        [InlineData(MrzSamples.Td1, 3)]
+        [InlineData(MrzSamples.Td2, 2)]
+        [InlineData(MrzSamples.Td3, 2)]
+        [InlineData(MrzSamples.Mrva, 2)]
+        [InlineData(MrzSamples.Mrvb, 2)]
         public void LinesCount(string input, int expected)
         {
             var target = MrzCode.Parse(input);
@@ -31,11 +31,11 @@ namespace MRZCodeParser.Tests
         }
 
         [Theory]
-        [InlineData(MrzSamples.TD1)]
-        [InlineData(MrzSamples.TD2)]
-        [InlineData(MrzSamples.TD3)]
-        [InlineData(MrzSamples.MRVA)]
-        [InlineData(MrzSamples.MRVB)]
+        [InlineData(MrzSamples.Td1)]
+        [InlineData(MrzSamples.Td2)]
+        [InlineData(MrzSamples.Td3)]
+        [InlineData(MrzSamples.Mrva)]
+        [InlineData(MrzSamples.Mrvb)]
         public void ToStringReturnsInputLines(string input)
         {
             var target = MrzCode.Parse(input);
@@ -43,12 +43,12 @@ namespace MRZCodeParser.Tests
         }
 
         [Theory]
-        [InlineData(MrzSamples.TD1, FieldType.PrimaryIdentifier)]
-        [InlineData(MrzSamples.TD1, FieldType.OptionalData)]
-        [InlineData(MrzSamples.TD1, FieldType.OptionalDataCheckDigit)]
-        [InlineData(MrzSamples.TD2, FieldType.Names)]
-        [InlineData(MrzSamples.TD2, FieldType.OptionalDataCheckDigit)]
-        [InlineData(MrzSamples.MRVB, FieldType.OverallCheckDigit)]
+        [InlineData(MrzSamples.Td1, FieldType.PrimaryIdentifier)]
+        [InlineData(MrzSamples.Td1, FieldType.OptionalData)]
+        [InlineData(MrzSamples.Td1, FieldType.OptionalDataCheckDigit)]
+        [InlineData(MrzSamples.Td2, FieldType.Names)]
+        [InlineData(MrzSamples.Td2, FieldType.OptionalDataCheckDigit)]
+        [InlineData(MrzSamples.Mrvb, FieldType.OverallCheckDigit)]
         public void AccessToInvalidFieldTypeWithException(string input, FieldType invalidType)
         {
             var target = MrzCode.Parse(input);

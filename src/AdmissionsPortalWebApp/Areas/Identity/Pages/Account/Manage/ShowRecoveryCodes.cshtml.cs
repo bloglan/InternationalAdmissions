@@ -17,11 +17,11 @@ public class ShowRecoveryCodesModel : PageModel
 
     public IActionResult OnGet()
     {
-        if (this.RecoveryCodes == null || this.RecoveryCodes.Length == 0)
+        if (RecoveryCodes == null || RecoveryCodes.Length == 0)
         {
-            return this.RedirectToPage("./TwoFactorAuthentication");
+            return RedirectToPage("./TwoFactorAuthentication");
         }
 
-        return this.Page();
+        return Page();
     }
 }

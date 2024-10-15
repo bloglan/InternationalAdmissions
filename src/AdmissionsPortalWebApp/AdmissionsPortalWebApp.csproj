@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>aspnet-StudentVisaWebApp-4a658bd2-80ce-4286-a47a-dd035980c4a1</UserSecretsId>
@@ -9,8 +9,14 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.11" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
+		<PackageReference Include="MinVer" Version="6.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+		<PackageReference Include="Serilog.Sinks.EventLog" Version="4.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -18,9 +24,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\AdmissionStores\AdmissionStores.csproj" />
 	  <ProjectReference Include="..\PersonIdentityStores\PersonIdentityStores.csproj" />
 	  <ProjectReference Include="..\StudentDocumentStores\StudentDocumentStores.csproj" />
 	  <ProjectReference Include="..\PersonIdentity\PersonIdentity.csproj" />
 	  <ProjectReference Include="..\StudentDocuments\StudentDocuments.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Data\IdentityDbContext\Init.sql">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\StudentDocumentDbContext\Init.sql">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\StudentDocumentDbContext\TestingData.sql">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Data\IdentityDbContext\TestingData.sql">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 </Project>

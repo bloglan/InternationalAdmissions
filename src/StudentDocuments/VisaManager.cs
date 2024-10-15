@@ -1,25 +1,19 @@
-﻿namespace StudentDocuments;
+namespace StudentDocuments;
 
 /// <summary>
 /// VISA manager.
 /// </summary>
-public class VisaManager
+/// <remarks>
+/// Ctor.
+/// </remarks>
+/// <param name="store"></param>
+public class VisaManager(IPersonVisaStore store)
 {
-    private readonly IPersonVisaStore personVisaStore;
-
-    /// <summary>
-    /// Ctor.
-    /// </summary>
-    /// <param name="store"></param>
-    public VisaManager(IPersonVisaStore store)
-    {
-        this.personVisaStore = store;
-    }
 
     /// <summary>
     /// Gets VISAs.
     /// </summary>
-    public IQueryable<PersonVisa> Visas => this.personVisaStore.PersonVisas;
+    public IQueryable<PersonVisa> Visas => store.PersonVisas;
 
     /// <summary>
     /// Create VISA.
@@ -32,7 +26,7 @@ public class VisaManager
         var utcNow = DateTime.UtcNow;
         visa.WhenCreated = utcNow;
         visa.WhenChanged = utcNow;
-        await this.personVisaStore.CreateAsync(visa);
+        await store.CreateAsync(visa);
         return OperationResult.Success;
     }
 
@@ -45,7 +39,7 @@ public class VisaManager
     public async Task<OperationResult> UpdateAsync(PersonVisa visa)
     {
         visa.WhenChanged = DateTime.UtcNow;
-        await this.personVisaStore.UpdateAsync(visa);
+        await store.UpdateAsync(visa);
         return OperationResult.Success;
     }
 
@@ -57,7 +51,7 @@ public class VisaManager
     /// <exception cref="NotImplementedException"></exception>
     public async Task<OperationResult> DeleteAsync(PersonVisa visa)
     {
-        await this.personVisaStore.DeleteAsync(visa);
+        await store.DeleteAsync(visa);
         return OperationResult.Success;
     }
 
@@ -68,16 +62,16 @@ public class VisaManager
     /// <returns></returns>
     public IEnumerable<PersonVisa> FindByPassportNumber(string passportNumber)
     {
-        return this.personVisaStore.PersonVisas.Where(p => p.Visa.PassportNumber == passportNumber);
+        return store.PersonVisas.Where(p => p.Visa.PassportNumber == passportNumber);
     }
 
     /// <summary>
-    /// Find Person visa by Id.
+    /// Find Person visa by ID.
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
     public ValueTask<PersonVisa?> FindByIdAsync(int id)
     {
-        return this.personVisaStore.FindByIdAsync(id);
+        return store.FindByIdAsync(id);
     }
 }

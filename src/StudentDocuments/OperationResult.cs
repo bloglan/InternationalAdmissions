@@ -10,7 +10,7 @@ public class OperationResult
     /// </summary>
     internal OperationResult()
     {
-        this.Errors = new List<string>();
+        Errors = [];
     }
 
     /// <summary>
@@ -19,7 +19,7 @@ public class OperationResult
     /// <param name="errors"></param>
     internal OperationResult(IEnumerable<string> errors)
     {
-        this.Errors = new List<string>(errors);
+        Errors = new List<string>(errors);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public class OperationResult
     /// <summary>
     /// 指示操作是否成功。
     /// </summary>
-    public bool IsSuccess { get { return !this.Errors.Any(); } }
+    public bool IsSuccess => !Errors.Any();
 
 
     static OperationResult()
@@ -39,7 +39,7 @@ public class OperationResult
     }
 
     /// <summary>
-    /// Gets an OperationResult instance thant point to success.
+    /// Gets an OperationResult instance that point to success.
     /// </summary>
     public static readonly OperationResult Success;
 
@@ -51,7 +51,7 @@ public class OperationResult
     /// <returns></returns>
     public static OperationResult Error(string v)
     {
-        var result = new OperationResult(new string[] { v });
+        var result = new OperationResult([v]);
         return result;
     }
 }

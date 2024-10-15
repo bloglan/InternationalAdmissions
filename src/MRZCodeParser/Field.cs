@@ -1,14 +1,8 @@
 namespace MRZCodeParser
 {
-    public class Field
+    public class Field(FieldType type, string value)
     {
-        public FieldType Type { get; }
-        public string Value { get; }
-
-        public Field(FieldType type, string value)
-        {
-            this.Type = type;
-            this.Value = value;
-        }
+        public FieldType Type { get; } = type;
+        public string Value { get; } = value;
     }
 }

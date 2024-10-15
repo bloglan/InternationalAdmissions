@@ -15,7 +15,7 @@ public static class QueryableResidencePermitExtensions
     /// <returns></returns>
     public static IQueryable<PersonResidencePermit> OwnedBy(this IQueryable<PersonResidencePermit> queryable, ClaimsPrincipal user)
     {
-        var userId = user.UserId();
+        string? userId = user.UserId();
         if (userId == null)
             return Array.Empty<PersonResidencePermit>().AsQueryable();
         return queryable.Where(p => p.Owner!.Id == userId);
@@ -29,7 +29,7 @@ public static class QueryableResidencePermitExtensions
     /// <returns></returns>
     public static IQueryable<PersonResidencePermit> ManagedBy(this IQueryable<PersonResidencePermit> queryable, ClaimsPrincipal user)
     {
-        var userId = user.UserId();
+        string? userId = user.UserId();
         if (userId == null)
             return Array.Empty<PersonResidencePermit>().AsQueryable();
         return queryable.Where(p => p.Manager.Id == userId);

@@ -57,7 +57,7 @@ public class PersonVisaInfo
     public string FullName { get; set; } = default!;
 
     /// <summary>
-    /// Birth date.
+    /// Birthdate.
     /// </summary>
     [Column(TypeName = "date")]
     public DateTime BirthDate { get; set; }

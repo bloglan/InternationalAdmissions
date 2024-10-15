@@ -3,12 +3,12 @@ using Xunit;
 
 namespace MRZCodeParser.Tests
 {
-    public class TD3MrzCodeTest
+    public class Td3MrzCodeTest
     {
         [Fact]
         public void CodeFieldsTest()
         {
-            var target = MrzCode.Parse(MrzSamples.TD3);
+            var target = MrzCode.Parse(MrzSamples.Td3);
 
             Assert.Equal(DocumentType.P.ToString(), target[FieldType.DocumentType]);
             Assert.Equal("UTO", target[FieldType.CountryCode]);
@@ -30,7 +30,7 @@ namespace MRZCodeParser.Tests
         [Fact]
         public void CodeFieldsTest_BackwardCompatibility()
         {
-            var target = MrzCode.Parse(MrzSamples.TD3);
+            var target = MrzCode.Parse(MrzSamples.Td3);
 
             Assert.Equal(target[FieldType.OptionalData], target[FieldType.OptionalData2]);
             Assert.Equal(target[FieldType.OptionalDataCheckDigit], target[FieldType.OptionalData2CheckDigit]);
@@ -39,7 +39,7 @@ namespace MRZCodeParser.Tests
         [Fact]
         public void FieldTypeCollectionTest()
         {
-            var target = MrzCode.Parse(MrzSamples.TD3);
+            var target = MrzCode.Parse(MrzSamples.Td3);
 
             var expected = new[]
             {
@@ -61,7 +61,7 @@ namespace MRZCodeParser.Tests
 
             var actual = target.FieldTypes.ToList();
 
-            Assert.Equal(expected.Length, actual.Count());
+            Assert.Equal(expected.Length, actual.Count);
             Assert.Equal(expected, actual);
         }
     }

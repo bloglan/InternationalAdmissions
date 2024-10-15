@@ -1,0 +1,66 @@
+﻿@page
+@model             DetailModel
+@{
+}
+<h1>Overview</h1>
+
+<dl>
+    <dt>Passport Number</dt>
+    <dd>@Model.Data.Passport.PassportNumber</dd>
+    <dt>Type</dt>
+    <dd>@Model.Data.Passport.Type</dd>
+    <dt>Country Code</dt>
+    <dd>@Model.Data.Passport.CountryCode</dd>
+    <dt>Surname</dt>
+    <dd>@Model.Data.Passport.Surname</dd>
+    <dt>GivenName</dt>
+    <dd>@Model.Data.Passport.GivenName</dd>
+    <dt>Sex</dt>
+    <dd>@Model.Data.Passport.Sex</dd>
+    <dt>Nationality</dt>
+    <dd>@Model.Data.Passport.Nationality</dd>
+    <dt>Date Of Birth</dt>
+    <dd>@Model.Data.Passport.DateOfBirth</dd>
+    <dt>Place Of Birth</dt>
+    <dd>@Model.Data.Passport.PlaceOfBirth</dd>
+    <dt>Issue Date</dt>
+    <dd>@Model.Data.Passport.DateOfIssue</dd>
+    <dt>Expirations</dt>
+    <dd>@Model.Data.Passport.DateOfExpiration</dd>
+    <dt>Authority</dt>
+    <dd>@Model.Data.Passport.Authority</dd>
+</dl>
+
+<h1>VISA in Passport</h1>
+<a asp-page="/VISAs/Create" asp-route-passport="@Model.Data.Passport.PassportNumber">Create VISA</a>
+@if(Model.Visas.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Number</td>
+                <td>Entries</td>
+                <td>Enter Before</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var visa in Model.Visas)
+            {
+                <tr>
+                    <td><a asp-page="/Visas/Detail" asp-route-id="@visa.Id">@visa.Visa.VisaNumber</a></td>
+                    <td>@visa.Visa.Entries</td>
+                    <td>@visa.Visa.EnterBefore</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No VISAs.</p>
+}
+
+<h1>Attachments</h1>
+
+
+        <a asp-page="Delete" asp-route-id="@Model.Data.Id" class="btn btn-danger">Delete Passport</a>

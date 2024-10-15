@@ -117,28 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Admissions" xml:space="preserve">
-    <value>招生</value>
-  </data>
-  <data name="Campus Life" xml:space="preserve">
-    <value>校园生活</value>
-  </data>
-  <data name="Costs" xml:space="preserve">
-    <value>费用</value>
-  </data>
-  <data name="Financial Aid" xml:space="preserve">
-    <value>经济援助</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>首页</value>
-  </data>
-  <data name="Manage" xml:space="preserve">
-    <value>管理</value>
-  </data>
-  <data name="Programs" xml:space="preserve">
-    <value>计划</value>
-  </data>
-  <data name="Student" xml:space="preserve">
-    <value>学生</value>
-  </data>
 </root>

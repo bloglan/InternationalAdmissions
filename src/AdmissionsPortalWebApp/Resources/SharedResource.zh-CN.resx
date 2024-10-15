@@ -138,7 +138,7 @@
   <data name="Name" xml:space="preserve">
     <value>名字</value>
   </data>
-  <data name="Sex" xml:space="preserve">
+  <data name="Gender" xml:space="preserve">
     <value>性别</value>
   </data>
   <data name="The password and confirmation password do not match." xml:space="preserve">
@@ -146,5 +146,39 @@
   </data>
   <data name="The {0} must be at least {2} and at max {1} characters long." xml:space="preserve">
     <value>{0}的长度必须介于{2}至{1}个字符。</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>隐私</value>
+  </data>
+  <data name="System Management" xml:space="preserve">
+    <value>系统管理</value>
+  </data>
+  <data name="Programs" xml:space="preserve">
+    <value>项目</value>
+  </data>
+  <data name="Campus Life" xml:space="preserve">
+    <value>校园生活</value>
+  </data>
+  <data name="Financial Aid" xml:space="preserve">
+    <value>经济援助</value>
+  </data>
+  <data name="Admissions" xml:space="preserve">
+    <value>招生</value>
+  </data>
+  <data name="Costs" xml:space="preserve">
+    <value>费用</value>
+  </data>
+  <data name="Student" xml:space="preserve">
+    <value>学生</value>
+  </data>
+  <data name="Teacher" xml:space="preserve">
+    <value>教师</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+	  <value>Users</value>
+	  <comment>Users</comment>
   </data>
 </root>

@@ -1,5 +1,3 @@
 ﻿namespace AdmissionsPlatform;
 
-public class VisaOCRResult
-{
-}
+public class VisaOcrResult;

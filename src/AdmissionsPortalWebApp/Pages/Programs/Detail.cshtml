@@ -1,0 +1,13 @@
+﻿@page "{id:int}"
+@model AdmissionsPortalWebApp.Pages.Programs.DetailModel
+@{
+    ViewBag.Title = Model.Plan.Name;
+}
+<h1>@Model.Plan.Name</h1>
+<div>
+    @Html.Raw(Model.Plan.Description)
+</div>
+
+<div>
+    <a href="#">Apply now</a>
+</div>

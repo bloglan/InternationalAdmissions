@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = this.localizer["Home"];
+    ViewBag.Title = SL["Home"];
 }
 
 
@@ -13,6 +13,3 @@
         <a class="btn btn-primary btn-lg" href="#">LEARN MORE</a>
     </div>
 </div>
-
-
-<partial name="_DebugUserClaimsPart" />

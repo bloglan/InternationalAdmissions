@@ -33,20 +33,21 @@
                 <span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <select asp-for="Input.Sex" class="form-select">
+                <select asp-for="Input.Gender" class="form-select">
                     <option></option>
-                    <option value="Male">@localizer["Male"]</option>
-                    <option value="Female">@localizer["Female"]</option>
+                    <option value="Male">@L["Male"]</option>
+                    <option value="Female">@L["Female"]</option>
+                    <option value="Other">@L["Other"]</option>
                 </select>
-                <label asp-for="Input.Sex"></label>
-                <span asp-validation-for="Input.Sex" class="text-danger"></span>
+                <label asp-for="Input.Gender"></label>
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
                 <input asp-for="Input.BirthDate" class="form-control" autocomplete="birth-date" aria-required="false" />
                 <label asp-for="Input.BirthDate"></label>
                 <span asp-validation-for="Input.BirthDate" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">@localizer["Register"]</button>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">@L["Register"]</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">

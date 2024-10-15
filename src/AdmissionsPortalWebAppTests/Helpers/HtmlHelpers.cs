@@ -8,7 +8,7 @@ public class HtmlHelpers
 {
     public static async Task<IHtmlDocument> GetDocumentAsync(HttpResponseMessage response)
     {
-        var content = await response.Content.ReadAsStringAsync();
+        string content = await response.Content.ReadAsStringAsync();
         var document = await BrowsingContext.New()
             .OpenAsync(ResponseFactory, CancellationToken.None);
         return (IHtmlDocument)document;
@@ -28,7 +28,7 @@ public class HtmlHelpers
             {
                 foreach (var header in headers)
                 {
-                    foreach (var value in header.Value)
+                    foreach (string value in header.Value)
                     {
                         htmlResponse.Header(header.Key, value);
                     }

@@ -9,19 +9,10 @@ using PersonIdentity;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account.Manage;
 
-public class GenerateRecoveryCodesModel : PageModel
+public class GenerateRecoveryCodesModel(
+    UserManager<ApplicationUser> userManager,
+    ILogger<GenerateRecoveryCodesModel> logger) : PageModel
 {
-    private readonly UserManager<Person> _userManager;
-    private readonly ILogger<GenerateRecoveryCodesModel> _logger;
-
-    public GenerateRecoveryCodesModel(
-        UserManager<Person> userManager,
-        ILogger<GenerateRecoveryCodesModel> logger)
-    {
-        this._userManager = userManager;
-        this._logger = logger;
-    }
-
     [TempData]
     public string[] RecoveryCodes { get; set; }
 
@@ -30,41 +21,41 @@ public class GenerateRecoveryCodesModel : PageModel
 
     public async Task<IActionResult> OnGetAsync()
     {
-        var user = await this._userManager.GetUserAsync(this.User);
+        var user = await userManager.GetUserAsync(User);
         if (user == null)
         {
-            return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+            return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
         }
 
-        var isTwoFactorEnabled = await this._userManager.GetTwoFactorEnabledAsync(user);
+        bool isTwoFactorEnabled = await userManager.GetTwoFactorEnabledAsync(user);
         if (!isTwoFactorEnabled)
         {
-            throw new InvalidOperationException($"Cannot generate recovery codes for user because they do not have 2FA enabled.");
+            throw new InvalidOperationException("Cannot generate recovery codes for user because they do not have 2FA enabled.");
         }
 
-        return this.Page();
+        return Page();
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        var user = await this._userManager.GetUserAsync(this.User);
+        var user = await userManager.GetUserAsync(User);
         if (user == null)
         {
-            return this.NotFound($"Unable to load user with ID '{this._userManager.GetUserId(this.User)}'.");
+            return NotFound($"Unable to load user with ID '{userManager.GetUserId(User)}'.");
         }
 
-        var isTwoFactorEnabled = await this._userManager.GetTwoFactorEnabledAsync(user);
-        var userId = await this._userManager.GetUserIdAsync(user);
+        bool isTwoFactorEnabled = await userManager.GetTwoFactorEnabledAsync(user);
+        string userId = await userManager.GetUserIdAsync(user);
         if (!isTwoFactorEnabled)
         {
-            throw new InvalidOperationException($"Cannot generate recovery codes for user as they do not have 2FA enabled.");
+            throw new InvalidOperationException("Cannot generate recovery codes for user as they do not have 2FA enabled.");
         }
 
-        var recoveryCodes = await this._userManager.GenerateNewTwoFactorRecoveryCodesAsync(user, 10);
-        this.RecoveryCodes = recoveryCodes.ToArray();
+        var recoveryCodes = await userManager.GenerateNewTwoFactorRecoveryCodesAsync(user, 10);
+        RecoveryCodes = recoveryCodes.ToArray();
 
-        this._logger.LogInformation("User with ID '{UserId}' has generated new 2FA recovery codes.", userId);
-        this.StatusMessage = "You have generated new recovery codes.";
-        return this.RedirectToPage("./ShowRecoveryCodes");
+        logger.LogInformation("User with ID '{UserId}' has generated new 2FA recovery codes.", userId);
+        StatusMessage = "You have generated new recovery codes.";
+        return RedirectToPage("./ShowRecoveryCodes");
     }
 }

@@ -10,15 +10,8 @@ using System.Text;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
-public class ResetPasswordModel : PageModel
+public class ResetPasswordModel(UserManager<ApplicationUser> userManager) : PageModel
 {
-    private readonly UserManager<Person> _userManager;
-
-    public ResetPasswordModel(UserManager<Person> userManager)
-    {
-        this._userManager = userManager;
-    }
-
     [BindProperty]
     public InputModel Input { get; set; }
 
@@ -47,42 +40,42 @@ public class ResetPasswordModel : PageModel
     {
         if (code == null)
         {
-            return this.BadRequest("A code must be supplied for password reset.");
+            return BadRequest("A code must be supplied for password reset.");
         }
         else
         {
-            this.Input = new InputModel
+            Input = new InputModel
             {
                 Code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code))
             };
-            return this.Page();
+            return Page();
         }
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        if (!this.ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            return this.Page();
+            return Page();
         }
 
-        var user = await this._userManager.FindByEmailAsync(this.Input.Email);
+        var user = await userManager.FindByEmailAsync(Input.Email);
         if (user == null)
         {
             // Don't reveal that the user does not exist
-            return this.RedirectToPage("./ResetPasswordConfirmation");
+            return RedirectToPage("./ResetPasswordConfirmation");
         }
 
-        var result = await this._userManager.ResetPasswordAsync(user, this.Input.Code, this.Input.Password);
+        var result = await userManager.ResetPasswordAsync(user, Input.Code, Input.Password);
         if (result.Succeeded)
         {
-            return this.RedirectToPage("./ResetPasswordConfirmation");
+            return RedirectToPage("./ResetPasswordConfirmation");
         }
 
         foreach (var error in result.Errors)
         {
-            this.ModelState.AddModelError(string.Empty, error.Description);
+            ModelState.AddModelError(string.Empty, error.Description);
         }
-        return this.Page();
+        return Page();
     }
 }

@@ -6,6 +6,6 @@ public class VisaStatistics : ViewComponent
 {
     public IViewComponentResult Invoke()
     {
-        return this.View();
+        return View();
     }
 }

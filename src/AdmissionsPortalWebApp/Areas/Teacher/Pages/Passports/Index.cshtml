@@ -1,0 +1,38 @@
+﻿@page
+@model             IndexModel
+@{
+}
+<h1>Passports</h1>
+
+<form method="get">
+    <div class="input-group">
+        <input type="text" class="form-control" name="q" value="@Request.Query["q"]" placeholder="Passport Number, Surname or Given Name, etc." />
+        <button type="submit" class="btn btn-outline-secondary">Search</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Number</td>
+            <td>Surname</td>
+            <td>Given Name</td>
+            <td>Country</td>
+            <td>Expires At</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var passport in Model.Passports)
+        {
+            <tr>
+                <td><a asp-page="Detail" asp-route-id="@passport.Id">@passport.Passport.PassportNumber</a></td>
+                <td>@passport.Passport.Surname</td>
+                <td>@passport.Passport.GivenName</td>
+                <td>@passport.Passport.CountryCode</td>
+                <td>@passport.Passport.DateOfExpiration</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="Create" class="btn btn-primary">Create Passport</a>

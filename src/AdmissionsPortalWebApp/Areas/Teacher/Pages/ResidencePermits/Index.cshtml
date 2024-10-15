@@ -1,0 +1,42 @@
+﻿@page
+@model             IndexModel
+@{
+}
+<h1>Residence Permits</h1>
+
+<a asp-page="Create">Create</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>No.</td>
+            <td>Passport Number</td>
+            <td>Full Name</td>
+            <td>Purpose</td>
+            <td>Valid until</td>
+            <td>Date of Issue</td>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.Data.Any())
+        {
+            foreach(var permit in Model.Data)
+            {
+                <tr>
+                    <td>@permit.ResidencePermit.Number</td>
+                    <td>@permit.ResidencePermit.PassportNumber</td>
+                    <td>@permit.ResidencePermit.FullName</td>
+                    <td>@permit.ResidencePermit.PurposeForResidence</td>
+                    <td>@permit.ResidencePermit.ValidForResidenceUntil</td>
+                    <td>@permit.ResidencePermit.PlaceOfIssue</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">No Results.</td>
+            </tr>
+        }
+    </tbody>
+</table>

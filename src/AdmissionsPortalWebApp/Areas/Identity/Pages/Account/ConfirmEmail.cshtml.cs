@@ -11,33 +11,26 @@ using System.Text;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
-public class ConfirmEmailModel : PageModel
+public class ConfirmEmailModel(UserManager<ApplicationUser> userManager) : PageModel
 {
-    private readonly UserManager<Person> _userManager;
-
-    public ConfirmEmailModel(UserManager<Person> userManager)
-    {
-        this._userManager = userManager;
-    }
-
     [TempData]
     public string StatusMessage { get; set; }
     public async Task<IActionResult> OnGetAsync(string userId, string code)
     {
         if (userId == null || code == null)
         {
-            return this.RedirectToPage("/Index");
+            return RedirectToPage("/Index");
         }
 
-        var user = await this._userManager.FindByIdAsync(userId);
+        var user = await userManager.FindByIdAsync(userId);
         if (user == null)
         {
-            return this.NotFound($"Unable to load user with ID '{userId}'.");
+            return NotFound($"Unable to load user with ID '{userId}'.");
         }
 
         code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
-        var result = await this._userManager.ConfirmEmailAsync(user, code);
-        this.StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
-        return this.Page();
+        var result = await userManager.ConfirmEmailAsync(user, code);
+        StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.";
+        return Page();
     }
 }

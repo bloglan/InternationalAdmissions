@@ -10,6 +10,6 @@ namespace MRZCodeParser.CodeTypes
 
         protected override string Pattern => "";
 
-        internal override IEnumerable<FieldType> FieldTypes => new FieldType[0];
+        internal override IEnumerable<FieldType> FieldTypes => [];
     }
 }

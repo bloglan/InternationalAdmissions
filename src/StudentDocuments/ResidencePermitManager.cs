@@ -3,23 +3,17 @@
 /// <summary>
 /// Residence permit manager.
 /// </summary>
-public class ResidencePermitManager
+/// <remarks>
+/// Ctor.
+/// </remarks>
+/// <param name="personResidencePermitStore"></param>
+public class ResidencePermitManager(IPersonResidencePermitStore personResidencePermitStore)
 {
-    private readonly IPersonResidencePermitStore personResidencePermitStore;
-
-    /// <summary>
-    /// Ctor.
-    /// </summary>
-    /// <param name="personResidencePermitStore"></param>
-    public ResidencePermitManager(IPersonResidencePermitStore personResidencePermitStore)
-    {
-        this.personResidencePermitStore = personResidencePermitStore;
-    }
 
     /// <summary>
     /// Gets queryable of permits.
     /// </summary>
-    public IQueryable<PersonResidencePermit> Permits => this.personResidencePermitStore.PersonResidencePermits;
+    public IQueryable<PersonResidencePermit> Permits => personResidencePermitStore.PersonResidencePermits;
 
     /// <summary>
     /// Find by id.
@@ -28,6 +22,6 @@ public class ResidencePermitManager
     /// <returns></returns>
     public ValueTask<PersonResidencePermit?> FindByIdAsync(int id)
     {
-        return this.personResidencePermitStore.FindByIdAsync(id);
+        return personResidencePermitStore.FindByIdAsync(id);
     }
 }

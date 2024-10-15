@@ -8,22 +8,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 
-public class LoginWith2faModel : PageModel
+public class LoginWith2FaModel(
+    SignInManager<ApplicationUser> signInManager,
+    UserManager<ApplicationUser> userManager,
+    ILogger<LoginWith2FaModel> logger) : PageModel
 {
-    private readonly SignInManager<Person> _signInManager;
-    private readonly UserManager<Person> _userManager;
-    private readonly ILogger<LoginWith2faModel> _logger;
-
-    public LoginWith2faModel(
-        SignInManager<Person> signInManager,
-        UserManager<Person> userManager,
-        ILogger<LoginWith2faModel> logger)
-    {
-        this._signInManager = signInManager;
-        this._userManager = userManager;
-        this._logger = logger;
-    }
-
     [BindProperty]
     public InputModel Input { get; set; }
 
@@ -46,44 +35,44 @@ public class LoginWith2faModel : PageModel
     public async Task<IActionResult> OnGetAsync(bool rememberMe, string returnUrl = null)
     {
         // Ensure the user has gone through the username & password screen first
-        var user = await this._signInManager.GetTwoFactorAuthenticationUserAsync() ?? throw new InvalidOperationException($"Unable to load two-factor authentication user.");
-        this.ReturnUrl = returnUrl;
-        this.RememberMe = rememberMe;
+        var user = await signInManager.GetTwoFactorAuthenticationUserAsync() ?? throw new InvalidOperationException("Unable to load two-factor authentication user.");
+        ReturnUrl = returnUrl;
+        RememberMe = rememberMe;
 
-        return this.Page();
+        return Page();
     }
 
     public async Task<IActionResult> OnPostAsync(bool rememberMe, string returnUrl = null)
     {
-        if (!this.ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            return this.Page();
+            return Page();
         }
 
-        returnUrl ??= this.Url.Content("~/");
+        returnUrl ??= Url.Content("~/");
 
-        var user = await this._signInManager.GetTwoFactorAuthenticationUserAsync() ?? throw new InvalidOperationException($"Unable to load two-factor authentication user.");
-        var authenticatorCode = this.Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
+        var user = await signInManager.GetTwoFactorAuthenticationUserAsync() ?? throw new InvalidOperationException("Unable to load two-factor authentication user.");
+        string authenticatorCode = Input.TwoFactorCode.Replace(" ", string.Empty).Replace("-", string.Empty);
 
-        var result = await this._signInManager.TwoFactorAuthenticatorSignInAsync(authenticatorCode, rememberMe, this.Input.RememberMachine);
+        var result = await signInManager.TwoFactorAuthenticatorSignInAsync(authenticatorCode, rememberMe, Input.RememberMachine);
 
-        var userId = await this._userManager.GetUserIdAsync(user);
+        string userId = await userManager.GetUserIdAsync(user);
 
         if (result.Succeeded)
         {
-            this._logger.LogInformation("User with ID '{UserId}' logged in with 2fa.", user.Id);
-            return this.LocalRedirect(returnUrl);
+            logger.LogInformation("User with ID '{UserId}' logged in with 2fa.", user.Id);
+            return LocalRedirect(returnUrl);
         }
         else if (result.IsLockedOut)
         {
-            this._logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
-            return this.RedirectToPage("./Lockout");
+            logger.LogWarning("User with ID '{UserId}' account locked out.", user.Id);
+            return RedirectToPage("./Lockout");
         }
         else
         {
-            this._logger.LogWarning("Invalid authenticator code entered for user with ID '{UserId}'.", user.Id);
-            this.ModelState.AddModelError(string.Empty, "Invalid authenticator code.");
-            return this.Page();
+            logger.LogWarning("Invalid authenticator code entered for user with ID '{UserId}'.", user.Id);
+            ModelState.AddModelError(string.Empty, "Invalid authenticator code.");
+            return Page();
         }
     }
 }

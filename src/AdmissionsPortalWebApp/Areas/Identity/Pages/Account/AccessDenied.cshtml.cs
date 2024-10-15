@@ -1,8 +1,4 @@
-﻿
-
-#nullable disable
-
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdmissionsPortalWebApp.Areas.Identity.Pages.Account;
 

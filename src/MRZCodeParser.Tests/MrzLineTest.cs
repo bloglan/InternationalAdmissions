@@ -23,18 +23,14 @@ namespace MRZCodeParser.Tests
         [Fact]
         public void ExceptionIfCodeDoesNotMatchPattern()
         {
-            const string invalidLine = @"L8988901C4XXX4009078R96121096ZE184226B<<<<<<"; // invalid sex value
+            const string invalidLine = "L8988901C4XXX4009078R96121096ZE184226B<<<<<<"; // invalid sex value
 
-            Assert.Throws<MrzCodeException>(() => new MRVASecondLine(invalidLine).Fields);
+            Assert.Throws<MrzCodeException>(() => new MrvaSecondLine(invalidLine).Fields);
         }
     }
 
-    internal class TestMrzLine : MrzLine
+    internal class TestMrzLine(string value) : MrzLine(value)
     {
-        public TestMrzLine(string value) : base(value)
-        {
-        }
-
         protected override string Pattern { get; }
         internal override IEnumerable<FieldType> FieldTypes { get; }
     }

@@ -4,20 +4,16 @@ using PersonIdentity;
 
 namespace PersonIdentityStores;
 
-public class PersonIdentityDbContext : IdentityDbContext<Person, IdentityRole, string>
+public class PersonIdentityDbContext(DbContextOptions<PersonIdentityDbContext> options) 
+    : IdentityDbContext<ApplicationUser, IdentityRole, string>(options)
 {
-    public PersonIdentityDbContext(DbContextOptions<PersonIdentityDbContext> options)
-        : base(options)
-    {
-    }
-
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
         //Rename table name.
-        builder.Entity<Person>(b =>
+        builder.Entity<ApplicationUser>(b =>
         {
-            b.ToTable("Person");
+            b.ToTable("ApplicationUser");
             b.Property(p => p.Id).HasMaxLength(50).IsUnicode(false);
             b.Property(p => p.PasswordHash).HasMaxLength(100).IsUnicode(false);
             b.Property(p => p.SecurityStamp).HasMaxLength(50).IsUnicode(false);

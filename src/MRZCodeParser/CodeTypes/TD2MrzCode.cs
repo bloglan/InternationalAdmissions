@@ -3,19 +3,19 @@ using System.Linq;
 
 namespace MRZCodeParser.CodeTypes
 {
-    internal class TD2MrzCode : MrzCode
+    internal class Td2MrzCode : MrzCode
     {
-        internal TD2MrzCode(IEnumerable<string> lines) : base(lines)
+        internal Td2MrzCode(IEnumerable<string> lines) : base(lines)
         {
         }
 
-        public override CodeType Type => CodeType.TD2;
+        public override CodeType Type => CodeType.Td2;
 
-        public override IEnumerable<MrzLine> Lines => new MrzLine[]
-        {
-            new TD2FirstLine(this.RawLines.First()),
-            new TD2SecondLine(this.RawLines.Last())
-        };
+        public override IEnumerable<MrzLine> Lines =>
+        [
+            new Td2FirstLine(RawLines.First()),
+            new Td2SecondLine(RawLines.Last())
+        ];
 
         protected override FieldType ChangeBackwardFieldTypeToCurrent(FieldType type)
         {

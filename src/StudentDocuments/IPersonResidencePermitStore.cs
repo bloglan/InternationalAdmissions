@@ -1,7 +1,7 @@
 ﻿namespace StudentDocuments;
 
 /// <summary>
-/// Persistance of Person residence permit.
+/// Persistence of Person residence permit.
 /// </summary>
 public interface IPersonResidencePermitStore
 {

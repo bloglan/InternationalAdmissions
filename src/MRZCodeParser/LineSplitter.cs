@@ -5,17 +5,17 @@ namespace MRZCodeParser
 {
     internal class LineSplitter
     {
-        private readonly string input;
+        private readonly string _input;
 
         internal LineSplitter(string input)
         {
-            this.input = input ?? throw new ArgumentNullException(nameof(input));
+            this._input = input ?? throw new ArgumentNullException(nameof(input));
         }
 
         internal IEnumerable<string> Split()
         {
-            var separator = this.input.Contains("\r\n") ? "\r\n" : "\n";
-            return this.input.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+            string separator = _input.Contains("\r\n") ? "\r\n" : "\n";
+            return _input.Split(separator, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }

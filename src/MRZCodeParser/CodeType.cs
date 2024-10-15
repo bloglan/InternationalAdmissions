@@ -2,11 +2,11 @@ namespace MRZCodeParser
 {
     public enum CodeType
     {
-        UNKNOWN,
-        TD1,
-        TD2,
-        TD3,
-        MRVA,
-        MRVB
+        Unknown,
+        Td1,
+        Td2,
+        Td3,
+        Mrva,
+        Mrvb
     }
 }

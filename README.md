@@ -17,25 +17,50 @@
 
 ## 开发/调试
 
+### 数据库迁移
+
+```powershell
+dotnet ef migrations add <MigrationName> -c PersonIdentityDbContext -o Migrations/PersonIdentityDb
+dotnet ef migrations add <MigrationName> -c StudentDocumentDbContext -o Migrations/StudentDocumentDb
+dotnet ef migrations add <MigrationName> -c AdmissionDbContext -o Migrations/AdmissionDb
+```
+
 ## Installing
 
 ### Initialize Database
 
 1. Install EntityFramework Tools like below:
-``` powershell
-dotnet tools install dotnet-ef -g
-```
+
+    ```powershell
+    dotnet tools install dotnet-ef -g
+    ```
 
 2. Create or Upgrade database via Migrations
 
-Locate to application root directory (where .csproj file stored), execute commands below
-``` powershell
-dotnet ef database update -c PersonIdentityDbContext
-dotnet ef database update -c StudentDocumentDbContext
-```
-> If database has exists, you can run `dotnet ef database delete` before migrations.
+    Locate to application root directory (where .csproj file stored), execute commands below
+
+    ```powershell
+    dotnet ef database update -c PersonIdentityDbContext
+    dotnet ef database update -c StudentDocumentDbContext
+    ```
+
+    > If database has exists, you can run `dotnet ef database delete` before migrations.
 
 3. Initialize Data
+
+## 调试测试数据
+
+为便于调试和集成测试，开发和调试期间，系统将创建如下测试数据：
+
+用户
+
+|登录名|密码|名字|角色|
+|---|---|---|---|
+|<admin@example.com>|Pass123$|张三|Administrators|
+|<mike@example.com>|Pass123$|Mike|Teachers|
+|<andy@example.com>|Pass123$|Andy|N/A *|
+
+学生和其他注册者没有赋予角色。
 
 ## 发布/部署
 

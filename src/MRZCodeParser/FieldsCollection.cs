@@ -9,9 +9,9 @@ namespace MRZCodeParser
 
         internal FieldsCollection(IEnumerable<Field> fields)
         {
-            this.Fields = fields;
+            Fields = fields;
         }
 
-        public Field this[FieldType type] => this.Fields.Single(x => x.Type == type);
+        public Field this[FieldType type] => Fields.Single(x => x.Type == type);
     }
 }

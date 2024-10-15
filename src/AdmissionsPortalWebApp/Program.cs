@@ -9,19 +9,34 @@ using PersonIdentityStores;
 using StudentDocuments;
 using StudentDocumentStores;
 using System.Globalization;
+using Serilog;
+using Admissions;
+using AdmissionStores;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog((context, configuration) =>
+{
+    configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .Enrich.FromLogContext()
+        .WriteTo.Console(
+            outputTemplate:
+            "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}");
+#if WINDOWS
+    configuration.WriteTo.EventLog(".NET Runtime", restrictedToMinimumLevel: LogEventLevel.Information);
+#endif
+});
 
-//²úÆ·ÅäÖÃ
+//äº§å“é…ç½®
 builder.Services.Configure<ProductInfo>(builder.Configuration.GetSection("ProductInfo"));
 
-//³ÌĞò×ÊÔ´
+//ç¨‹åºèµ„æº
 builder.Services.AddLocalization(options =>
 {
     options.ResourcesPath = "Resources";
 });
 
-//ÇøÓòºÍ±¾µØ»¯
+//åŒºåŸŸå’Œæœ¬åœ°åŒ–
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
     var supportedCultures = new[]
@@ -34,36 +49,30 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedUICultures = supportedCultures;
 });
 
-//ÓÃ»§ĞÅÏ¢´æ´¢
+//ç”¨æˆ·ä¿¡æ¯å­˜å‚¨
 builder.Services.AddDbContext<PersonIdentityDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
-    {
-        s.MigrationsAssembly(typeof(Program).Assembly.GetName().Name);
-    });
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-//Ñ§Éúµµ°¸´æ´¢
+//å­¦ç”Ÿæ¡£æ¡ˆå­˜å‚¨
 builder.Services.AddDbContext<StudentDocumentDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), s =>
-    {
-        s.MigrationsAssembly(typeof(Program).Assembly.GetName().Name);
-    });
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-//ÓÃ»§ÕË»§ºÍ±êÊ¶
-builder.Services.AddIdentity<Person, IdentityRole>(options =>
+//ç”¨æˆ·è´¦æˆ·å’Œæ ‡è¯†
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedEmail = false;
     options.SignIn.RequireConfirmedPhoneNumber = false;
 })
-    .AddUserManager<UserManager<Person>>()
+    .AddUserManager<UserManager<ApplicationUser>>()
     .AddUserStore<PersonStore>()
     .AddEntityFrameworkStores<PersonIdentityDbContext>()
-    .AddClaimsPrincipalFactory<PersonClaimsFactory>()
+    .AddClaimsPrincipalFactory<ApplicationUserClaimsFactory>()
     .AddDefaultTokenProviders();
 
-//CookieÑ¡Ïî
+//Cookieé€‰é¡¹
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Identity/Account/Login";
@@ -76,7 +85,7 @@ builder.Services.AddRazorPages(options =>
 {
     options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
     options.Conventions.AuthorizeAreaFolder("Admin", "/", "RequireAdministratorsRole");
-    options.Conventions.AuthorizeAreaFolder("Manage", "/", "RequireManagerRole");
+    options.Conventions.AuthorizeAreaFolder("Teacher", "/", "RequireTeacherRole");
     options.Conventions.AuthorizeAreaFolder("Student", "/");
 })
     .AddViewLocalization()
@@ -85,12 +94,10 @@ builder.Services.AddRazorPages(options =>
         options.DataAnnotationLocalizerProvider = (type, factory) => factory.Create(typeof(SharedResource));
     });
 
-//ÊÚÈ¨²ßÂÔ
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("RequireAdministratorsRole", policy => policy.RequireRole("Administrators"));
-    options.AddPolicy("RequireManagerRole", policy => policy.RequireRole("Manager"));
-});
+//æˆæƒç­–ç•¥
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("RequireAdministratorsRole", policy => policy.RequireRole("Administrators"))
+    .AddPolicy("RequireTeacherRole", policy => policy.RequireRole("Teachers"));
 
 //Work load
 builder.Services.AddScoped<PassportManager>()
@@ -99,52 +106,21 @@ builder.Services.AddScoped<PassportManager>()
 builder.Services.AddScoped<VisaManager>()
     .AddScoped<IPersonVisaStore, PersonVisaStore>();
 
+//æ‹›ç”Ÿæ¡£æ¡ˆ
+builder.Services.AddDbContext<AdmissionDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+builder.Services.AddScoped<IQueryableStudentStore, QueryableStudentStore>();
+builder.Services.AddScoped<IQueryableAdmissionPlanStore, QueryableAdmissionPlanStore>();
+builder.Services.AddScoped<AdmissionPlanManager>();
 
 //Build WebApplication
 var app = builder.Build();
 
-if (app.Configuration["database-action"] != null)
-{
-    using var scope = app.Services.CreateScope();
-    var identityDbContext = scope.ServiceProvider.GetRequiredService<PersonIdentityDbContext>();
-    var studentDbContext = scope.ServiceProvider.GetRequiredService<StudentDocumentDbContext>();
-
-    switch (app.Configuration["database-action"])
-    {
-        case "reset":
-            Console.Write("Õâ¸ö²Ù×÷½«É¾³ıÊı¾İ¿â£¬²¢ÇÒ²»¿É»Ö¸´¡£ÇëÈ·ÈÏÊÇ·ñÖ´ĞĞ¸Ã²Ù×÷£¿[y/n]");
-            var key = Console.ReadKey(false);
-            if (key.KeyChar == 'y')
-            {
-                identityDbContext.Database.EnsureDeleted();
-                studentDbContext.Database.EnsureDeleted();
-
-                //Apply migrations
-                identityDbContext.Database.Migrate();
-                studentDbContext.Database.Migrate();
-
-                //Init data
-                //todo Init Data
-            }
-            else
-            {
-                Console.WriteLine("");
-                Console.WriteLine("ÒÑÈ¡Ïû²Ù×÷£¡");
-            }
-            Console.WriteLine("½«ÍË³ö³ÌĞò¡£");
-            return;
-        case "upgrade":
-            //Apply migrations
-            identityDbContext.Database.Migrate();
-            studentDbContext.Database.Migrate();
-            break;
-        default:
-            throw new ArgumentException("ÎŞ·¨Ê¶±ğµÄ²ÎÊı¡£", "database-action");
-    }
-}
-
 
 // Configure the HTTP request pipeline.
+app.UseSerilogRequestLogging();
 if (app.Environment.IsDevelopment())
 {
 }
@@ -163,16 +139,14 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapRazorPages();
 
-//µ±´øÓĞinit²ÎÊıÊ±£¬Ö´ĞĞÊı¾İ¿â³õÊ¼»¯ÈÎÎñ
 
-
-app.Run();
+await app.RunAsync();
 
 
 namespace AdmissionsPortalWebApp
 {
     /// <summary>
-    /// Definations for Testing.
+    /// Definitions for Testing.
     /// </summary>
-    public partial class Program { }
+    public class Program;
 }
