@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "Shared/_Layout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-page="/Index">@SL["Home"]</a></li>
+                    @await RenderSectionAsync("breadcrumb", false)
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @RenderBody()
+        </div>
+    </div>
+</div>

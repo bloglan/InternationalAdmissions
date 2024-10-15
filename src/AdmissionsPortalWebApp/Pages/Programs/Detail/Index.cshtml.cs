@@ -2,9 +2,9 @@ using Admissions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdmissionsPortalWebApp.Pages.Programs
+namespace AdmissionsPortalWebApp.Pages.Programs.Detail
 {
-    public class DetailModel(AdmissionPlanManager manager) : PageModel
+    public class IndexModel(AdmissionPlanManager manager) : PageModel
     {
         public AdmissionPlan Plan { get; set; } = default!;
 

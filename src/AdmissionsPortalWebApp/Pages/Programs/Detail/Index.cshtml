@@ -1,0 +1,20 @@
+﻿@page "{id:int}"
+@model IndexModel
+@{
+    ViewBag.Title = Model.Plan.Name;
+}
+
+@section breadcrumb {
+    <li class="breadcrumb-item"><a asp-page="../Index">@SL["Programs"]</a></li>
+    <li class="breadcrumb-item active" aria-current="page">@Model.Plan.Name</li>
+}
+
+
+<h1>@Model.Plan.Name</h1>
+<div>
+    @Html.Raw(Model.Plan.Description)
+</div>
+
+<div>
+    <a href="#">Apply now</a>
+</div>
